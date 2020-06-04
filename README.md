@@ -19,12 +19,12 @@ Cada celda cuenta con la siguiente información:
 ### Información adicional para las celdas
 * TIEMPO DESDE CONTAGIO - tiempo desde que contrajo la enfermedad y pasa por todos los períodos.
 
- ## Reloj Virtual
+### Reloj Virtual
  
  A cada señal de reloj, todas las celdas de la cuadrícula puede cambiar su estado de salud a uno nuevo, el cual depende de
  _edad, grupo de riesgo, sexo, acciones preventivas y estado de sus 8 vecinas adyacentes_.
  
- ## Reglas de cambio de estado
+### Reglas de cambio de estado
  
  * Susceptible __(AZUL)__ -> Enfermo sin contagio __(NARANJA)__ : si en el tiempo t, la celda en proceso C ,es __AZUL__ y,
  alguna de sus vecinas esta infectada en etapa de contagio ( t >= 4 ), pasa a __NARANJA__ con una probabilidad P, que es proporcional al número de celdas adyacentes enfermas E, la potencia de la enfermedad POT, y la susceptibilidad de la persona a la enfermedad SUSC.
