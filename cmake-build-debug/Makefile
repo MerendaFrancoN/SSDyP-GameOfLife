@@ -123,6 +123,33 @@ SSDyP_GameOfLife/fast:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/build
 .PHONY : SSDyP_GameOfLife/fast
 
+cell.o: cell.c.o
+
+.PHONY : cell.o
+
+# target to build an object file
+cell.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/cell.c.o
+.PHONY : cell.c.o
+
+cell.i: cell.c.i
+
+.PHONY : cell.i
+
+# target to preprocess a source file
+cell.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/cell.c.i
+.PHONY : cell.c.i
+
+cell.s: cell.c.s
+
+.PHONY : cell.s
+
+# target to generate assembly for a file
+cell.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/cell.c.s
+.PHONY : cell.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... SSDyP_GameOfLife"
+	@echo "... cell.o"
+	@echo "... cell.i"
+	@echo "... cell.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

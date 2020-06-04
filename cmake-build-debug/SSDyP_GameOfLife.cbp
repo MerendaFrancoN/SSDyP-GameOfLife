@@ -78,6 +78,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cell.c">
+			<Option target="SSDyP_GameOfLife"/>
+		</Unit>
+		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cell.h">
+			<Option target="SSDyP_GameOfLife"/>
+		</Unit>
 		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/main.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>

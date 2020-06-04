@@ -3,4 +3,4 @@ project(SSDyP_GameOfLife C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(SSDyP_GameOfLife main.c)
+add_executable(SSDyP_GameOfLife main.c cell.h cell.c)
