@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/SSDyP_GameOfLife.dir/main.c.o  -o SSDyP_GameOfLife 
