@@ -1,7 +1,5 @@
 #include "headers/matrix.h"
 
-
-
 // Allocate matrix of cells
 cell_type *allocateMatrix(int rows, int columns){
     cell_type *matrix = (cell_type *)malloc(rows * columns * sizeof(cell_type));

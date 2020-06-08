@@ -1,6 +1,4 @@
-#include "headers/statistics.h"
 #include "headers/cell.h"
-#include "stdio.h"
 
 /* --UTILS Functions-- */
 // Function to get the age from an integer

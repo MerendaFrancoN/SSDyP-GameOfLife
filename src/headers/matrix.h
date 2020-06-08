@@ -1,9 +1,7 @@
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_H
 #define SSDYP_GAMEOFLIFE_MATRIX_H
 
-#include "cell.h"
-#include "stdlib.h"
-#include "statistics.h"
+#include "all_includes.h"
 
 // Allocate matrix of cells
 cell_type *allocateMatrix(int rows, int columns);

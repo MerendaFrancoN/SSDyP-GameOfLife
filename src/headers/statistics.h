@@ -1,8 +1,6 @@
-#include <stdlib.h>
-#include <time.h>
-
 #ifndef SSDYP_GAMEOFLIFE_STATISTICS_H
 #define SSDYP_GAMEOFLIFE_STATISTICS_H
+#include "all_includes.h"
 
 void initSeed();
 int randomEnumIntGenerator(int min, int max);
