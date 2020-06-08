@@ -84,7 +84,13 @@
 		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/cell.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
+		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/all_includes.h">
+			<Option target="SSDyP_GameOfLife"/>
+		</Unit>
 		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/cell.h">
+			<Option target="SSDyP_GameOfLife"/>
+		</Unit>
+		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/matrixs_data.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/CMakeLists.txt">

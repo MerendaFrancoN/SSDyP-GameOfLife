@@ -3,7 +3,9 @@
 
 CMakeFiles/SSDyP_GameOfLife.dir/main.c.o
  /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/main.c
+ /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/all_includes.h
  /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/cell.h
+ /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/matrixs_data.h
 CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o
  /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/cell.c
  /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/cell.h

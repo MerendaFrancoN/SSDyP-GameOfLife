@@ -1,8 +1,10 @@
 
+/*
+ * Header file containing all the structures, functions, related to how a cell works.
+*/
+
 #ifndef SSDYP_GAMEOFLIFE_CELL_H
 #define SSDYP_GAMEOFLIFE_CELL_H
-
-#include <stdlib.h>
 
 /* State - Possible states of cells
  * WHITE - Free Cell
@@ -116,4 +118,6 @@ double illness_death_rate(char age, char preventiveVaccines);
 
 // Function that from a cell, generates the state for the next cell
 char state_machine(char currentState, unsigned long int timeSinceInfected, char age, char risk_disease, char preventiveVaccines,double cellsContagious);
+
+
 #endif //SSDYP_GAMEOFLIFE_CELL_H
