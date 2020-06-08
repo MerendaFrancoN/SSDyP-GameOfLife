@@ -1,6 +1,8 @@
 #ifndef SSDYP_GAMEOFLIFE_CELL_H
 #define SSDYP_GAMEOFLIFE_CELL_H
 
+#include "all_includes.h"
+
 //Max Numbers of enums
 #define RISK_DISEASES_NUMBER 5
 #define RISK_PROFESSIONS_NUMBER 4

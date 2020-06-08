@@ -1,5 +1,4 @@
 #include "headers/cell.h"
-
 /* --UTILS Functions-- */
 // Function to get the age from an integer
 char intToAge(unsigned short int intAge){
@@ -114,7 +113,7 @@ cell_type createRandomCell(double childRate, double adultRate, double oldRate, d
 
     //Generate Random State
     randomValue = randomDoubleGenerator();
-    cellToReturn.state = (randomValue <= infectionRate) ? STATE_WHITE : STATE_ORANGE;
+    cellToReturn.state = (randomValue > infectionRate) ? STATE_WHITE : STATE_ORANGE;
     cellToReturn.timeSinceInfected = 0;
 
     //Return cell
