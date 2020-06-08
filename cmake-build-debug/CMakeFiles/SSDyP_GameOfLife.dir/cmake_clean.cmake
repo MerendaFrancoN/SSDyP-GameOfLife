@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SSDyP_GameOfLife.dir/main.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o"
+  "CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o"
+  "CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o"
   "SSDyP_GameOfLife"
   "SSDyP_GameOfLife.pdb"
 )

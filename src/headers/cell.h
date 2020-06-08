@@ -1,10 +1,11 @@
-
-/*
- * Header file containing all the structures, functions, related to how a cell works.
-*/
-
 #ifndef SSDYP_GAMEOFLIFE_CELL_H
 #define SSDYP_GAMEOFLIFE_CELL_H
+
+//Max Numbers of enums
+#define RISK_DISEASES_NUMBER 5
+#define RISK_PROFESSIONS_NUMBER 4
+#define PREVENTIVE_VACCINES_NUMBER 4
+
 
 /* State - Possible states of cells
  * WHITE - Free Cell
@@ -99,12 +100,14 @@ typedef struct cell_{
 
 /* --UTILS Functions-- */
 
-//Random Generator between [0, 1)
-double randomGenerator();
+//Create a random cell with some configuration
+cell_type createRandomCell(double childRate, double adultRate, double oldRate, double infectionRate);
+
+//Function to print a cell
+void printCell(cell_type cell);
 
 // Function to get the age from an integer
 char intToAge(unsigned short int intAge);
-
 
 // Function to determine susceptibility
 double susceptibility(char age, char risk_disease);
@@ -117,7 +120,6 @@ double probability_P(double cellsContagious, double covidPower, double susceptib
 double illness_death_rate(char age, char preventiveVaccines);
 
 // Function that from a cell, generates the state for the next cell
-char state_machine(char currentState, unsigned long int timeSinceInfected, char age, char risk_disease, char preventiveVaccines,double cellsContagious);
-
+char state_machine(char currentState, unsigned long int timeSinceInfected, char age, char risk_disease, char preventiveVaccines, double cellsContagious);
 
 #endif //SSDYP_GAMEOFLIFE_CELL_H

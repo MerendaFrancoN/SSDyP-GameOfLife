@@ -1,14 +1,16 @@
 #include <stdio.h>
-#include "src/headers/all_includes.h"
+#include "src/headers/statistics.h"
+#include "src/headers/cell.h"
 
 
 int main() {
-    //Only for Windows
-    #ifdef defined(__WIN32) || defined(WIN32)
-    srand(0); //Initializer for random generators
-    #endif
+    initSeed();
 
-    for(int i = 0; i < 11; i++)
-        printf("Hello, World! %d\n", intToAge(65));
+    for(int i = 0; i < 10; i++) {
+        cell_type cell = createRandomCell(0.3, 0.54, 0.16, 0.02);
+        printf("ID %d\n", i);
+        printCell(cell);
+    }
+
     return 0;
 }
