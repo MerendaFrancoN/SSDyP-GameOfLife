@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "cell.h"
+#include "src/headers/cell.h"
 
 
 int main() {

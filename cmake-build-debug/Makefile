@@ -123,33 +123,6 @@ SSDyP_GameOfLife/fast:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/build
 .PHONY : SSDyP_GameOfLife/fast
 
-cell.o: cell.c.o
-
-.PHONY : cell.o
-
-# target to build an object file
-cell.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/cell.c.o
-.PHONY : cell.c.o
-
-cell.i: cell.c.i
-
-.PHONY : cell.i
-
-# target to preprocess a source file
-cell.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/cell.c.i
-.PHONY : cell.c.i
-
-cell.s: cell.c.s
-
-.PHONY : cell.s
-
-# target to generate assembly for a file
-cell.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/cell.c.s
-.PHONY : cell.c.s
-
 main.o: main.c.o
 
 .PHONY : main.o
@@ -177,6 +150,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.s
 .PHONY : main.c.s
 
+src/cell.o: src/cell.c.o
+
+.PHONY : src/cell.o
+
+# target to build an object file
+src/cell.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o
+.PHONY : src/cell.c.o
+
+src/cell.i: src/cell.c.i
+
+.PHONY : src/cell.i
+
+# target to preprocess a source file
+src/cell.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.i
+.PHONY : src/cell.c.i
+
+src/cell.s: src/cell.c.s
+
+.PHONY : src/cell.s
+
+# target to generate assembly for a file
+src/cell.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s
+.PHONY : src/cell.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... SSDyP_GameOfLife"
-	@echo "... cell.o"
-	@echo "... cell.i"
-	@echo "... cell.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/cell.o"
+	@echo "... src/cell.i"
+	@echo "... src/cell.s"
 .PHONY : help
 
 

@@ -6,13 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cell.h
-stdlib.h
--
-
 /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/main.c
 stdio.h
 -
-cell.h
-/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cell.h
+src/headers/cell.h
+/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/cell.h
+
+/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/cell.c
+headers/cell.h
+/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/cell.h
+
+/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/src/headers/cell.h
+stdlib.h
+-
 

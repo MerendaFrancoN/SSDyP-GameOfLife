@@ -1,4 +1,4 @@
-#include "cell.h"
+#include "headers/cell.h"
 /* --UTILS Functions-- */
 
 double randomGenerator(){
@@ -80,13 +80,13 @@ char state_machine(char currentState, unsigned long int timeSinceInfected, char 
         if( timeSinceInfected == 7 ){
 
             //Probability given by problem ( 0.9 )
-            if( random >= 0.9)
+            if( random <= 0.9) //With 90% of probability will go to Yellow state
                 return STATE_YELLOW;
             else
                 return STATE_RED;
         } else {
             /*Case of Recovered or Death */
-            if( timeSinceInfected == 14 && random <= illness_death_rate(age, preventiveVaccines))
+            if( timeSinceInfected == 14 && random > illness_death_rate(age, preventiveVaccines))
                 return STATE_BLACK;
             else
                 return STATE_GREEN;
