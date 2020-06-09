@@ -48,10 +48,10 @@ RM = /media/stormtrooper/LinuxData/opt/clion-2020.1.1/bin/cmake/linux/bin/cmake 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife"
+CMAKE_SOURCE_DIR = /home/stormtrooper/Documentos/SSDyP-GameOfLife
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles" "/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles /home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

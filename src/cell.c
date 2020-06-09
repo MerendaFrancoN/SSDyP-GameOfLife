@@ -44,44 +44,85 @@ double illness_death_rate(char age, char preventiveVaccines){
 }
 
 // Function that from a cell, generates the state for the next cell
-char state_machine(char currentState, unsigned long int timeSinceInfected, char age, char risk_disease, char preventiveVaccines, double cellsContagious){
+cell_type next_state(cell_type currentState, double cellsContagious) {
 
-    double random = randomDoubleGenerator();
+    //Check if a null state, return as it was.
+    if (currentState.state == STATE_WHITE)
+        return currentState;
 
-    if(currentState == STATE_BLUE){
-        if( random >= probability_P(cellsContagious, 2.4, susceptibility(age, risk_disease), 24) )
-            return STATE_ORANGE;
-        else
-            return STATE_BLUE;
+    /*Update Time */
+    //Get the current Time
+    int currentTime = currentState.timeSinceInfected;
+
+    if(currentState.state >= STATE_ORANGE && currentState.timeSinceInfected <= 14)
+        currentState.timeSinceInfected++;
+
+    /* Update States */
+
+    if( currentState.state == STATE_BLUE){
+        if( randomDoubleGenerator() > probability_P(cellsContagious, 2.4, susceptibility( currentState.age, currentState.risk_disease), 24) ) {
+            //Set new state
+            currentState.state = STATE_ORANGE;
+            return currentState;
+        } else
+            //If not, state remains equal as before
+            return currentState;
     }
 
-    if(currentState == STATE_ORANGE){
+    if( currentState.state == STATE_ORANGE) {
         //If t = 4
-        if( timeSinceInfected == 4)
-            return STATE_RED;
+        if (currentTime == 4) {
+            //Set new state
+            currentState.state = STATE_RED;
+            return currentState;
+        } else
+            //If not, state remains equal as before
+            return currentState;
     }
 
-    if(currentState == STATE_RED){
+    //States of be ill
+    if( currentState.state == STATE_RED || currentState.state == STATE_YELLOW){
 
-        /*Case of Isolation*/
-        if( timeSinceInfected == 7 ){
+        /*Case of red stage*/
+        if( currentTime < 7  )
+            return currentState;
+
+        /*Case of decide if Isolate - Decide to go to STATE_YELLOW*/
+        if( currentTime == 7 ){
 
             //Probability given by problem ( 0.9 )
-            if( random <= 0.9) //With 90% of probability will go to Yellow state
-                return STATE_YELLOW;
-            else
-                return STATE_RED;
-        } else {
-            /*Case of Recovered or Death */
-            if( timeSinceInfected == 14 && random > illness_death_rate(age, preventiveVaccines))
-                return STATE_BLACK;
-            else
-                return STATE_GREEN;
+            if( randomDoubleGenerator() <= 0.9){ //With 90% of probability will go to Yellow state
+
+                //Set the new state
+                currentState.state = STATE_YELLOW;
+                return currentState;
+
+            }else
+                return currentState;
+
+        }
+
+        else {
+            //Check if we are at the end of illness
+            if( currentTime == 14){
+
+                /*Case of Recovered or Death */
+
+                if(randomDoubleGenerator() > illness_death_rate( currentState.age, currentState.preventive_vaccines)){
+                    //Set the new state
+                    currentState.state = STATE_BLACK;
+                    return currentState;
+                }else{
+                    //Set the new state
+                    currentState.state = STATE_GREEN;
+                    return currentState;
+                }
+            } else //If we are still on the way, just keep adding time
+                return currentState;
         }
     }
 
 }
-
 
 cell_type createNullCell(){
     cell_type cellToReturn;
@@ -94,12 +135,12 @@ cell_type createNullCell(){
     cellToReturn.preventive_vaccines = VACC_NOT_VACCINATED;
 
     return cellToReturn;
-
 }
 
 //Function to create a cell with some configuration
 cell_type createRandomCell(double childRate, double adultRate, double oldRate, double infectionRate){
 
+    //Declare the new cell
     cell_type cellToReturn;
 
     //Generate Random Age

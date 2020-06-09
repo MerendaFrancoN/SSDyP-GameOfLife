@@ -16,6 +16,22 @@ int main() {
     fillMatrix(array, 100, 100,0.5, 0.02, 0.3, 0.54, 0.16 );
     matrixCounters(array, 100, 100, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);
 
+    cell_type testCell, nextCell;
+    testCell.timeSinceInfected = 0;
+    testCell.state = STATE_BLUE;
+    testCell.preventive_vaccines = VACC_MENINGITIS;
+    testCell.biological_sex = SEX_MAN;
+    testCell.risk_disease = RISK_DISEASE_RESPIRATORY_DISEASE;
+    testCell.risk_professions = RISK_PROF_DENTIST;
+    testCell.age = AGE_ADULT;
+
+    for(int i = 0; i < 18; i ++) {
+        printCell(testCell);
+        nextCell = next_state(testCell, 0.1);
+        testCell = nextCell;
+    }
+
+
 
     printf("COUNT %lf\n", (double)COUNT / 10000.0);
     printf("CHILDS %lf\n", (double)CHILDS / (double)COUNT);

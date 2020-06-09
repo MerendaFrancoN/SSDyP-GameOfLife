@@ -42,6 +42,7 @@ void printMatrix(cell_type *matrixToPrint, int rows, int columns){
 }
 
 
+//Get the numbers of the every age and the number of infected people
 void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childNumber, int *adultNumber, int *oldNumber, int *infectedNumber, int *cellsWithState){
     //Initialization of variables
     *childNumber = 0;
@@ -68,8 +69,6 @@ void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childN
                 (*adultNumber)++;
             if(currentCell.age == AGE_OLD)
                 (*oldNumber)++;
-
-
         }
     }
 }

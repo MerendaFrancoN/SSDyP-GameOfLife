@@ -1,4 +1,4 @@
-# Install script for directory: /home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife
+# Install script for directory: /home/stormtrooper/Documentos/SSDyP-GameOfLife
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/stormtrooper/5-AÑO/Sistemas Distribuidos y Paralelos/Practicos/SSDyP-GameOfLife/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

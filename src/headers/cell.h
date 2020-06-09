@@ -129,6 +129,6 @@ double probability_P(double cellsContagious, double covidPower, double susceptib
 double illness_death_rate(char age, char preventiveVaccines);
 
 // Function that from a cell, generates the state for the next cell
-char state_machine(char currentState, unsigned long int timeSinceInfected, char age, char risk_disease, char preventiveVaccines, double cellsContagious);
+cell_type next_state(cell_type currentState, double cellsContagious);
 
 #endif //SSDYP_GAMEOFLIFE_CELL_H
