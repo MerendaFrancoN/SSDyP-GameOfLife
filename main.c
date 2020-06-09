@@ -1,5 +1,7 @@
 #include <stdio.h>
-#include "src/headers/all_includes.h"
+#include "src/headers/statistics.h"
+#include "src/headers/cell.h"
+#include "src/headers/matrix.h"
 
 
 int main() {
@@ -10,30 +12,16 @@ int main() {
     int INFECETEDS = 0;
     int COUNT = 0;
 
-    for(int i = 0; i < 1000; i++) {
-        if(randomDoubleGenerator() <= 0.5){
-            COUNT++;
-            cell_type cell = createRandomCell(0.3, 0.54, 0.16, 0.02);
-            printf("ID %d\n", i);
-            printCell(cell);
-
-            if(cell.age == AGE_CHILD)
-                CHILDS++;
-            if(cell.age == AGE_ADULT)
-                ADULTS++;
-            if(cell.age == AGE_OLD)
-                OLDS++;
-            if(cell.state != STATE_WHITE)
-                INFECETEDS++;
-        }
+    cell_type *array = allocateMatrix(100,100);
+    fillMatrix(array, 100, 100,0.5, 0.02, 0.3, 0.54, 0.16 );
+    matrixCounters(array, 100, 100, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);
 
 
-    }
-    printf("COUNT %d\n", COUNT);
-    printf("CHILDS %d\n", CHILDS);
-    printf("ADULTS %d\n", ADULTS);
-    printf("OLDS %d\n", OLDS);
-    printf("INFECTEDS %d\n", INFECETEDS);
+    printf("COUNT %lf\n", (double)COUNT / 10000.0);
+    printf("CHILDS %lf\n", (double)CHILDS / (double)COUNT);
+    printf("ADULTS %lf\n", (double)ADULTS / (double)COUNT);
+    printf("OLDS %lf\n", (double)OLDS/ (double)COUNT);
+    printf("INFECTEDS %lf\n", (double)INFECETEDS / (double)COUNT);
 
 
     return 0;

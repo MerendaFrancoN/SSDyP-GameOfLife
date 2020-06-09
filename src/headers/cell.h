@@ -1,7 +1,9 @@
 #ifndef SSDYP_GAMEOFLIFE_CELL_H
 #define SSDYP_GAMEOFLIFE_CELL_H
 
-#include "all_includes.h"
+#include <stdio.h>
+#include "statistics.h"
+
 
 //Max Numbers of enums
 #define RISK_DISEASES_NUMBER 5
@@ -34,6 +36,7 @@ enum state{
  * OLD - 60+
  * */
 enum age{
+    AGE_NO_VALUE,
     AGE_CHILD,
     AGE_ADULT,
     AGE_OLD
@@ -80,6 +83,7 @@ enum preventive_vaccines{
 
 //Biological Sex
 enum biological_sex{
+    SEX_NO_VALUE,
     SEX_MAN,
     SEX_WOMAN
 };
@@ -104,6 +108,9 @@ typedef struct cell_{
 
 //Create a random cell with some configuration
 cell_type createRandomCell(double childRate, double adultRate, double oldRate, double infectionRate);
+
+//Create a null cell
+cell_type createNullCell();
 
 //Function to print a cell
 void printCell(cell_type cell);

@@ -82,6 +82,21 @@ char state_machine(char currentState, unsigned long int timeSinceInfected, char 
 
 }
 
+
+cell_type createNullCell(){
+    cell_type cellToReturn;
+    cellToReturn.age = AGE_NO_VALUE;
+    cellToReturn.state = STATE_WHITE;
+    cellToReturn.risk_professions = RISK_PROF_NO;
+    cellToReturn.risk_disease = RISK_DISEASE_NO;
+    cellToReturn.timeSinceInfected = 0;
+    cellToReturn.biological_sex = SEX_NO_VALUE;
+    cellToReturn.preventive_vaccines = VACC_NOT_VACCINATED;
+
+    return cellToReturn;
+
+}
+
 //Function to create a cell with some configuration
 cell_type createRandomCell(double childRate, double adultRate, double oldRate, double infectionRate){
 
@@ -113,7 +128,7 @@ cell_type createRandomCell(double childRate, double adultRate, double oldRate, d
 
     //Generate Random State
     randomValue = randomDoubleGenerator();
-    cellToReturn.state = (randomValue > infectionRate) ? STATE_WHITE : STATE_ORANGE;
+    cellToReturn.state = (randomValue > infectionRate) ? STATE_BLUE : STATE_ORANGE;
     cellToReturn.timeSinceInfected = 0;
 
     //Return cell

@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/SSDyP_GameOfLife.dir/main.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o  -o SSDyP_GameOfLife 
+/usr/bin/cc -g   CMakeFiles/SSDyP_GameOfLife.dir/main.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o  -o SSDyP_GameOfLife 

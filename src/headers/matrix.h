@@ -1,7 +1,7 @@
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_H
 #define SSDYP_GAMEOFLIFE_MATRIX_H
 
-#include "all_includes.h"
+#include "cell.h"
 
 // Allocate matrix of cells
 cell_type *allocateMatrix(int rows, int columns);
@@ -19,5 +19,8 @@ void fillMatrix(cell_type *matrixToFill, int rows, int columns,
 
 //Print matrix of cells
 void printMatrix(cell_type *matrixToPrint, int rows, int columns);
+
+//Get the counts of each type specified in parameters, and get the output through the parameters.
+void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childNumber, int *adultNumber, int *oldNumber, int *infectedNumber, int *cellsWithState);
 
 #endif //SSDYP_GAMEOFLIFE_MATRIX_H

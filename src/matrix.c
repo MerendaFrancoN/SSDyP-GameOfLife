@@ -19,11 +19,13 @@ void fillMatrix(cell_type *matrixToFill, int rows, int columns,
                 double adultRate, double oldRate ){
 
     for (int rowIndex = 0; rowIndex < rows; rowIndex++){
-        for (int columnIndex = 0; columnIndex < columns; columnIndex++){
+        for (int columnIndex = 0; columnIndex < columns; columnIndex++) {
 
-            if(randomDoubleGenerator() > densityPopulation){
-                matrixToFill[(rowIndex * columns) + columnIndex] = createRandomCell(childRate, adultRate, oldRate, infectionRate);
-
+            if (randomDoubleGenerator() > densityPopulation) {
+                matrixToFill[(rowIndex * columns) + columnIndex] = createRandomCell(childRate, adultRate, oldRate,
+                                                                                    infectionRate);
+            } else {
+                matrixToFill[(rowIndex * columns) + columnIndex] = createNullCell();
             }
         }
     }
@@ -35,6 +37,39 @@ void printMatrix(cell_type *matrixToPrint, int rows, int columns){
         for (int columnIndex = 0; columnIndex < columns; columnIndex++){
             //Print cells
             printCell(matrixToPrint[rowIndex * columns + columnIndex]);
+        }
+    }
+}
+
+
+void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childNumber, int *adultNumber, int *oldNumber, int *infectedNumber, int *cellsWithState){
+    //Initialization of variables
+    *childNumber = 0;
+    *adultNumber = 0;
+    *oldNumber = 0;
+    *infectedNumber = 0;
+    *cellsWithState = 0;
+
+    //Get counters
+    for (int rowIndex = 0; rowIndex < rows; rowIndex++){
+        for (int columnIndex = 0; columnIndex < columns; columnIndex++){
+            //Print cells
+            cell_type currentCell = matrixToPrint[rowIndex * columns + columnIndex];
+
+            if(currentCell.state != STATE_WHITE)
+                (*cellsWithState)++;
+
+            if(currentCell.state == STATE_ORANGE)
+                (*infectedNumber)++;
+
+            if(currentCell.age == AGE_CHILD)
+                (*childNumber)++;
+            if(currentCell.age == AGE_ADULT)
+                (*adultNumber)++;
+            if(currentCell.age == AGE_OLD)
+                (*oldNumber)++;
+
+
         }
     }
 }
