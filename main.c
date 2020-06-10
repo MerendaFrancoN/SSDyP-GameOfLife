@@ -11,8 +11,8 @@ int main() {
     int OLDS = 0;
     int INFECETEDS = 0;
     int COUNT = 0;
-    int row = 100;
-    int column = 100;
+    int row = 10;
+    int column = 10;
     cell_type *array = allocateMatrix(row,column);
     initializeMatrix(array, row, column, 0.5, 0.02, 0.3, 0.54, 0.16);
     matrixCounters(array, row, column, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);

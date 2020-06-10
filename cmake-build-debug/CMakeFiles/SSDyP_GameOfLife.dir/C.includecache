@@ -16,10 +16,6 @@ src/headers/cell.h
 src/headers/matrix.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix.h
 
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c
-headers/cell.h
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
-
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
 stdio.h
 -
@@ -35,8 +31,4 @@ stdlib.h
 -
 time.h
 -
-
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix.c
-headers/matrix.h
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix.h
 

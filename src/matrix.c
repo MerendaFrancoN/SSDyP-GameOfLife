@@ -138,15 +138,38 @@ void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childN
 
 //Examine neighbors, returns the percentage of infected cells
 double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow, int count){
+
     //Variables to hold info of interest
     const double neighborsSize = 8.0;
-    double contagiousCellsProportion;
+    double contagiousCellsProportion = 0.0;
+
+    //Examine neighbors
+    for(int i = 0; i < 3; i++){
+        for (int j = 0; j < count; j++){
+
+            //If we are looking CENTER, continue loop
+            if( i == 1 && j == 1)
+                continue;
+
+            //Examine neighbor
+            if(firstRow[j].state == STATE_RED)
+                contagiousCellsProportion += 1.0;
+        }
+    }
+
+    //Return percentage of infected cells
+    return contagiousCellsProportion / neighborsSize;
+
 
 
 }
 
 //Process sequentially the matrix to get the next state matrix
 cell_type* sequentialMatrixProcessing_nextState(cell_type *currentStateMatrix, int rows, int columns){
+
+    //Offset because of the extra invalid spaces
+    const unsigned short int offset = 2;
+    int rowOffset = 0;
 
     //Declare nextStateMatrix, nextStateCell
     cell_type *nextStateMatrix = allocateMatrix(rows, columns);
@@ -159,11 +182,18 @@ cell_type* sequentialMatrixProcessing_nextState(cell_type *currentStateMatrix, i
     //Process Matrix
     for (int rowIndex = 1; rowIndex <= rows; rowIndex++){
         for (int columnIndex = 1; columnIndex <= columns; columnIndex++){
+            //Set row offset
+            rowOffset = rowIndex * (columns + offset);
+
             //Getting current state
-            currentStateCell = currentStateMatrix[rowIndex * columns + columnIndex];
+            currentStateCell = currentStateMatrix[ rowOffset + columnIndex];
 
             //Determine contagious cells
-            contagiousCellsProportion;
+            contagiousCellsProportion = examineNeighbors(
+                    &currentStateMatrix[ (rowOffset - 1) + (columnIndex - 1)],
+                    &currentStateMatrix[  rowOffset + (columnIndex - 1)],
+                    &currentStateMatrix[ (rowOffset + 1) + (columnIndex - 1)],
+                    3);
 
             //Setting new State
             nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
