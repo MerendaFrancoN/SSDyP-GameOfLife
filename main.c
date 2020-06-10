@@ -17,7 +17,7 @@ int main() {
     initializeMatrix(array, row, column, 0.5, 0.02, 0.3, 0.54, 0.16);
     matrixCounters(array, row, column, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);
     printMatrix(array, row, column);
-    printMatrixStates(array, row+2, column +2);
+    printMatrixStates(array, row, column);
 
     /*cell_type testCell, nextCell;
     testCell.timeSinceInfected = 0;

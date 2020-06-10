@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/main.c
+stdio.h
+-
+src/headers/statistics.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
+src/headers/cell.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
+src/headers/matrix.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c
+headers/cell.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
+
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
 stdio.h
 -

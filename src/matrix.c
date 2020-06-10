@@ -79,6 +79,10 @@ void printMatrix(cell_type *matrixToPrint, int rows, int columns){
 
 //Print matrix of cells of all invalid and valid spaces.
 void printMatrixStates(cell_type *matrixToPrint, int rows, int columns){
+    //Update size with invalid spaces
+    rows+=2;
+    columns+=2;
+
     cell_type currentCell;
     printf("[ \n");
 
