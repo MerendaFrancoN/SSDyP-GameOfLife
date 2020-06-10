@@ -21,6 +21,7 @@
  * BLACK - Dead
  */
 enum state{
+    STATE_INVALID,
     STATE_WHITE,
     STATE_BLUE,
     STATE_ORANGE,
@@ -111,6 +112,9 @@ cell_type createRandomCell(double childRate, double adultRate, double oldRate, d
 
 //Create a null cell
 cell_type createNullCell();
+
+//Create a Invalid Cell
+cell_type createInvalidCell();
 
 //Function to print a cell
 void printCell(cell_type cell);

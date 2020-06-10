@@ -133,7 +133,18 @@ cell_type createNullCell(){
     cellToReturn.timeSinceInfected = 0;
     cellToReturn.biological_sex = SEX_NO_VALUE;
     cellToReturn.preventive_vaccines = VACC_NOT_VACCINATED;
+    return cellToReturn;
+}
 
+cell_type createInvalidCell(){
+    cell_type cellToReturn;
+    cellToReturn.age = AGE_NO_VALUE;
+    cellToReturn.state = STATE_INVALID;
+    cellToReturn.risk_professions = RISK_PROF_NO;
+    cellToReturn.risk_disease = RISK_DISEASE_NO;
+    cellToReturn.timeSinceInfected = 0;
+    cellToReturn.biological_sex = SEX_NO_VALUE;
+    cellToReturn.preventive_vaccines = VACC_NOT_VACCINATED;
     return cellToReturn;
 }
 
@@ -183,6 +194,9 @@ void printCell(cell_type cell){
     //Print Age
     printf("\tage: ");
     switch (cell.age) {
+        case AGE_NO_VALUE:
+            printf("NO VALUE\n");
+            break;
         case AGE_CHILD:
             printf("CHILD\n");
             break;
@@ -255,6 +269,9 @@ void printCell(cell_type cell){
     //Print State and Time since Infection
     printf("\tstate: ");
     switch (cell.state) {
+        case STATE_INVALID:
+            printf("INVALID\n");
+            break;
         case STATE_WHITE:
             printf("WHITE\n");
             break;

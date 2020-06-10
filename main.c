@@ -11,12 +11,15 @@ int main() {
     int OLDS = 0;
     int INFECETEDS = 0;
     int COUNT = 0;
+    int row = 100;
+    int column = 100;
+    cell_type *array = allocateMatrix(row,column);
+    initializeMatrix(array, row, column, 0.5, 0.02, 0.3, 0.54, 0.16);
+    matrixCounters(array, row, column, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);
+    printMatrix(array, row, column);
+    printMatrixStates(array, row+2, column +2);
 
-    cell_type *array = allocateMatrix(100,100);
-    fillMatrix(array, 100, 100,0.5, 0.02, 0.3, 0.54, 0.16 );
-    matrixCounters(array, 100, 100, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);
-
-    cell_type testCell, nextCell;
+    /*cell_type testCell, nextCell;
     testCell.timeSinceInfected = 0;
     testCell.state = STATE_BLUE;
     testCell.preventive_vaccines = VACC_MENINGITIS;
@@ -29,11 +32,12 @@ int main() {
         printCell(testCell);
         nextCell = next_state(testCell, 0.1);
         testCell = nextCell;
-    }
+    }*/
 
 
 
-    printf("COUNT %lf\n", (double)COUNT / 10000.0);
+
+    printf("COUNT %lf\n", (double)COUNT / 9.0);
     printf("CHILDS %lf\n", (double)CHILDS / (double)COUNT);
     printf("ADULTS %lf\n", (double)ADULTS / (double)COUNT);
     printf("OLDS %lf\n", (double)OLDS/ (double)COUNT);
