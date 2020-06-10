@@ -63,7 +63,7 @@ void initializeMatrix(cell_type *matrixToFill, int rows, int columns,
 
 }
 
-//Print matrix of cells
+//Print matrix of only valid cells
 void printMatrix(cell_type *matrixToPrint, int rows, int columns){
 
     //Offset because of the extra invalid spaces
@@ -77,7 +77,7 @@ void printMatrix(cell_type *matrixToPrint, int rows, int columns){
     }
 }
 
-//Print matrix of cells
+//Print matrix of cells of all invalid and valid spaces.
 void printMatrixStates(cell_type *matrixToPrint, int rows, int columns){
     cell_type currentCell;
     printf("[ \n");
@@ -95,7 +95,6 @@ void printMatrixStates(cell_type *matrixToPrint, int rows, int columns){
     }
     printf("]\n");
 }
-
 
 //Get the numbers of the every age and the number of infected people
 void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childNumber, int *adultNumber, int *oldNumber, int *infectedNumber, int *cellsWithState){

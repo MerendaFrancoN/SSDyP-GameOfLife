@@ -1,17 +1,5 @@
 #include "headers/cell.h"
 /* --UTILS Functions-- */
-// Function to get the age from an integer
-char intToAge(unsigned short int intAge){
-
-    if(intAge <= 18)
-        return AGE_CHILD;
-    else {
-        if(intAge <= 60)
-            return AGE_ADULT;
-        else
-            return AGE_OLD;
-    }
-}
 
 // Function to determine susceptibility
 double susceptibility(char age, char risk_disease){
@@ -23,6 +11,8 @@ double susceptibility(char age, char risk_disease){
         return susceptibility + 0.5;
     if(age == AGE_OLD)
         return susceptibility + 0.9;
+
+    return 0.0;
 }
 
 // Function that returns the probability to go from BLUE to ORANGE state.
@@ -41,6 +31,8 @@ double illness_death_rate(char age, char preventiveVaccines){
         return 0.013 + death_rate;
     if(age == AGE_OLD)
         return 0.148 + death_rate;
+
+    return 0.0;
 }
 
 // Function that from a cell, generates the state for the next cell
@@ -52,7 +44,7 @@ cell_type next_state(cell_type currentState, double cellsContagious) {
 
     /*Update Time */
     //Get the current Time
-    int currentTime = currentState.timeSinceInfected;
+    unsigned long currentTime = currentState.timeSinceInfected;
 
     if(currentState.state >= STATE_ORANGE && currentState.timeSinceInfected <= 14)
         currentState.timeSinceInfected++;
@@ -122,6 +114,8 @@ cell_type next_state(cell_type currentState, double cellsContagious) {
         }
     }
 
+    //Add return statement
+    return currentState;
 }
 
 cell_type createNullCell(){
@@ -166,7 +160,7 @@ cell_type createRandomCell(double childRate, double adultRate, double oldRate, d
     }
 
     //Generate random Risk Disease
-    cellToReturn.risk_disease = randomEnumIntGenerator(-1, RISK_DISEASES_NUMBER);
+    cellToReturn.risk_disease = (char) randomEnumIntGenerator(-1, RISK_DISEASES_NUMBER);
 
     //Generate Random Risk Professions
     cellToReturn.risk_professions = ( cellToReturn.age == AGE_CHILD ) ?
@@ -174,9 +168,9 @@ cell_type createRandomCell(double childRate, double adultRate, double oldRate, d
                                     randomEnumIntGenerator(-1, RISK_PROFESSIONS_NUMBER);
 
     //Generate Random Preventive Vaccines
-    cellToReturn.preventive_vaccines = randomEnumIntGenerator(-1, PREVENTIVE_VACCINES_NUMBER);
+    cellToReturn.preventive_vaccines = (char) randomEnumIntGenerator(-1, PREVENTIVE_VACCINES_NUMBER);
     //Generate Random Sex
-    cellToReturn.biological_sex = randomEnumIntGenerator(0, 2);
+    cellToReturn.biological_sex = (char) randomEnumIntGenerator(0, 2);
 
     //Generate Random State
     randomValue = randomDoubleGenerator();
@@ -295,7 +289,7 @@ void printCell(cell_type cell){
             break;
     }
 
-    printf("\ttimeSinceInfection: %d\n", cell.timeSinceInfected);
+    printf("\ttimeSinceInfection: %lu\n", cell.timeSinceInfected);
     printf("} \n\n");
 
 }

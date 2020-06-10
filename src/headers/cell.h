@@ -119,9 +119,6 @@ cell_type createInvalidCell();
 //Function to print a cell
 void printCell(cell_type cell);
 
-// Function to get the age from an integer
-char intToAge(unsigned short int intAge);
-
 // Function to determine susceptibility
 double susceptibility(char age, char risk_disease);
 
