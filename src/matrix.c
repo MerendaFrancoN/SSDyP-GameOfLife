@@ -90,10 +90,32 @@ void printMatrixStates(cell_type *matrixToPrint, int rows, int columns){
         for (int columnIndex = 0; columnIndex < columns; columnIndex++){
             //Print cells
             currentCell = matrixToPrint[rowIndex * columns + columnIndex];
-            if(currentCell.state == STATE_INVALID)
-                printf("I");
-            else
-                printf("V");
+            switch (currentCell.state) {
+                case STATE_INVALID:
+                    printf("I");
+                    break;
+                case STATE_WHITE:
+                    printf("W");
+                    break;
+                case STATE_ORANGE:
+                    printf("O");
+                    break;
+                case STATE_BLUE:
+                    printf("B");
+                    break;
+                case STATE_RED:
+                    printf("R");
+                    break;
+                case STATE_YELLOW:
+                    printf("Y");
+                    break;
+                case STATE_BLACK:
+                    printf("X");
+                    break;
+                case STATE_GREEN:
+                    printf("G");
+                    break;
+            }
         }
         printf("\n");
     }
@@ -123,7 +145,7 @@ void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childN
             if(currentCell.state != STATE_WHITE )
                 (*cellsWithState)++;
 
-            if(currentCell.state == STATE_ORANGE)
+            if(currentCell.state == STATE_RED)
                 (*infectedNumber)++;
 
             if(currentCell.age == AGE_CHILD)
@@ -142,6 +164,7 @@ double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* th
     //Variables to hold info of interest
     const double neighborsSize = 8.0;
     double contagiousCellsProportion = 0.0;
+    cell_type currentCell;
 
     //Examine neighbors
     for(int i = 0; i < 3; i++){
@@ -152,7 +175,8 @@ double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* th
                 continue;
 
             //Examine neighbor
-            if(firstRow[j].state == STATE_RED)
+            currentCell = firstRow[j];
+            if( currentCell.state == STATE_RED)
                 contagiousCellsProportion += 1.0;
         }
     }
@@ -197,7 +221,7 @@ cell_type* sequentialMatrixProcessing_nextState(cell_type *currentStateMatrix, i
 
             //Setting new State
             nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
-            nextStateMatrix[rowIndex * columns + columnIndex] = nextStateCell;
+            nextStateMatrix[rowOffset + columnIndex] = nextStateCell;
         }
     }
 

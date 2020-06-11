@@ -39,7 +39,7 @@ double illness_death_rate(char age, char preventiveVaccines){
 cell_type next_state(cell_type currentState, double cellsContagious) {
 
     //Check if a null state, return as it was.
-    if (currentState.state == STATE_WHITE)
+    if (currentState.state == STATE_WHITE )
         return currentState;
 
     /*Update Time */
@@ -52,6 +52,10 @@ cell_type next_state(cell_type currentState, double cellsContagious) {
     /* Update States */
 
     if( currentState.state == STATE_BLUE){
+        //If there are no cell contagious near
+        if(cellsContagious == 0.0)
+            return currentState;
+
         if( randomDoubleGenerator() > probability_P(cellsContagious, 2.4, susceptibility( currentState.age, currentState.risk_disease), 24) ) {
             //Set new state
             currentState.state = STATE_ORANGE;
@@ -174,8 +178,8 @@ cell_type createRandomCell(double childRate, double adultRate, double oldRate, d
 
     //Generate Random State
     randomValue = randomDoubleGenerator();
-    cellToReturn.state = (randomValue > infectionRate) ? STATE_BLUE : STATE_ORANGE;
-    cellToReturn.timeSinceInfected = 0;
+    cellToReturn.state = (randomValue > infectionRate) ? STATE_BLUE : STATE_RED;
+    cellToReturn.timeSinceInfected =(randomValue > infectionRate) ? 0 : 5;
 
     //Return cell
     return cellToReturn;

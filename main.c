@@ -11,13 +11,21 @@ int main() {
     int OLDS = 0;
     int INFECETEDS = 0;
     int COUNT = 0;
-    int row = 10;
-    int column = 10;
-    cell_type *array = allocateMatrix(row,column);
-    initializeMatrix(array, row, column, 0.5, 0.02, 0.3, 0.54, 0.16);
-    matrixCounters(array, row, column, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);
-    printMatrix(array, row, column);
-    printMatrixStates(array, row, column);
+    int rows = 1000;
+    int columns = 1000;
+
+    cell_type *currentState = allocateMatrix(rows,columns);
+    initializeMatrix(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+    printMatrixStates(currentState, rows, columns);
+    matrixCounters(currentState, rows, columns, &CHILDS, &ADULTS, &OLDS, &INFECETEDS, &COUNT);
+
+    for(int i = 0; i < 16; i++)
+        currentState = sequentialMatrixProcessing_nextState(currentState,rows,columns);
+    printMatrixStates(currentState, rows, columns);
+
+    //
+    //printMatrix(currentState, rows, columns);
+
 
     /*cell_type testCell, nextCell;
     testCell.timeSinceInfected = 0;
@@ -37,11 +45,11 @@ int main() {
 
 
 
-    printf("COUNT %lf\n", (double)COUNT / 9.0);
-    printf("CHILDS %lf\n", (double)CHILDS / (double)COUNT);
-    printf("ADULTS %lf\n", (double)ADULTS / (double)COUNT);
-    printf("OLDS %lf\n", (double)OLDS/ (double)COUNT);
-    printf("INFECTEDS %lf\n", (double)INFECETEDS / (double)COUNT);
+    printf("COUNT %lf\n", (double)COUNT);
+    printf("CHILDS %lf\n", (double)CHILDS); // (double)COUNT);
+    printf("ADULTS %lf\n", (double)ADULTS);// / (double)COUNT);
+    printf("OLDS %lf\n", (double)OLDS);// (double)COUNT);
+    printf("INFECTEDS %lf\n", (double)INFECETEDS); // (double)COUNT);
 
 
     return 0;
