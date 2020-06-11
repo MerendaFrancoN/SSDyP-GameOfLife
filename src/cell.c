@@ -56,7 +56,7 @@ cell_type next_state(cell_type currentState, double cellsContagious) {
         if(cellsContagious == 0.0)
             return currentState;
 
-        if( randomDoubleGenerator() > probability_P(cellsContagious, 2.4, susceptibility( currentState.age, currentState.risk_disease), 24) ) {
+        if( randomDoubleGenerator() > probability_P(cellsContagious, 2.4, susceptibility( currentState.age, currentState.risk_disease), 1) ) {
             //Set new state
             currentState.state = STATE_ORANGE;
             return currentState;

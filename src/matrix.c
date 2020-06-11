@@ -2,7 +2,7 @@
 
 /* Allocate matrix of cells, aggregates one row and one column with null cells
  * to reduce comparisons when it's processed */
-cell_type *allocateMatrix(int rows, int columns){
+cell_type *allocateMatrix(unsigned int rows, unsigned int columns){
 
     //Update size for invalid spaces
     rows+=2;
@@ -42,9 +42,11 @@ cell_type *allocateMatrix(int rows, int columns){
  * adultRate - [0.0, 1.0] rate of adults in population
  * oldRate - [0.0, 1.0] rate of oldRate in population
 */
-void initializeMatrix(cell_type *matrixToFill, int rows, int columns,
+void initializeMatrix(cell_type *matrixToFill, unsigned int rows, unsigned int columns,
                       double densityPopulation, double infectionRate, double childRate,
                       double adultRate, double oldRate ){
+    //Init random generator srand()
+    initSeed();
 
     //Offset because of the extra invalid spaces
     const unsigned short int offset = 2;
@@ -65,8 +67,80 @@ void initializeMatrix(cell_type *matrixToFill, int rows, int columns,
 
 }
 
+
+//Examine neighbors, returns the percentage of infected cells
+double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow, int count){
+
+    //Variables to hold info of interest
+    const double neighborsSize = 8.0;
+    double contagiousCellsProportion = 0.0;
+    cell_type currentCell;
+
+    //Examine neighbors
+    for(int i = 0; i < 3; i++){
+        for (int j = 0; j < count; j++){
+
+            //If we are looking CENTER, continue loop
+            if( i == 1 && j == 1)
+                continue;
+
+            //Examine neighbor
+            currentCell = firstRow[j];
+            if( currentCell.state == STATE_RED)
+                contagiousCellsProportion += 1.0;
+        }
+    }
+
+    //Return percentage of infected cells
+    return contagiousCellsProportion / neighborsSize;
+}
+
+//Process sequentially the matrix to get the next state matrix
+cell_type* sequentialMatrixProcessing_nextState(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns){
+
+    //Offset because of the extra invalid spaces
+    const unsigned short int offset = 2;
+    int rowOffset = 0;
+
+    //Declare nextStateMatrix, nextStateCell
+    cell_type *nextStateMatrix = allocateMatrix(rows, columns);
+    cell_type nextStateCell, currentStateCell;
+
+    // The percentage of infected cells
+    double contagiousCellsProportion = 0.0;
+
+
+    //Process Matrix
+    for (int rowIndex = 1; rowIndex <= rows; rowIndex++){
+        for (int columnIndex = 1; columnIndex <= columns; columnIndex++){
+            //Set row offset
+            rowOffset = rowIndex * (columns + offset);
+
+            //Getting current state
+            currentStateCell = currentStateMatrix[ rowOffset + columnIndex];
+
+            //Determine contagious cells
+            contagiousCellsProportion = examineNeighbors(
+                    &currentStateMatrix[ (rowOffset - 1) + (columnIndex - 1)],
+                    &currentStateMatrix[  rowOffset + (columnIndex - 1)],
+                    &currentStateMatrix[ (rowOffset + 1) + (columnIndex - 1)],
+                    3);
+
+            //Setting new State
+            nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
+            nextStateMatrix[rowOffset + columnIndex] = nextStateCell;
+        }
+    }
+
+    //Free current State
+    free((cell_type*) currentStateMatrix);
+
+    return nextStateMatrix;
+}
+
+
 //Print matrix of only valid cells
-void printMatrix(cell_type *matrixToPrint, int rows, int columns){
+void printMatrix(cell_type *matrixToPrint, unsigned int rows, unsigned int columns){
 
     //Offset because of the extra invalid spaces
     const unsigned short int offset = 2;
@@ -80,7 +154,7 @@ void printMatrix(cell_type *matrixToPrint, int rows, int columns){
 }
 
 //Print matrix of cells of all invalid and valid spaces.
-void printMatrixStates(cell_type *matrixToPrint, int rows, int columns){
+void printMatrixStates(cell_type *matrixToPrint, unsigned int rows, unsigned int columns){
     //Update size with invalid spaces
     rows+=2;
     columns+=2;
@@ -126,7 +200,8 @@ void printMatrixStates(cell_type *matrixToPrint, int rows, int columns){
 }
 
 //Get the numbers of the every age and the number of infected people
-void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childNumber, int *adultNumber, int *oldNumber, int *infectedNumber, int *cellsWithState){
+void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int columns, unsigned int* childNumber,
+                    unsigned int *adultNumber, unsigned int *oldNumber, unsigned int *infectedNumber, unsigned int *cellsWithState){
 
 
     //Offset because of the extra invalid spaces
@@ -159,74 +234,4 @@ void matrixCounters(cell_type *matrixToPrint, int rows, int columns, int* childN
                 (*oldNumber)++;
         }
     }
-}
-
-//Examine neighbors, returns the percentage of infected cells
-double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow, int count){
-
-    //Variables to hold info of interest
-    const double neighborsSize = 8.0;
-    double contagiousCellsProportion = 0.0;
-    cell_type currentCell;
-
-    //Examine neighbors
-    for(int i = 0; i < 3; i++){
-        for (int j = 0; j < count; j++){
-
-            //If we are looking CENTER, continue loop
-            if( i == 1 && j == 1)
-                continue;
-
-            //Examine neighbor
-            currentCell = firstRow[j];
-            if( currentCell.state == STATE_RED)
-                contagiousCellsProportion += 1.0;
-        }
-    }
-
-    //Return percentage of infected cells
-    return contagiousCellsProportion / neighborsSize;
-}
-
-//Process sequentially the matrix to get the next state matrix
-cell_type* sequentialMatrixProcessing_nextState(cell_type *currentStateMatrix, int rows, int columns){
-
-    //Offset because of the extra invalid spaces
-    const unsigned short int offset = 2;
-    int rowOffset = 0;
-
-    //Declare nextStateMatrix, nextStateCell
-    cell_type *nextStateMatrix = allocateMatrix(rows, columns);
-    cell_type nextStateCell, currentStateCell;
-
-    // The percentage of infected cells
-    double contagiousCellsProportion = 0.0;
-
-
-    //Process Matrix
-    for (int rowIndex = 1; rowIndex <= rows; rowIndex++){
-        for (int columnIndex = 1; columnIndex <= columns; columnIndex++){
-            //Set row offset
-            rowOffset = rowIndex * (columns + offset);
-
-            //Getting current state
-            currentStateCell = currentStateMatrix[ rowOffset + columnIndex];
-
-            //Determine contagious cells
-            contagiousCellsProportion = examineNeighbors(
-                    &currentStateMatrix[ (rowOffset - 1) + (columnIndex - 1)],
-                    &currentStateMatrix[  rowOffset + (columnIndex - 1)],
-                    &currentStateMatrix[ (rowOffset + 1) + (columnIndex - 1)],
-                    3);
-
-            //Setting new State
-            nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
-            nextStateMatrix[rowOffset + columnIndex] = nextStateCell;
-        }
-    }
-
-    //Free current State
-    free((cell_type*) currentStateMatrix);
-
-    return nextStateMatrix;
 }

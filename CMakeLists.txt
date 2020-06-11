@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(SSDyP_GameOfLife C)
 
-set(CMAKE_C_STANDARD 99)
+# added -fopenmp
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fopenmp")
 
-add_executable(SSDyP_GameOfLife main.c src/headers/cell.h src/cell.c src/headers/matrix.h src/matrix.c src/headers/statistics.h src/statistics.c )
+set(CMAKE_C_STANDARD 99)
+add_executable(SSDyP_GameOfLife main_sequential.c src/headers/cell.h src/cell.c src/headers/matrix.h src/matrix.c src/headers/statistics.h src/statistics.c main_sequential.c)
