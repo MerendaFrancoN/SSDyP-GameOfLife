@@ -1,15 +1,17 @@
 #include "headers/statistics.h"
 
+//Init seed for srand() in stdlib.h
 void initSeed(){
     srand((unsigned)time(NULL)); //Initializer for random int generator
 }
 
+//Random Integer generator, but used generally for enums random generator.
 int randomEnumIntGenerator(int min, int max){
     int randomNumber = rand() % ( abs(max) - abs(min));
     return randomNumber + min;
 }
 
-//Random Generator between [0, 1)
+//Random Generator continue between [0, 1)
 double randomDoubleGenerator(){
 #ifdef __unix__
     return drand48();

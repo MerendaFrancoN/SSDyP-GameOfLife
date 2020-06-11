@@ -1,5 +1,7 @@
 #include "headers/matrix.h"
-// Allocate matrix of cells, aggregates one row and one column with null cells to reduce comparisons when it's processed
+
+/* Allocate matrix of cells, aggregates one row and one column with null cells
+ * to reduce comparisons when it's processed */
 cell_type *allocateMatrix(int rows, int columns){
 
     //Update size for invalid spaces
@@ -83,6 +85,7 @@ void printMatrixStates(cell_type *matrixToPrint, int rows, int columns){
     rows+=2;
     columns+=2;
 
+    /*Print Matrix*/
     cell_type currentCell;
     printf("[ \n");
 
@@ -183,9 +186,6 @@ double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* th
 
     //Return percentage of infected cells
     return contagiousCellsProportion / neighborsSize;
-
-
-
 }
 
 //Process sequentially the matrix to get the next state matrix
