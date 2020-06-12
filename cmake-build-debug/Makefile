@@ -177,32 +177,32 @@ src/cell.c.s:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s
 .PHONY : src/cell.c.s
 
-src/matrix.o: src/matrix.c.o
+src/matrix_sequential.o: src/matrix_sequential.c.o
 
-.PHONY : src/matrix.o
+.PHONY : src/matrix_sequential.o
 
 # target to build an object file
-src/matrix.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o
-.PHONY : src/matrix.c.o
+src/matrix_sequential.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.o
+.PHONY : src/matrix_sequential.c.o
 
-src/matrix.i: src/matrix.c.i
+src/matrix_sequential.i: src/matrix_sequential.c.i
 
-.PHONY : src/matrix.i
+.PHONY : src/matrix_sequential.i
 
 # target to preprocess a source file
-src/matrix.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.i
-.PHONY : src/matrix.c.i
+src/matrix_sequential.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.i
+.PHONY : src/matrix_sequential.c.i
 
-src/matrix.s: src/matrix.c.s
+src/matrix_sequential.s: src/matrix_sequential.c.s
 
-.PHONY : src/matrix.s
+.PHONY : src/matrix_sequential.s
 
 # target to generate assembly for a file
-src/matrix.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.s
-.PHONY : src/matrix.c.s
+src/matrix_sequential.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.s
+.PHONY : src/matrix_sequential.c.s
 
 src/statistics.o: src/statistics.c.o
 
@@ -246,9 +246,9 @@ help:
 	@echo "... src/cell.o"
 	@echo "... src/cell.i"
 	@echo "... src/cell.s"
-	@echo "... src/matrix.o"
-	@echo "... src/matrix.i"
-	@echo "... src/matrix.s"
+	@echo "... src/matrix_sequential.o"
+	@echo "... src/matrix_sequential.i"
+	@echo "... src/matrix_sequential.s"
 	@echo "... src/statistics.o"
 	@echo "... src/statistics.i"
 	@echo "... src/statistics.s"

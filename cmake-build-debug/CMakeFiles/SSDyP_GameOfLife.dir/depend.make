@@ -3,17 +3,17 @@
 
 CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.o: ../main_sequential.c
 CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.o: ../src/headers/cell.h
-CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.o: ../src/headers/matrix.h
+CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.o: ../src/headers/matrix_sequential.h
 CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.o: ../src/headers/statistics.h
 
 CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: ../src/cell.c
 CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: ../src/headers/cell.h
 CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: ../src/headers/statistics.h
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o: ../src/headers/cell.h
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o: ../src/headers/matrix.h
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o: ../src/headers/statistics.h
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix.c.o: ../src/matrix.c
+CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.o: ../src/headers/cell.h
+CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.o: ../src/headers/matrix_sequential.h
+CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.o: ../src/headers/statistics.h
+CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.o: ../src/matrix_sequential.c
 
 CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o: ../src/headers/statistics.h
 CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o: ../src/statistics.c

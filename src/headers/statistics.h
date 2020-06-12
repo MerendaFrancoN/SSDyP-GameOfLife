@@ -1,6 +1,8 @@
+/*Includes*/
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdio.h>
+#include "omp.h"
 
 #ifndef SSDYP_GAMEOFLIFE_STATISTICS_H
 #define SSDYP_GAMEOFLIFE_STATISTICS_H

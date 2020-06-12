@@ -1,5 +1,4 @@
 #include "src/headers/matrix_sequential.h"
-#include "omp.h"
 
 double sequential_run(unsigned int rows, unsigned int columns, unsigned simulationDaysTime);
 

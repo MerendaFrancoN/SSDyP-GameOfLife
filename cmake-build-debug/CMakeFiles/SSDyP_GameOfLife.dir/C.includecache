@@ -7,24 +7,36 @@
 #IncludeRegexTransform: 
 
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/main_sequential.c
-src/headers/matrix.h
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix.h
-omp.h
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/omp.h
+src/headers/matrix_sequential.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_sequential.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c
+headers/cell.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
 
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
 statistics.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
 
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_sequential.h
 cell.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
 
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
+stdio.h
+-
 stdlib.h
 -
 time.h
 -
-stdio.h
--
+omp.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/omp.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_sequential.c
+headers/matrix_sequential.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_sequential.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/statistics.c
+headers/statistics.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
 
