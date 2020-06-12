@@ -1,10 +1,12 @@
-#ifndef SSDYP_GAMEOFLIFE_MATRIX_H
-#define SSDYP_GAMEOFLIFE_MATRIX_H
+#ifndef SSDYP_GAMEOFLIFE_MATRIX_SEQUENTIAL_H
+#define SSDYP_GAMEOFLIFE_MATRIX_SEQUENTIAL_H
 
 #include "cell.h"
 
+/* Sequential Matrix Functions */
+
 // Allocate matrix of cells
-cell_type *allocateMatrix(unsigned int rows, unsigned int columns);
+cell_type *allocateMatrix_sequential(unsigned int rows, unsigned int columns);
 
 /* Fill Matrix of rows*columns elements, with some settings:
  * densityPopulation - [0.0, 1.0] Density of the population
@@ -13,9 +15,18 @@ cell_type *allocateMatrix(unsigned int rows, unsigned int columns);
  * adultRate - [0.0, 1.0] rate of adults in population
  * oldRate - [0.0, 1.0] rate of oldRate in population
 */
-void initializeMatrix(cell_type *matrixToFill, unsigned int rows, unsigned int columns,
-                      double densityPopulation, double infectionRate, double childRate,
-                      double adultRate, double oldRate );
+void initializeMatrix_sequential(cell_type *matrixToFill, unsigned int rows, unsigned int columns,
+                                 double densityPopulation, double infectionRate, double childRate,
+                                 double adultRate, double oldRate );
+
+//Process matrix of the current state and return the new state matrix. This is done sequentially.
+cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns);
+
+//Sequential Run of the problem
+double sequential_run(unsigned int rows, unsigned int columns, unsigned simulationDaysTime);
+
+
+/* Utils Matrix Functions */
 
 //Print matrix of cells
 void printMatrix(cell_type *matrixToPrint, unsigned int rows, unsigned int columns);
@@ -28,7 +39,5 @@ void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int co
                     unsigned int *adultNumber, unsigned int *oldNumber,
                     unsigned int *infectedNumber, unsigned int *cellsWithState);
 
-//Process matrix of the current state and return the new state matrix. This is done sequentially.
-cell_type* sequentialMatrixProcessing_nextState(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns);
 
-#endif //SSDYP_GAMEOFLIFE_MATRIX_H
+#endif //SSDYP_GAMEOFLIFE_MATRIX_SEQUENTIAL_H

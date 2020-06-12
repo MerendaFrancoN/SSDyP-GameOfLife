@@ -1,8 +1,8 @@
-#include "headers/matrix.h"
+#include "headers/matrix_sequential.h"
 
 /* Allocate matrix of cells, aggregates one row and one column with null cells
  * to reduce comparisons when it's processed */
-cell_type *allocateMatrix(unsigned int rows, unsigned int columns){
+cell_type *allocateMatrix_sequential(unsigned int rows, unsigned int columns){
 
     //Update size for invalid spaces
     rows+=2;
@@ -42,9 +42,9 @@ cell_type *allocateMatrix(unsigned int rows, unsigned int columns){
  * adultRate - [0.0, 1.0] rate of adults in population
  * oldRate - [0.0, 1.0] rate of oldRate in population
 */
-void initializeMatrix(cell_type *matrixToFill, unsigned int rows, unsigned int columns,
-                      double densityPopulation, double infectionRate, double childRate,
-                      double adultRate, double oldRate ){
+void initializeMatrix_sequential(cell_type *matrixToFill, unsigned int rows, unsigned int columns,
+                                 double densityPopulation, double infectionRate, double childRate,
+                                 double adultRate, double oldRate ){
     //Init random generator srand()
     initSeed();
 
@@ -96,14 +96,14 @@ double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* th
 }
 
 //Process sequentially the matrix to get the next state matrix
-cell_type* sequentialMatrixProcessing_nextState(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns){
+cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns){
 
     //Offset because of the extra invalid spaces
     const unsigned short int offset = 2;
     int rowOffset = 0;
 
     //Declare nextStateMatrix, nextStateCell
-    cell_type *nextStateMatrix = allocateMatrix(rows, columns);
+    cell_type *nextStateMatrix = allocateMatrix_sequential(rows, columns);
     cell_type nextStateCell, currentStateCell;
 
     // The percentage of infected cells
@@ -234,4 +234,43 @@ void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int co
                 (*oldNumber)++;
         }
     }
+}
+
+double sequential_run(unsigned int rows, unsigned int columns, unsigned simulationDaysTime){
+
+    //Timing Variables
+    double tA = 0.0, tB =0.0;
+
+    /*Declare current State matrix pointer that will go mutating through iterations
+    * to it's next states. */
+    cell_type *currentState = allocateMatrix_sequential(rows, columns);
+
+    //Initialize Matrix
+    initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+
+    //Print Matrix First state
+    printf("---------------SEQUENTIAL RUN-------------------------\n\n");
+
+    //Get info about matrix
+    matrixCounters(currentState, rows, columns, &STAT_TOTAL_CHILDS, &STAT_TOTAL_ADULTS, &STAT_TOTAL_OLDS, &STAT_TOTAL_INFECTEDS, &STAT_TOTAL_CELLS);
+
+    //Print Info about matrix
+    STATS_printMatrixInfo(rows, columns);
+
+    printf("\n**First state of the matrix: \n");
+    printMatrixStates(currentState, rows, columns);
+
+    //Time it
+    tA = omp_get_wtime();
+
+    for(int i = 0; i < simulationDaysTime; i++)
+        currentState = MatrixProcessing_nextState_sequential(currentState, rows, columns);
+    //Time it
+    tB = omp_get_wtime();
+
+    //Print Matrix Last state
+    printf("\n**Last state of the matrix: \n");
+    printMatrixStates(currentState, rows, columns);
+
+    return tB-tA;
 }
