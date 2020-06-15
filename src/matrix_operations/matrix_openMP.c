@@ -104,8 +104,8 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
 
     // The percentage of infected cells
     double contagiousCellsProportion = 0.0;
-
-    #pragma omp parallel for schedule(static, 8) private(rowIndex_1, columnIndex_1)
+    //TODO: Check schedule and number of threads for a better perfomance
+    #pragma omp parallel for schedule(static, 8) private(rowIndex_1, columnIndex_1, rowOffset, currentStateCell, contagiousCellsProportion)
         //Process Matrix
         for ( rowIndex_1 = 1; rowIndex_1 <= rows; rowIndex_1++)
         {
@@ -252,10 +252,10 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
                        &STAT_TOTAL_INFECTEDS, &STAT_TOTAL_CELLS);
 
         //Print Info about matrix
-        //STATS_printMatrixInfo(rows, columns);
+        STATS_printMatrixInfo(rows, columns);
 
         //printf("\n**First state of the matrix: \n");
-        //printMatrixStates(currentState, rows, columns);
+        printMatrixStates(currentState, rows, columns);
 
         //Time it
         tA = omp_get_wtime();
@@ -270,8 +270,8 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         totalTime += tB-tA;
 
         //Print Matrix Last state
-        //printf("\n**Last state of the matrix: \n");
-        //printMatrixStates(currentState, rows, columns);
+        printf("\n**Last state of the matrix: \n");
+        printMatrixStates(currentState, rows, columns);
     }
 
     //Return the average time
