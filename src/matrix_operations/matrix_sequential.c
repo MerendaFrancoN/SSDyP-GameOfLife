@@ -69,7 +69,7 @@ void initializeMatrix_sequential(cell_type *matrixToFill, unsigned int rows, uns
 
 
 //Examine neighbors, returns the percentage of infected cells
-double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow, int count){
+double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow){
 
     //Variables to hold info of interest
     const double neighborsSize = 8.0;
@@ -78,15 +78,20 @@ double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* th
 
     //Examine neighbors
     for(int i = 0; i < 3; i++){
-        for (int j = 0; j < count; j++){
+        for (int j = 0; j < 3; j++){
 
             //If we are looking CENTER, continue loop
             if( i == 1 && j == 1)
                 continue;
+            if(i == 0)
+                currentCell = firstRow[j];
+            if(i == 1)
+                currentCell = secondRow[j];
+            if(i == 2)
+                currentCell = thirdRow[j];
 
             //Examine neighbor
-            currentCell = firstRow[j];
-            if( currentCell.state == STATE_RED)
+            if(currentCell.state == STATE_RED)
                 contagiousCellsProportion += 1.0;
         }
     }
@@ -121,10 +126,10 @@ cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, 
 
             //Determine contagious cells
             contagiousCellsProportion = examineNeighbors(
-                    &currentStateMatrix[ (rowOffset - 1) + (columnIndex - 1)],
-                    &currentStateMatrix[  rowOffset + (columnIndex - 1)],
-                    &currentStateMatrix[ (rowOffset + 1) + (columnIndex - 1)],
-                    3);
+                    &currentStateMatrix[(rowOffset - 1) + (columnIndex - 1)],
+                    &currentStateMatrix[rowOffset + (columnIndex - 1)],
+                    &currentStateMatrix[(rowOffset + 1) + (columnIndex - 1)]
+            );
 
             //Setting new State
             nextStateCell = next_state(currentStateCell, contagiousCellsProportion);

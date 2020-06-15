@@ -177,32 +177,59 @@ src/cell.c.s:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s
 .PHONY : src/cell.c.s
 
-src/matrix_sequential.o: src/matrix_sequential.c.o
+src/matrix_operations/matrix_openMP.o: src/matrix_operations/matrix_openMP.c.o
 
-.PHONY : src/matrix_sequential.o
+.PHONY : src/matrix_operations/matrix_openMP.o
 
 # target to build an object file
-src/matrix_sequential.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.o
-.PHONY : src/matrix_sequential.c.o
+src/matrix_operations/matrix_openMP.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o
+.PHONY : src/matrix_operations/matrix_openMP.c.o
 
-src/matrix_sequential.i: src/matrix_sequential.c.i
+src/matrix_operations/matrix_openMP.i: src/matrix_operations/matrix_openMP.c.i
 
-.PHONY : src/matrix_sequential.i
+.PHONY : src/matrix_operations/matrix_openMP.i
 
 # target to preprocess a source file
-src/matrix_sequential.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.i
-.PHONY : src/matrix_sequential.c.i
+src/matrix_operations/matrix_openMP.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.i
+.PHONY : src/matrix_operations/matrix_openMP.c.i
 
-src/matrix_sequential.s: src/matrix_sequential.c.s
+src/matrix_operations/matrix_openMP.s: src/matrix_operations/matrix_openMP.c.s
 
-.PHONY : src/matrix_sequential.s
+.PHONY : src/matrix_operations/matrix_openMP.s
 
 # target to generate assembly for a file
-src/matrix_sequential.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_sequential.c.s
-.PHONY : src/matrix_sequential.c.s
+src/matrix_operations/matrix_openMP.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.s
+.PHONY : src/matrix_operations/matrix_openMP.c.s
+
+src/matrix_operations/matrix_sequential.o: src/matrix_operations/matrix_sequential.c.o
+
+.PHONY : src/matrix_operations/matrix_sequential.o
+
+# target to build an object file
+src/matrix_operations/matrix_sequential.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o
+.PHONY : src/matrix_operations/matrix_sequential.c.o
+
+src/matrix_operations/matrix_sequential.i: src/matrix_operations/matrix_sequential.c.i
+
+.PHONY : src/matrix_operations/matrix_sequential.i
+
+# target to preprocess a source file
+src/matrix_operations/matrix_sequential.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.i
+.PHONY : src/matrix_operations/matrix_sequential.c.i
+
+src/matrix_operations/matrix_sequential.s: src/matrix_operations/matrix_sequential.c.s
+
+.PHONY : src/matrix_operations/matrix_sequential.s
+
+# target to generate assembly for a file
+src/matrix_operations/matrix_sequential.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.s
+.PHONY : src/matrix_operations/matrix_sequential.c.s
 
 src/statistics.o: src/statistics.c.o
 
@@ -246,9 +273,12 @@ help:
 	@echo "... src/cell.o"
 	@echo "... src/cell.i"
 	@echo "... src/cell.s"
-	@echo "... src/matrix_sequential.o"
-	@echo "... src/matrix_sequential.i"
-	@echo "... src/matrix_sequential.s"
+	@echo "... src/matrix_operations/matrix_openMP.o"
+	@echo "... src/matrix_operations/matrix_openMP.i"
+	@echo "... src/matrix_operations/matrix_openMP.s"
+	@echo "... src/matrix_operations/matrix_sequential.o"
+	@echo "... src/matrix_operations/matrix_sequential.i"
+	@echo "... src/matrix_operations/matrix_sequential.s"
 	@echo "... src/statistics.o"
 	@echo "... src/statistics.i"
 	@echo "... src/statistics.s"
