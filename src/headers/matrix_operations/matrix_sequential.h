@@ -1,7 +1,7 @@
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_SEQUENTIAL_H
 #define SSDYP_GAMEOFLIFE_MATRIX_SEQUENTIAL_H
 
-#include "cell.h"
+#include "../cell.h"
 
 /* Sequential Matrix Functions */
 
