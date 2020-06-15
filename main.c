@@ -22,8 +22,8 @@ int main(int argc, char** argv) {
     STAT_SEQUENTIAL_TIME = sequential_run(rows, columns, simulationDaysTime, numberOfExecutions);
     omp_set_num_threads(32);
     STAT_PARALELL_SHARED_TIME = openMP_run(rows, columns, simulationDaysTime, numberOfExecutions);
-    printf("Sequential Time = %lf ",STAT_SEQUENTIAL_TIME);
-    printf("Paralell Shared Time = %lf ",STAT_PARALELL_SHARED_TIME);
+    printf("Sequential Time = %lf \n",STAT_SEQUENTIAL_TIME);
+    printf("Paralell Shared Time = %lf \n",STAT_PARALELL_SHARED_TIME);
 
     return 0;
 }
