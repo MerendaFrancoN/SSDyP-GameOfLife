@@ -201,8 +201,8 @@ void printMatrixStates(cell_type *matrixToPrint, unsigned int rows, unsigned int
 
 //Get the numbers of the every age and the number of infected people
 void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int columns, unsigned int* childNumber,
-                    unsigned int *adultNumber, unsigned int *oldNumber, unsigned int *infectedNumber, unsigned int *cellsWithState){
-
+                    unsigned int *adultNumber, unsigned int *oldNumber,
+                    unsigned int *infectedNumber, unsigned int *cellsWithState){
 
     //Offset because of the extra invalid spaces
     const unsigned short int offset = 2;
@@ -236,41 +236,57 @@ void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int co
     }
 }
 
-double sequential_run(unsigned int rows, unsigned int columns, unsigned simulationDaysTime){
+//Sequential Run of the problem
+double sequential_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions){
 
     //Timing Variables
-    double tA = 0.0, tB =0.0;
-
+    double tA, tB, totalTime=0.0;
     /*Declare current State matrix pointer that will go mutating through iterations
     * to it's next states. */
-    cell_type *currentState = allocateMatrix_sequential(rows, columns);
+    cell_type *currentState;
 
-    //Initialize Matrix
-    initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+    for(int execNumber = 0; execNumber < numberOfExecutions; execNumber++) {
 
-    //Print Matrix First state
-    printf("---------------SEQUENTIAL RUN-------------------------\n\n");
+        //Initialize Timing Variables
+        tA = 0.0;
+        tB = 0.0;
 
-    //Get info about matrix
-    matrixCounters(currentState, rows, columns, &STAT_TOTAL_CHILDS, &STAT_TOTAL_ADULTS, &STAT_TOTAL_OLDS, &STAT_TOTAL_INFECTEDS, &STAT_TOTAL_CELLS);
+        currentState = allocateMatrix_sequential(rows, columns);
 
-    //Print Info about matrix
-    STATS_printMatrixInfo(rows, columns);
+        //Initialize Matrix
+        initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
 
-    printf("\n**First state of the matrix: \n");
-    printMatrixStates(currentState, rows, columns);
+        //Print Matrix First state
+        printf("---------------SEQUENTIAL RUN - Execution N° %d-------------------------\n\n", execNumber);
 
-    //Time it
-    tA = omp_get_wtime();
+        //Get info about matrix
+        matrixCounters(currentState, rows, columns, &STAT_TOTAL_CHILDS, &STAT_TOTAL_ADULTS, &STAT_TOTAL_OLDS,
+                       &STAT_TOTAL_INFECTEDS, &STAT_TOTAL_CELLS);
 
-    for(int i = 0; i < simulationDaysTime; i++)
-        currentState = MatrixProcessing_nextState_sequential(currentState, rows, columns);
-    //Time it
-    tB = omp_get_wtime();
+        //Print Info about matrix
+        //STATS_printMatrixInfo(rows, columns);
 
-    //Print Matrix Last state
-    printf("\n**Last state of the matrix: \n");
-    printMatrixStates(currentState, rows, columns);
+        //printf("\n**First state of the matrix: \n");
+        //printMatrixStates(currentState, rows, columns);
 
-    return tB-tA;
+        //Time it
+        tA = omp_get_wtime();
+
+        for (int i = 0; i < simulationDaysTime; i++)
+            currentState = MatrixProcessing_nextState_sequential(currentState, rows, columns);
+
+        //Time it
+        tB = omp_get_wtime();
+
+        //Sum Total Time
+        totalTime += tB-tA;
+
+        //Print Matrix Last state
+        //printf("\n**Last state of the matrix: \n");
+        //printMatrixStates(currentState, rows, columns);
+    }
+
+    //Return the average time
+    return totalTime / (double)numberOfExecutions;
+
 }

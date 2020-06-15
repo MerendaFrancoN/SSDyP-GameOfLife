@@ -123,32 +123,32 @@ SSDyP_GameOfLife/fast:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/build
 .PHONY : SSDyP_GameOfLife/fast
 
-main_sequential.o: main_sequential.c.o
+main.o: main.c.o
 
-.PHONY : main_sequential.o
+.PHONY : main.o
 
 # target to build an object file
-main_sequential.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.o
-.PHONY : main_sequential.c.o
+main.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.o
+.PHONY : main.c.o
 
-main_sequential.i: main_sequential.c.i
+main.i: main.c.i
 
-.PHONY : main_sequential.i
+.PHONY : main.i
 
 # target to preprocess a source file
-main_sequential.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.i
-.PHONY : main_sequential.c.i
+main.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.i
+.PHONY : main.c.i
 
-main_sequential.s: main_sequential.c.s
+main.s: main.c.s
 
-.PHONY : main_sequential.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-main_sequential.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_sequential.c.s
-.PHONY : main_sequential.c.s
+main.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.s
+.PHONY : main.c.s
 
 src/cell.o: src/cell.c.o
 
@@ -240,9 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... SSDyP_GameOfLife"
-	@echo "... main_sequential.o"
-	@echo "... main_sequential.i"
-	@echo "... main_sequential.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... src/cell.o"
 	@echo "... src/cell.i"
 	@echo "... src/cell.s"

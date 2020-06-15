@@ -78,7 +78,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_sequential.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c">
