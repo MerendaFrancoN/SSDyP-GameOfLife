@@ -17,7 +17,8 @@ int main(int argc, char** argv) {
     }
 
     //Run it Sequentially
-    printf("Sequential Time = %lf ",sequential_run(rows, columns, simulationDaysTime, numberOfExecutions));
+    STAT_SEQUENTIAL_TIME = sequential_run(rows, columns, simulationDaysTime, numberOfExecutions);
+    printf("Sequential Time = %lf ",STAT_SEQUENTIAL_TIME);
 
     return 0;
 }

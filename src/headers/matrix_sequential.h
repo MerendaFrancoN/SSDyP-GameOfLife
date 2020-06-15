@@ -22,6 +22,9 @@ void initializeMatrix_sequential(cell_type *matrixToFill, unsigned int rows, uns
 //Process matrix of the current state and return the new state matrix. This is done sequentially.
 cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns);
 
+//Function to examine neighbors and return the percentage of cells infected(RED_STATE).
+double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow, int count);
+
 //Sequential Run of the problem
 double sequential_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions);
 
