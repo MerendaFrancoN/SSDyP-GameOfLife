@@ -36,15 +36,15 @@ int randomEnumIntGenerator(int min, int max){
 
 //Random Generator continue between [0, 1)
 double randomDoubleGenerator(){
-#ifdef __unix__
-    return drand48();
-#elif defined(__WIN32) || defined(WIN32)
-    int max = 1;
-    int min = 0;
-    double randomNumber = (double) rand();
-    double denominator = ( ( (RAND_MAX /2 ) + 1) * 2.0)  * (max - min + 1);
-    return min + randomNumber / denominator;
-#endif
+//#ifdef __unix__
+    //return drand48();
+//#elif defined(__WIN32) || defined(WIN32)
+    double random = ( rand() / ((double)RAND_MAX+1));
+    if(random < 0.0)
+        exit(-1);
+    return random;
+
+//#endif
 }
 
 void STATS_printMatrixInfo(unsigned int rows, unsigned int columns){

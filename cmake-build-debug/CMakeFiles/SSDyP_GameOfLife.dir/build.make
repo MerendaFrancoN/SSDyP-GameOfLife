@@ -157,7 +157,7 @@ SSDyP_GameOfLife_OBJECTS = \
 "CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o" \
 "CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.o" \
 "CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o"
-
+#include <stdlib.h>
 # External object files for target SSDyP_GameOfLife
 SSDyP_GameOfLife_EXTERNAL_OBJECTS =
 

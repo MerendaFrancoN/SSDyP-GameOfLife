@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 
 
     //Run it Sequentially
-    STAT_SEQUENTIAL_TIME = sequential_run(rows, columns, simulationDaysTime, numberOfExecutions);
+    STAT_SEQUENTIAL_TIME= sequential_run(rows, columns, simulationDaysTime, numberOfExecutions);
     omp_set_num_threads(8);
     STAT_PARALELL_SHARED_TIME = openMP_run(rows, columns, simulationDaysTime, numberOfExecutions);
     printf("Sequential Time = %lf ",STAT_SEQUENTIAL_TIME);
