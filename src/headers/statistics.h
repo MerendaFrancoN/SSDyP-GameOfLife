@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+
 #include "omp.h"
 
 #ifndef SSDYP_GAMEOFLIFE_STATISTICS_H

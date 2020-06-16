@@ -30,28 +30,28 @@ void printMatrixStates(cell_type *matrixToPrint, unsigned int rows, unsigned int
             currentCell = matrixToPrint[rowIndex * columns + columnIndex];
             switch (currentCell.state) {
                 case STATE_INVALID:
-                    printf("I");
+                    printf("I ");
                     break;
                 case STATE_WHITE:
-                    printf("W");
+                    printf("W ");
                     break;
                 case STATE_ORANGE:
-                    printf("O");
+                    printf("O ");
                     break;
                 case STATE_BLUE:
-                    printf("B");
+                    printf("B ");
                     break;
                 case STATE_RED:
-                    printf("R");
+                    printf("R ");
                     break;
                 case STATE_YELLOW:
-                    printf("Y");
+                    printf("Y ");
                     break;
                 case STATE_BLACK:
-                    printf("X");
+                    printf("X ");
                     break;
                 case STATE_GREEN:
-                    printf("G");
+                    printf("G ");
                     break;
             }
         }
