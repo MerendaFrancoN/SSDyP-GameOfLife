@@ -21,7 +21,7 @@ void initializeMatrix_openMP(cell_type *matrixToFill, unsigned int rows, unsigne
                                  double adultRate, double oldRate );
 
 //Function to examine neighbors and return the percentage of cells infected(RED_STATE).
-double examineNeighbors_openMP(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow);
+double examineNeighbors_openMP( cell_type* neighbors );
 
 //Process matrix of the current state and return the new state matrix. This is done sequentially.
 cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns);

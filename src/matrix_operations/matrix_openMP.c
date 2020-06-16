@@ -98,19 +98,27 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
     //Offset in Rows
     unsigned int rowOffset = 0;
 
+    //Neighbors rows
+    unsigned int rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index;
+
     //Declare nextStateMatrix, nextStateCell
     cell_type *nextStateMatrix = allocateMatrix_openMP(rows, columns);
-    cell_type nextStateCell, currentStateCell;
+    cell_type nextStateCell, currentStateCell, neighbors[9];
 
     // The percentage of infected cells
     double contagiousCellsProportion = 0.0;
     //TODO: Check schedule and number of threads for a better perfomance
-    #pragma omp parallel for schedule(static, 8) private(rowIndex_1, columnIndex_1, rowOffset, currentStateCell, contagiousCellsProportion)
+    #pragma omp parallel for schedule(static, 8) private(rowIndex_1, columnIndex_1, rowOffset, currentStateCell, contagiousCellsProportion, neighbors, rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index)
         //Process Matrix
         for ( rowIndex_1 = 1; rowIndex_1 <= rows; rowIndex_1++)
         {
             for ( columnIndex_1 = 1; columnIndex_1 <= columns; columnIndex_1++)
             {
+                //Row Neighbors
+                rowNeighbor_1_index = ( (rowIndex_1 - 1) * (columns + offset)) + (columnIndex_1 - 1);
+                rowNeighbor_2_index = ( rowIndex_1 * (columns + offset)) + (columnIndex_1 - 1);
+                rowNeighbor_3_index = ( (rowIndex_1 + 1) * (columns + offset))  + (columnIndex_1 - 1);
+
                 //Set row offset
                 rowOffset = rowIndex_1 * (columns + offset);
 
@@ -118,11 +126,12 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
                 currentStateCell = currentStateMatrix[rowOffset + columnIndex_1];
 
                 //Determine contagious cells
-                contagiousCellsProportion = examineNeighbors_openMP(
-                        &currentStateMatrix[(rowOffset - 1) + (columnIndex_1 - 1)],
-                        &currentStateMatrix[rowOffset + (columnIndex_1 - 1)],
-                        &currentStateMatrix[(rowOffset + 1) + (columnIndex_1 - 1)]
-                );
+                memcpy(&neighbors[0], &currentStateMatrix[rowNeighbor_1_index],sizeof(cell_type) * 3);
+                memcpy(&neighbors[3], &currentStateMatrix[rowNeighbor_2_index], sizeof(cell_type) * 3);
+                memcpy(&neighbors[6], &currentStateMatrix[rowNeighbor_3_index], sizeof(cell_type) * 3);
+
+                //Get the percentage of infected cells in the neighborhood
+                contagiousCellsProportion = examineNeighbors_openMP(neighbors);
 
                 //Setting new State
                 nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
@@ -137,7 +146,7 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
 }
 
 //Examine neighbors, returns the percentage of infected cells
-double examineNeighbors_openMP(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow){
+double examineNeighbors_openMP(cell_type* neighbors ){
 
     //Variables to hold info of interest
     double neighborsSize = 0.0;
@@ -145,25 +154,19 @@ double examineNeighbors_openMP(cell_type* firstRow, cell_type* secondRow, cell_t
     cell_type currentCell;
 
     //Examine neighbors
-    for(int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
+    for(int i = 0; i < 9; i++){
+        //If we are looking CENTER, continue loop
+        if (i == 4)
+            continue;
 
-            //If we are looking CENTER, continue loop
-            if( i == 1 && j == 1)
-                continue;
-            if(i == 0)
-                currentCell = firstRow[j];
-            if(i == 1)
-                currentCell = secondRow[j];
-            if(i == 2)
-                currentCell = thirdRow[j];
+        currentCell = neighbors[i];
 
-            if(currentCell.state != STATE_INVALID)
-                neighborsSize++;
-            //Examine neighbor
-            if(currentCell.state == STATE_RED)
-                contagiousCellsProportion += 1.0;
-        }
+        if(currentCell.state != STATE_INVALID)
+            neighborsSize++;
+
+        //Examine neighbor
+        if(currentCell.state == STATE_RED)
+            contagiousCellsProportion += 1.0;
     }
 
     //Return percentage of infected cells
