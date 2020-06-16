@@ -140,7 +140,7 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
 double examineNeighbors_openMP(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow){
 
     //Variables to hold info of interest
-    const double neighborsSize = 8.0;
+    double neighborsSize = 0.0;
     double contagiousCellsProportion = 0.0;
     cell_type currentCell;
 
@@ -158,6 +158,8 @@ double examineNeighbors_openMP(cell_type* firstRow, cell_type* secondRow, cell_t
             if(i == 2)
                 currentCell = thirdRow[j];
 
+            if(currentCell.state != STATE_INVALID)
+                neighborsSize++;
             //Examine neighbor
             if(currentCell.state == STATE_RED)
                 contagiousCellsProportion += 1.0;

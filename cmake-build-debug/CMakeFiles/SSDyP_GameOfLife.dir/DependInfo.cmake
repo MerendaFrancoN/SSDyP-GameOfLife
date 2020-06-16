@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_MPI.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_openMP.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o"
-  "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_prints.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_prints.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_sequential.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o"
+  "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/print_matrix.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/statistics.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

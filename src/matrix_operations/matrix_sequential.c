@@ -72,7 +72,7 @@ void initializeMatrix_sequential(cell_type *matrixToFill, unsigned int rows, uns
 double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* thirdRow){
 
     //Variables to hold info of interest
-    const double neighborsSize = 8.0;
+    double neighborsSize = 0.0;
     double contagiousCellsProportion = 0.0;
     cell_type currentCell;
 
@@ -89,6 +89,9 @@ double examineNeighbors(cell_type* firstRow, cell_type* secondRow, cell_type* th
                 currentCell = secondRow[j];
             if(i == 2)
                 currentCell = thirdRow[j];
+
+            if(currentCell.state != STATE_INVALID)
+                neighborsSize++;
 
             //Examine neighbor
             if(currentCell.state == STATE_RED)
