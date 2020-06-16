@@ -1,0 +1,6 @@
+#include "mpi/mpi.h"
+#ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_H
+#define SSDYP_GAMEOFLIFE_MATRIX_MPI_H
+
+
+#endif //SSDYP_GAMEOFLIFE_MATRIX_MPI_H

@@ -1,6 +1,7 @@
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_OPENMP_H
 #define SSDYP_GAMEOFLIFE_MATRIX_OPENMP_H
 
+#include "print_matrix.h"
 #include "../cell.h"
 
 //Operations of Matrix done with OpenMP
