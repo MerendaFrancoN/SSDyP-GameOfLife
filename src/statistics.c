@@ -40,8 +40,6 @@ double randomDoubleGenerator(){
     //return drand48();
 //#elif defined(__WIN32) || defined(WIN32)
     double random = ( rand() / ((double)RAND_MAX+1));
-    if(random < 0.0)
-        exit(-1);
     return random;
 
 //#endif
