@@ -6,6 +6,30 @@
 
 #IncludeRegexTransform: 
 
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/main.c
+src/headers/matrix_operations/matrix_sequential.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_sequential.h
+src/headers/matrix_operations/matrix_openMP.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_openMP.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
+statistics.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_openMP.h
+print_matrix.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/print_matrix.h
+../cell.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_sequential.h
+print_matrix.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/print_matrix.h
+
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/print_matrix.h
+../cell.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
+
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
 stdlib.h
 -
@@ -17,8 +41,4 @@ string.h
 -
 omp.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/omp.h
-
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/statistics.c
-headers/statistics.h
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
 

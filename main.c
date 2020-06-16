@@ -20,10 +20,14 @@ int main(int argc, char** argv) {
 
     //Run it Sequentially
     STAT_SEQUENTIAL_TIME= sequential_run(rows, columns, simulationDaysTime, numberOfExecutions);
+
+    //Run it Paralell-Concurrent Shared Memory
     omp_set_num_threads(8);
     STAT_PARALELL_SHARED_TIME = openMP_run(rows, columns, simulationDaysTime, numberOfExecutions);
-    printf("Sequential Time = %lf ",STAT_SEQUENTIAL_TIME);
-    printf("Paralell Shared Time = %lf ",STAT_PARALELL_SHARED_TIME);
+
+    //Show Times
+    printf("Sequential Time = %lf ", STAT_SEQUENTIAL_TIME);
+    printf("Paralell Shared Time = %lf ", STAT_PARALELL_SHARED_TIME);
 
     return 0;
 }

@@ -37,10 +37,9 @@ int randomEnumIntGenerator(int min, int max){
 //Random Generator continue between [0, 1)
 double randomDoubleGenerator(){
 //#ifdef __unix__
-    //return drand48();
+//    return drand48();
 //#elif defined(__WIN32) || defined(WIN32)
-    double random = ( rand() / ((double)RAND_MAX+1));
-    return random;
+    return ( (double) rand() / ((double)RAND_MAX+1));
 
 //#endif
 }
