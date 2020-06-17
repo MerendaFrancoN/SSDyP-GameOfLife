@@ -150,6 +150,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.s
 .PHONY : main.c.s
 
+main_distributed.o: main_distributed.c.o
+
+.PHONY : main_distributed.o
+
+# target to build an object file
+main_distributed.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o
+.PHONY : main_distributed.c.o
+
+main_distributed.i: main_distributed.c.i
+
+.PHONY : main_distributed.i
+
+# target to preprocess a source file
+main_distributed.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.i
+.PHONY : main_distributed.c.i
+
+main_distributed.s: main_distributed.c.s
+
+.PHONY : main_distributed.s
+
+# target to generate assembly for a file
+main_distributed.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.s
+.PHONY : main_distributed.c.s
+
 src/cell.o: src/cell.c.o
 
 .PHONY : src/cell.o
@@ -324,6 +351,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... main_distributed.o"
+	@echo "... main_distributed.i"
+	@echo "... main_distributed.s"
 	@echo "... src/cell.o"
 	@echo "... src/cell.i"
 	@echo "... src/cell.s"

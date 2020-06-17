@@ -8,6 +8,13 @@ CMakeFiles/SSDyP_GameOfLife.dir/main.c.o: ../src/headers/matrix_operations/matri
 CMakeFiles/SSDyP_GameOfLife.dir/main.c.o: ../src/headers/matrix_operations/print_matrix.h
 CMakeFiles/SSDyP_GameOfLife.dir/main.c.o: ../src/headers/statistics.h
 
+CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o: ../main_distributed.c
+CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o: ../src/headers/cell.h
+CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o: ../src/headers/matrix_operations/matrix_MPI.h
+CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o: ../src/headers/matrix_operations/matrix_sequential.h
+CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o: ../src/headers/matrix_operations/print_matrix.h
+CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o: ../src/headers/statistics.h
+
 CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: ../src/cell.c
 CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: ../src/headers/cell.h
 CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: ../src/headers/statistics.h

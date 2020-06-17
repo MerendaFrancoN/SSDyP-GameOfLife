@@ -81,6 +81,9 @@
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_distributed.c">
+			<Option target="SSDyP_GameOfLife"/>
+		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>

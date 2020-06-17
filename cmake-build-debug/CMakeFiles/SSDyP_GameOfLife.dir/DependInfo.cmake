@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/main.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/main.c.o"
+  "/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_distributed.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/main_distributed.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_MPI.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_openMP.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o"
