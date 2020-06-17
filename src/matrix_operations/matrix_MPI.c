@@ -52,8 +52,8 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
         displacements[processorRank] = accumulated;
 
         //Index of total array minus the last row
-        accumulated += (mode == 0) ? sendCounts[processorRank] - columns : sendCounts[processorRank];
-
+        // +2 is because has to jump 2 invalid cells
+        accumulated += (mode == 0) ? sendCounts[processorRank] - columns : sendCounts[processorRank] + 2;
     }
 }
 

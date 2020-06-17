@@ -76,8 +76,16 @@ int main(int argc, char** argv) {
             MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, MPI_INT, data_from_root, number_of_cells, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
             /* 6° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
-            MPI_Gatherv(data_from_root, numberOfRowsOfRank * columns, MPI_INT, currentState, sendCounts_SEND, displacements_SEND, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
+            MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, MPI_INT, currentState, sendCounts_RECV, displacements_RECV, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
         }
+
+        /* Free pointers */
+        free(sendCounts_RECV);
+        free(sendCounts_SEND);
+        free(displacements_SEND);
+        free(displacements_RECV);
+        free(data_from_root);
+        free(data_processed);
 
 
     }
@@ -88,6 +96,8 @@ int main(int argc, char** argv) {
         //4°Send data processed to Master
         MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, MPI_INT, NULL, NULL, NULL, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
     }
+
+
 
 
     return 0;
