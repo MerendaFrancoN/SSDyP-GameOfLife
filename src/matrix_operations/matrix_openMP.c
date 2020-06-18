@@ -93,7 +93,7 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
     unsigned int rowIndex_1, columnIndex_1;
 
     //Offset because of the extra invalid spaces
-    const unsigned short int offset = 2;
+    const unsigned short int columnsWithOffset = columns + 2;
 
     //Offset in Rows
     unsigned int rowOffset = 0;
@@ -112,15 +112,15 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
         //Process Matrix
         for ( rowIndex_1 = 1; rowIndex_1 <= rows; rowIndex_1++)
         {
+            //Set row columnsWithOffset
+            rowOffset = rowIndex_1 * columnsWithOffset;
+
             for ( columnIndex_1 = 1; columnIndex_1 <= columns; columnIndex_1++)
             {
                 //Row Neighbors
-                rowNeighbor_1_index = ( (rowIndex_1 - 1) * (columns + offset)) + (columnIndex_1 - 1);
-                rowNeighbor_2_index = ( rowIndex_1 * (columns + offset)) + (columnIndex_1 - 1);
-                rowNeighbor_3_index = ( (rowIndex_1 + 1) * (columns + offset))  + (columnIndex_1 - 1);
-
-                //Set row offset
-                rowOffset = rowIndex_1 * (columns + offset);
+                rowNeighbor_1_index = ( (rowIndex_1 - 1) * columnsWithOffset) + (columnIndex_1 - 1);
+                rowNeighbor_2_index = ( rowIndex_1 * columnsWithOffset) + (columnIndex_1 - 1);
+                rowNeighbor_3_index = ( (rowIndex_1 + 1) * columnsWithOffset) + (columnIndex_1 - 1);
 
                 //Getting current state
                 currentStateCell = currentStateMatrix[rowOffset + columnIndex_1];

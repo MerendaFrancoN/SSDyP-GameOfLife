@@ -100,7 +100,7 @@ double examineNeighbors(cell_type* neighbors ){
 cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns){
 
     //Offset because of the extra invalid spaces
-    const unsigned short int offset = 2;
+    const unsigned short int columnsWithOffset = columns + 2;
     unsigned int rowOffset = 0;
 
     //Neighbors rows
@@ -118,15 +118,15 @@ cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, 
 
     //Process Matrix
     for (int rowIndex = 1; rowIndex <= rows; rowIndex++){
+        //Set row columnsWithOffset
+        rowOffset = rowIndex * columnsWithOffset;
+
         for (int columnIndex = 1; columnIndex <= columns; columnIndex++){
 
             //Row Neighbors
-            rowNeighbor_1_index = ( (rowIndex - 1) * (columns + offset)) + (columnIndex - 1);
-            rowNeighbor_2_index = ( rowIndex * (columns + offset)) + (columnIndex - 1);
-            rowNeighbor_3_index = ( (rowIndex + 1) * (columns + offset))  + (columnIndex - 1);
-
-            //Set row offset
-            rowOffset = rowIndex * (columns + offset);
+            rowNeighbor_1_index = ( (rowIndex - 1) * columnsWithOffset) + (columnIndex - 1);
+            rowNeighbor_2_index = ( rowIndex * columnsWithOffset) + (columnIndex - 1);
+            rowNeighbor_3_index = ( (rowIndex + 1) * columnsWithOffset) + (columnIndex - 1);
 
             //Getting current state
             currentStateCell = currentStateMatrix[ rowOffset + columnIndex ];
