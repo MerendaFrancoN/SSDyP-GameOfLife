@@ -137,10 +137,10 @@ double mpi_examineNeighbors(cell_type* neighbors){
     return contagiousCellsProportion / neighborsSize;
 }
 
-//Adapt data from processors to Current State form
+//Adapt data from processors to Current State form.
+//Free the state pointer and returns the new one reshaped.
 cell_type* mpi_reshape_matrix(int rows, int columns, cell_type* state){
 
-    printMatrixStates(state, rows -2 , columns -2);
     cell_type* reshaped_state = allocateMatrix_sequential(rows,columns);
     unsigned columns_newMatrix = columns + 2;
 
@@ -150,6 +150,7 @@ cell_type* mpi_reshape_matrix(int rows, int columns, cell_type* state){
         }
     }
 
+    free(state);
     return reshaped_state;
 }
 

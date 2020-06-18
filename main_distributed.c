@@ -61,11 +61,11 @@ int main(int argc, char** argv) {
 
     /*MAIN PROGRAM */
     if (rank == ROOT_PROCESSOR){
-
+        //Timing variables
+        double tA = 0.0, tB = 0.0, totalTime = 0.0;
         /* Initialize Matrix */
         cell_type *currentState = allocateMatrix_sequential(rows, columns), *nextState;
         initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
-        printMatrixStates(currentState, rows, columns);
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
          * sendCounts_SEND - numberOfProcessors sized, in each position, the count of data that will send to each processor
@@ -83,48 +83,66 @@ int main(int argc, char** argv) {
         /* 5° Calculate the amount of data to receive from each processor and from where to take it*/
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
 
-        /* PROCESS MATRIX */
-        for(int i = 0; i < simulationDaysTime; i++){
+        //printMatrixStates(currentState, rows, columns);
 
-            /* 5 ° Share data with all the process in communicator: Calculate de Sendcount and displacement for share
-             * the data among the processors */
-            MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+        for(int execution = 0; execution < numberOfExecutions; execution++ ){
+            //Time it
+            tA = omp_get_wtime();
+            /* PROCESS MATRIX */
+            for(int time = 0; time < simulationDaysTime; time++){
+                /* 5 ° Share data with all the process in communicator: Calculate de Sendcount and displacement for share
+                 * the data among the processors */
+                MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-            // 7° Manage memory
-            free(currentState);
-            nextState = (cell_type*)malloc(sizeof(cell_type)* rows * columns);
+                // 7° Manage memory
+                free(currentState);
+                nextState = (cell_type*)malloc(sizeof(cell_type)* rows * columns);
 
-            /* 8° Process state */
-            data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
+                /* 8° Process state */
+                data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
 
-            /* 9° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
-            MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, nextState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+                /* 9° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
+                MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, nextState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-            /* 10° Reshape gathered matrix and update current State*/
-            currentState = mpi_reshape_matrix(rows, columns, nextState);
+                /* 10° Reshape gathered matrix and update current State*/
+                currentState = mpi_reshape_matrix(rows, columns, nextState);
+            }
+            //Time it
+            tB = omp_get_wtime();
+            totalTime += tB - tA;
 
-            printMatrixStates(currentState, rows, columns );
-
+            //printMatrixStates(currentState, rows, columns );
         }
 
+        printf("\nTotal time = %lf\n", totalTime / (double) numberOfExecutions);
         /* Free pointers */
-        //free(sendCounts_RECV);
-        //free(sendCounts_SEND);
-        //free(displacements_SEND);
-        //free(displacements_RECV);
-        //free(data_from_root);
-        //free(data_processed);
+        free(sendCounts_RECV);
+        free(sendCounts_SEND);
+        free(displacements_SEND);
+        free(displacements_RECV);
+
     }
     else{
-        //1° Receive in matrixPortion
-        MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+        for(int execution = 0; execution < numberOfExecutions; execution++ ){
+            /* PROCESS MATRIX */
+            for(int time = 0; time < simulationDaysTime; time++) {
 
-        //2° Process data
-        data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
+                //1° Receive in matrixPortion
+                MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-        //3°Send data processed back to Master
-        MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, NULL, NULL, NULL, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
+                //2° Process data
+                data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
+
+                //3°Send data processed back to Master
+                MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, NULL, NULL, NULL, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
+
+            }
+        }
     }
+
+    //Free memory
+    free(data_from_root);
+    free(data_processed);
 
 
     MPI_Finalize();
