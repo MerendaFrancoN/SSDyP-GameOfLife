@@ -20,7 +20,10 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
 int mpi_getNumberOfRowsPerProc(int rows, int rank, int numberOfProcessors);
 
 
+//Examine neighbors, returns the percentage of infected cells
+double mpi_examineNeighbors(cell_type* neighbors);
 
+//Function that returns the processed data
+cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState);
 
-void mpi_matrixProcessing_nextState();
 #endif //SSDYP_GAMEOFLIFE_MATRIX_MPI_H

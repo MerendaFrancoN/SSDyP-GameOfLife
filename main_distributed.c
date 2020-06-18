@@ -9,6 +9,9 @@
  * @returns the cell_type in MPI_Datatype so MPI can understand it */
 void mpi_set_cell_datatype(MPI_Datatype* datatype);
 
+//Auxiliary Function
+void print_array(int size, int* array);
+
 /* MAIN PROGRAM */
 int main(int argc, char** argv) {
 
@@ -75,15 +78,6 @@ int main(int argc, char** argv) {
 
         /* 4° Calculate the amount of data to send to each processor and from where to take it */
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_SEND, displacements_SEND, 0);
-        printf("\n[");
-        for(int i = 0; i < numberOfProcessors; i++)
-            printf("%d ", displacements_SEND[i]);
-        printf("]\n");
-
-        printf("\n[");
-        for(int i = 0; i < numberOfProcessors; i++)
-            printf("%d ", sendCounts_SEND[i]);
-        printf("]\n");
 
         /* 5° Calculate the amount of data to receive from each processor and from where to take it*/
         //mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
@@ -95,26 +89,28 @@ int main(int argc, char** argv) {
              * the data among the processors */
             MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-
-            /* 6° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
+            /* 6° Process state */
+            data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
+            /* 7° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
             //MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, currentState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
         }
 
         /* Free pointers */
-        free(sendCounts_RECV);
-        free(sendCounts_SEND);
-        free(displacements_SEND);
-        free(displacements_RECV);
-        free(data_from_root);
-        free(data_processed);
-
-
+        //free(sendCounts_RECV);
+        //free(sendCounts_SEND);
+        //free(displacements_SEND);
+        //free(displacements_RECV);
+        //free(data_from_root);
+        //free(data_processed);
     }
     else{
         //1° Receive in matrixPortion
-        MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+        //MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-        //4°Send data processed to Master
+        //2° Process data
+        //data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
+
+        //3°Send data processed back to Master
         //MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, NULL, NULL, NULL, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
     }
 
@@ -156,3 +152,10 @@ void mpi_set_cell_datatype(MPI_Datatype* datatype){
     /* Datatype for Cell in MPI */
 }
 
+//Auxiliary function to help see the data
+void print_array(int size, int* array){
+    printf("\n[");
+    for(int i = 0; i < size; i++)
+        printf("%d ", array[i]);
+    printf("]\n");
+}
