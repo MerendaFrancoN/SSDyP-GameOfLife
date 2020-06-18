@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
     int numberOfRowsOfRank = mpi_getNumberOfRowsPerProc(rows, rank, numberOfProcessors);
     int number_of_cells_toRecv = (numberOfRowsOfRank + 2) * (columns + 2);
     cell_type *data_from_root =  (cell_type*) malloc(sizeof(cell_type) * number_of_cells_toRecv);
-    cell_type *data_processed =  (cell_type*) malloc(sizeof(cell_type) * numberOfRowsOfRank * (columns-2) );
+    cell_type *data_processed =  (cell_type*) malloc(sizeof(cell_type) * numberOfRowsOfRank * columns );
 
     /*TODO: CONTROL
     // printf("RANK %d RECV %d- Rows per rank %d\n", rank, number_of_cells_toRecv, numberOfRowsOfRank);*/
@@ -65,6 +65,7 @@ int main(int argc, char** argv) {
         /* Initialize Matrix */
         cell_type *currentState = allocateMatrix_sequential(rows, columns);
         initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+        printMatrixStates(currentState, rows, columns);
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
          * sendCounts_SEND - numberOfProcessors sized, in each position, the count of data that will send to each processor
@@ -76,12 +77,15 @@ int main(int argc, char** argv) {
         int *sendCounts_RECV = (int*) malloc(sizeof(int) * numberOfProcessors);
         int *displacements_RECV = (int*) malloc(sizeof(int) * numberOfProcessors);
 
+
+
         /* 4° Calculate the amount of data to send to each processor and from where to take it */
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_SEND, displacements_SEND, 0);
 
         /* 5° Calculate the amount of data to receive from each processor and from where to take it*/
-        //mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
+        mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
 
+        print_array(numberOfProcessors, displacements_RECV);
         /* PROCESS MATRIX */
         for(int i = 0; i < simulationDaysTime; i++){
 
@@ -92,7 +96,9 @@ int main(int argc, char** argv) {
             /* 6° Process state */
             data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
             /* 7° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
-            //MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, currentState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+            MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, currentState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+
+            printMatrixStates(currentState, rows, columns);
         }
 
         /* Free pointers */
@@ -105,13 +111,13 @@ int main(int argc, char** argv) {
     }
     else{
         //1° Receive in matrixPortion
-        //MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+        MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
         //2° Process data
-        //data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
+        data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
 
         //3°Send data processed back to Master
-        //MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, NULL, NULL, NULL, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+        MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, NULL, NULL, NULL, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
     }
 
 

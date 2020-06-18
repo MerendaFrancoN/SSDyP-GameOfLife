@@ -41,7 +41,7 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
 
     //Auxiliary Variables - set the displacement for each processor
     //Start from 0 if its sending, and from the first valid cell in the case of receiving
-    int accumulated = (mode == 0) ? 0 : columns;
+    int accumulated = (mode == 0) ? 0 : columns+1;
 
     //Set the number of data to send to each processor
     for(int processorRank = 0; processorRank < numberOfProcessors; processorRank++){
@@ -106,6 +106,7 @@ cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int column
             data_processed[(rowIndex - 1) * columns + colIndex - 1] = nextStateCell;
         }
     }
+    return data_processed;
 }
 
 //Examine neighbors, returns the percentage of infected cells
