@@ -62,7 +62,6 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
 }
 
 cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState){
-    printf("number of rows = %d\n", numberOfRows_toProcess);
 
     //Data processed with only processed information
     cell_type* data_processed = (cell_type*)malloc( sizeof(cell_type) * numberOfRows_toProcess * columns );
