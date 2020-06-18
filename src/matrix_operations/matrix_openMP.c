@@ -108,15 +108,15 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
     // The percentage of infected cells
     double contagiousCellsProportion = 0.0;
     //TODO: Check schedule and number of threads for a better perfomance
-    #pragma omp parallel for schedule(static, 8) private(rowIndex_1, columnIndex_1, rowOffset, currentStateCell, contagiousCellsProportion, neighbors, rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index)
+    #pragma omp parallel for collapse(2) schedule(static, 8) private(rowIndex_1, columnIndex_1, rowOffset, currentStateCell, contagiousCellsProportion, neighbors, rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index)
         //Process Matrix
         for ( rowIndex_1 = 1; rowIndex_1 <= rows; rowIndex_1++)
         {
-            //Set row columnsWithOffset
-            rowOffset = rowIndex_1 * columnsWithOffset;
-
             for ( columnIndex_1 = 1; columnIndex_1 <= columns; columnIndex_1++)
             {
+                //Set row columnsWithOffset
+                rowOffset = rowIndex_1 * columnsWithOffset;
+
                 //Row Neighbors
                 rowNeighbor_1_index = ( (rowIndex_1 - 1) * columnsWithOffset) + (columnIndex_1 - 1);
                 rowNeighbor_2_index = ( rowIndex_1 * columnsWithOffset) + (columnIndex_1 - 1);
