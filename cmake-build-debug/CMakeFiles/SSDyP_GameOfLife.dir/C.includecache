@@ -11,12 +11,16 @@ src/headers/matrix_operations/matrix_sequential.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_sequential.h
 src/headers/matrix_operations/matrix_MPI.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_MPI.h
+stddef.h
+-
 
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h
 statistics.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h
 
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_MPI.h
+print_matrix.h
+/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/print_matrix.h
 mpi/mpi.h
 /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/mpi/mpi.h
 

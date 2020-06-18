@@ -22,4 +22,4 @@ $(EXEC_2): $(OBJ_2)
 
 
 clean:
-	rm -rf $(EXEC)
+	rm -rf $(EXEC_1) $(EXEC_2)

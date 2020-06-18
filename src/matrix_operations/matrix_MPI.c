@@ -39,22 +39,25 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
         neighbors_number_rows = 2;
     }
 
-    //Auxiliary Variables
-    int accumulated = 0; //Auxiliary to set the displacement for each processor
+    //Auxiliary Variables - set the displacement for each processor
+    //Start from 0 if its sending, and from the first valid cell in the case of receiving
+    int accumulated = (mode == 0) ? 0 : columns + 1;
 
     //Set the number of data to send to each processor
     for(int processorRank = 0; processorRank < numberOfProcessors; processorRank++){
 
         //Set the number of elements to send to each processor
-        sendCounts[ processorRank ] = ( mpi_getNumberOfRowsPerProc(rows, processorRank, numberOfProcessors) + neighbors_number_rows ) * columns;
+        sendCounts[ processorRank ] = ( mpi_getNumberOfRowsPerProc(rows - 2, processorRank, numberOfProcessors) + neighbors_number_rows ) * columns;
 
         //Set the displacements
         displacements[processorRank] = accumulated;
 
         //Index of total array minus the last row
         // +2 is because has to jump 2 invalid cells
-        accumulated += (mode == 0) ? sendCounts[processorRank] - columns : sendCounts[processorRank] + 2;
+        accumulated += (mode == 0) ? sendCounts[processorRank] - columns * 2 : sendCounts[processorRank] + 2;
     }
+    printf("");
 }
+
 
 

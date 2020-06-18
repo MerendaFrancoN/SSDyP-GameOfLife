@@ -1,3 +1,8 @@
+
+
+//User defined libraries
+#include "print_matrix.h"
+#include <stddef.h>
 #include "mpi/mpi.h"
 
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_H
@@ -16,4 +21,6 @@ int mpi_getNumberOfRowsPerProc(int rows, int rank, int numberOfProcessors);
 
 
 
+
+void mpi_matrixProcessing_nextState();
 #endif //SSDYP_GAMEOFLIFE_MATRIX_MPI_H

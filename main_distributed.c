@@ -1,8 +1,15 @@
 #include "src/headers/matrix_operations/matrix_sequential.h"
 #include "src/headers/matrix_operations/matrix_MPI.h"
 
+
 #define ROOT_PROCESSOR 0
 
+/*MPI UTILS FUNCTIONS*/
+/*Function that set the cell_type for MPI collective functions
+ * @returns the cell_type in MPI_Datatype so MPI can understand it */
+void mpi_set_cell_datatype(MPI_Datatype* datatype);
+
+/* MAIN PROGRAM */
 int main(int argc, char** argv) {
 
     //Variables of size of the matrix
@@ -13,17 +20,7 @@ int main(int argc, char** argv) {
 
     //MPI Variables
     int rank, numberOfProcessors;
-
-    /*Processor information variables
-     * numberOfRowsOfRank = number of rows of each processor.
-     * number_of_cells = total number of cells that will be received from master.
-     * data_from_root = submatrix with the rows to process.
-     * data_processed = submatrix with the rows processed and without extra information.
-    */
-    int numberOfRowsOfRank = mpi_getNumberOfRowsPerProc(rows, rank, numberOfProcessors);
-    int number_of_cells = (numberOfRowsOfRank + 2) * columns;
-    cell_type *data_from_root = allocateMatrix_sequential( mpi_getNumberOfRowsPerProc(rows, rank, numberOfProcessors), columns);
-    cell_type *data_processed = allocateMatrix_sequential(numberOfRowsOfRank, columns);
+    MPI_Datatype mpi_cell_datatype;
 
     /* Init MPI_Library */
 
@@ -32,6 +29,9 @@ int main(int argc, char** argv) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     //Get Number of processes
     MPI_Comm_size(MPI_COMM_WORLD, &numberOfProcessors);
+
+    //Datatype for Cell in MPI
+    mpi_set_cell_datatype(&mpi_cell_datatype);
 
     /*End Init MPI_Library*/
 
@@ -43,14 +43,25 @@ int main(int argc, char** argv) {
         numberOfExecutions = atoi(argv[4]);
     }
 
+    /*Processor information variables
+    * numberOfRowsOfRank = number of rows of each processor.
+    * number_of_cells_toRecv = total number of cells that will be received from master.
+    * data_from_root = submatrix with the rows to process.
+    * data_processed = submatrix with the rows processed and without extra information. */
+    int numberOfRowsOfRank = mpi_getNumberOfRowsPerProc(rows, rank, numberOfProcessors);
+    int number_of_cells_toRecv = (numberOfRowsOfRank + 2) * (columns + 2);
+    cell_type *data_from_root =  (cell_type*) malloc(sizeof(cell_type) * number_of_cells_toRecv);
+    cell_type *data_processed =  (cell_type*) malloc(sizeof(cell_type) * numberOfRowsOfRank * (columns-2) );
+
+    /*TODO: CONTROL
+    // printf("RANK %d RECV %d- Rows per rank %d\n", rank, number_of_cells_toRecv, numberOfRowsOfRank);*/
+
     /*MAIN PROGRAM */
     if (rank == ROOT_PROCESSOR){
 
         /* Initialize Matrix */
         cell_type *currentState = allocateMatrix_sequential(rows, columns);
-
         initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
-        /* End Initialize Matrix */
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
          * sendCounts_SEND - numberOfProcessors sized, in each position, the count of data that will send to each processor
@@ -64,19 +75,29 @@ int main(int argc, char** argv) {
 
         /* 4° Calculate the amount of data to send to each processor and from where to take it */
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_SEND, displacements_SEND, 0);
+        printf("\n[");
+        for(int i = 0; i < numberOfProcessors; i++)
+            printf("%d ", displacements_SEND[i]);
+        printf("]\n");
+
+        printf("\n[");
+        for(int i = 0; i < numberOfProcessors; i++)
+            printf("%d ", sendCounts_SEND[i]);
+        printf("]\n");
 
         /* 5° Calculate the amount of data to receive from each processor and from where to take it*/
-        mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
+        //mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
 
         /* PROCESS MATRIX */
         for(int i = 0; i < simulationDaysTime; i++){
 
             /* 5 ° Share data with all the process in communicator: Calculate de Sendcount and displacement for share
              * the data among the processors */
-            MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, MPI_INT, data_from_root, number_of_cells, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
+            MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+
 
             /* 6° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
-            MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, MPI_INT, currentState, sendCounts_RECV, displacements_RECV, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
+            //MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, currentState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
         }
 
         /* Free pointers */
@@ -91,16 +112,47 @@ int main(int argc, char** argv) {
     }
     else{
         //1° Receive in matrixPortion
-        MPI_Scatterv(NULL, NULL, NULL, MPI_INT, data_from_root, number_of_cells, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
+        MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
         //4°Send data processed to Master
-        MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, MPI_INT, NULL, NULL, NULL, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
+        //MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, NULL, NULL, NULL, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
     }
 
 
-
+    MPI_Finalize();
 
     return 0;
 }
 
+/*Function that set the cell_type for MPI collective functions
+ * @returns the cell_type in MPI_Datatype so MPI can understand it */
+void mpi_set_cell_datatype(MPI_Datatype* datatype){
+
+    /* Datatype for Cell in MPI */
+    int count = 7;               /* number of blocks in the struct  - It's the struct itself*/
+    int blocks[7] = {1, 1, 1, 1, 1, 1, 1};         /* set up 1 blocks */
+    MPI_Datatype types[7] = {    /* pixel internal types */
+            MPI_CHAR,
+            MPI_CHAR,
+            MPI_CHAR,
+            MPI_CHAR,
+            MPI_CHAR,
+            MPI_CHAR,
+            MPI_LONG
+    };
+
+    /* internal displacements */
+    MPI_Aint displacements[7] = {
+            offsetof(cell_type, state),
+            offsetof(cell_type, age),
+            offsetof(cell_type, risk_disease),
+            offsetof(cell_type, risk_professions),
+            offsetof(cell_type, preventive_vaccines),
+            offsetof(cell_type, biological_sex),
+            offsetof(cell_type, timeSinceInfected),
+    };
+    MPI_Type_create_struct(count, blocks, displacements, types, datatype);
+    MPI_Type_commit(datatype);
+    /* Datatype for Cell in MPI */
+}
 
