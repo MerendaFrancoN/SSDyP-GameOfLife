@@ -56,15 +56,14 @@ int main(int argc, char** argv) {
     cell_type *data_from_root =  (cell_type*) malloc(sizeof(cell_type) * number_of_cells_toRecv);
     cell_type *data_processed =  (cell_type*) malloc(sizeof(cell_type) * numberOfRowsOfRank * columns );
 
-    /*TODO: CONTROL
-    // printf("RANK %d RECV %d- Rows per rank %d\n", rank, number_of_cells_toRecv, numberOfRowsOfRank);*/
 
     /*MAIN PROGRAM */
     if (rank == ROOT_PROCESSOR){
         //Timing variables
         double tA = 0.0, tB = 0.0, totalTime = 0.0;
         /* Initialize Matrix */
-        cell_type *currentState = allocateMatrix_sequential(rows, columns), *nextState;
+        cell_type *currentState = allocateMatrix_sequential(rows, columns);
+        cell_type *nextState_fromMaster = (cell_type*)malloc(sizeof(cell_type) * rows * columns);
         initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
@@ -83,9 +82,8 @@ int main(int argc, char** argv) {
         /* 5° Calculate the amount of data to receive from each processor and from where to take it*/
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
 
-        //printMatrixStates(currentState, rows, columns);
-
         for(int execution = 0; execution < numberOfExecutions; execution++ ){
+            printMatrixStates(currentState, rows, columns);
             //Time it
             tA = omp_get_wtime();
             /* PROCESS MATRIX */
@@ -94,27 +92,25 @@ int main(int argc, char** argv) {
                  * the data among the processors */
                 MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-                // 7° Manage memory
-                free(currentState);
-                nextState = (cell_type*)malloc(sizeof(cell_type)* rows * columns);
-
-                /* 8° Process state */
+                /* 7° Process state */
                 data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
 
-                /* 9° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
-                MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, nextState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+                /* 8° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
+                MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, nextState_fromMaster, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-                /* 10° Reshape gathered matrix and update current State*/
-                currentState = mpi_reshape_matrix(rows, columns, nextState);
+                /* 9° Reshape gathered matrix and update current State*/
+                complete_nextState(rows, columns, nextState_fromMaster, currentState);
             }
+
+            printMatrixStates(currentState, rows, columns);
             //Time it
             tB = omp_get_wtime();
             totalTime += tB - tA;
-
-            //printMatrixStates(currentState, rows, columns );
         }
 
         printf("\nTotal time = %lf\n", totalTime / (double) numberOfExecutions);
+
+
         /* Free pointers */
         free(sendCounts_RECV);
         free(sendCounts_SEND);

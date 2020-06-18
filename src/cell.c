@@ -17,7 +17,7 @@ double susceptibility(char age, char risk_disease){
 
 // Function that returns the probability to go from BLUE to ORANGE state.
 double probability_P(double cellsContagious, double covidPower, double susceptibility, short unsigned int stepsByDay){
-    return (cellsContagious * covidPower + susceptibility) / (7 * stepsByDay);
+    return (cellsContagious * covidPower + susceptibility) / (double) (7.0 * (double)stepsByDay);
 }
 
 /* Returns the illness death rate in function of the age and if

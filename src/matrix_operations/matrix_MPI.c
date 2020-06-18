@@ -67,7 +67,7 @@ cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int column
     cell_type* data_processed = (cell_type*)malloc( sizeof(cell_type) * numberOfRows_toProcess * columns );
 
     //Row index and column index
-    unsigned int rowIndex = 0, colIndex = 0, extraRows = 2;
+    unsigned int rowIndex = 0, colIndex = 0, columnsWithExtraRow = columns + 2;
 
     //Index of rows
     unsigned int rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index, rowOffset=0;
@@ -80,15 +80,15 @@ cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int column
 
     for(rowIndex = 1; rowIndex <= numberOfRows_toProcess; rowIndex++ ){
 
+        //Set row offset
+        rowOffset = rowIndex * columnsWithExtraRow;
+
         for(colIndex = 1; colIndex <= columns; colIndex++){
 
             //Row Neighbors
-            rowNeighbor_1_index = ( (rowIndex - 1) * (columns + extraRows)) + (colIndex - 1);
-            rowNeighbor_2_index = ( rowIndex * (columns + extraRows)) + (colIndex - 1);
-            rowNeighbor_3_index = ( (rowIndex + 1) * (columns + extraRows))  + (colIndex - 1);
-
-            //Set row offset
-            rowOffset = rowIndex * (columns + extraRows);
+            rowNeighbor_1_index = ( (rowIndex - 1) * columnsWithExtraRow) + (colIndex - 1);
+            rowNeighbor_2_index = ( rowIndex * columnsWithExtraRow) + (colIndex - 1);
+            rowNeighbor_3_index = ( (rowIndex + 1) * columnsWithExtraRow) + (colIndex - 1);
 
             //Getting current state
             currentStateCell = currentState[ rowOffset + colIndex ];
@@ -139,19 +139,15 @@ double mpi_examineNeighbors(cell_type* neighbors){
 
 //Adapt data from processors to Current State form.
 //Free the state pointer and returns the new one reshaped.
-cell_type* mpi_reshape_matrix(int rows, int columns, cell_type* state){
+void complete_nextState(int rows, int columns, cell_type* stateFromProcesses, cell_type* nextState){
 
-    cell_type* reshaped_state = allocateMatrix_sequential(rows,columns);
     unsigned columns_newMatrix = columns + 2;
 
     for(int rowIndex = 0; rowIndex < rows; rowIndex++){
         for(int colIndex = 0; colIndex < columns; colIndex++){
-            reshaped_state[ (rowIndex+1) * columns_newMatrix + (colIndex+1)] = state[rowIndex*columns + colIndex];
+            nextState[ (rowIndex+1) * columns_newMatrix + (colIndex+1)] = stateFromProcesses[rowIndex*columns + colIndex];
         }
     }
-
-    free(state);
-    return reshaped_state;
 }
 
 

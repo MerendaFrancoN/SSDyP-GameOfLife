@@ -28,6 +28,6 @@ double mpi_examineNeighbors(cell_type* neighbors);
 cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState);
 
 //Reshape the matrix adding invalid cells around state
-cell_type* mpi_reshape_matrix(int rows, int columns, cell_type* state);
+void complete_nextState(int rows, int columns, cell_type* stateFromProcesses, cell_type* nextState);
 
 #endif //SSDYP_GAMEOFLIFE_MATRIX_MPI_H
