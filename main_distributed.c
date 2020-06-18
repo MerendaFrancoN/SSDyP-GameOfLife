@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
     if (rank == ROOT_PROCESSOR){
 
         /* Initialize Matrix */
-        cell_type *currentState = allocateMatrix_sequential(rows, columns);
+        cell_type *currentState = allocateMatrix_sequential(rows, columns), *nextState;
         initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
         printMatrixStates(currentState, rows, columns);
 
@@ -93,12 +93,18 @@ int main(int argc, char** argv) {
              * the data among the processors */
             MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
-            /* 6° Process state */
-            data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
-            /* 7° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
-            MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, currentState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+            // 7° Manage memory
+            free(currentState);
+            nextState = (cell_type*)malloc(sizeof(cell_type)* rows * columns);
 
-            printMatrixStates(currentState, rows, columns);
+            /* 8° Process state */
+            data_processed = mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root);
+
+            /* 9° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
+            MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, nextState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
+
+            /* 10° Reshape gathered matrix and update current State*/
+
         }
 
         /* Free pointers */

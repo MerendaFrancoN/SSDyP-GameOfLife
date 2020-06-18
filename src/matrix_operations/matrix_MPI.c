@@ -41,7 +41,7 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
 
     //Auxiliary Variables - set the displacement for each processor
     //Start from 0 if its sending, and from the first valid cell in the case of receiving
-    int accumulated = (mode == 0) ? 0 : columns+1;
+    int accumulated = 0;
 
     //Set the number of data to send to each processor
     for(int processorRank = 0; processorRank < numberOfProcessors; processorRank++){
@@ -57,7 +57,7 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
 
         //Index of total array minus the last row
         // rowsPerProcessor*2 is because has to jump 2 invalid cells per each processor
-        accumulated += (mode == 0) ? sendCounts[processorRank] - columns * 2 : sendCounts[processorRank] + rowsPerProcessor * 2;
+        accumulated += (mode == 0) ? sendCounts[processorRank] - columns * 2 : sendCounts[processorRank];
     }
 }
 
@@ -135,6 +135,10 @@ double mpi_examineNeighbors(cell_type* neighbors){
 
     //Return percentage of infected cells
     return contagiousCellsProportion / neighborsSize;
+}
+
+cell_type* mpi_reshape_matrix(int rows, int columns, cell_type* state){
+
 }
 
 
