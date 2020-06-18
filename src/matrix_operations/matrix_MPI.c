@@ -137,8 +137,20 @@ double mpi_examineNeighbors(cell_type* neighbors){
     return contagiousCellsProportion / neighborsSize;
 }
 
+//Adapt data from processors to Current State form
 cell_type* mpi_reshape_matrix(int rows, int columns, cell_type* state){
 
+    printMatrixStates(state, rows -2 , columns -2);
+    cell_type* reshaped_state = allocateMatrix_sequential(rows,columns);
+    unsigned columns_newMatrix = columns + 2;
+
+    for(int rowIndex = 0; rowIndex < rows; rowIndex++){
+        for(int colIndex = 0; colIndex < columns; colIndex++){
+            reshaped_state[ (rowIndex+1) * columns_newMatrix + (colIndex+1)] = state[rowIndex*columns + colIndex];
+        }
+    }
+
+    return reshaped_state;
 }
 
 

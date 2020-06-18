@@ -77,15 +77,12 @@ int main(int argc, char** argv) {
         int *sendCounts_RECV = (int*) malloc(sizeof(int) * numberOfProcessors);
         int *displacements_RECV = (int*) malloc(sizeof(int) * numberOfProcessors);
 
-
-
         /* 4° Calculate the amount of data to send to each processor and from where to take it */
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_SEND, displacements_SEND, 0);
 
         /* 5° Calculate the amount of data to receive from each processor and from where to take it*/
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
 
-        print_array(numberOfProcessors, displacements_RECV);
         /* PROCESS MATRIX */
         for(int i = 0; i < simulationDaysTime; i++){
 
@@ -104,6 +101,9 @@ int main(int argc, char** argv) {
             MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, nextState, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
             /* 10° Reshape gathered matrix and update current State*/
+            currentState = mpi_reshape_matrix(rows, columns, nextState);
+
+            printMatrixStates(currentState, rows, columns );
 
         }
 

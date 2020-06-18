@@ -2,6 +2,7 @@
 
 //User defined libraries
 #include "print_matrix.h"
+#include "matrix_sequential.h"
 #include <stddef.h>
 #include "mpi/mpi.h"
 
@@ -26,6 +27,7 @@ double mpi_examineNeighbors(cell_type* neighbors);
 //Function that returns the processed data
 cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState);
 
+//Reshape the matrix adding invalid cells around state
 cell_type* mpi_reshape_matrix(int rows, int columns, cell_type* state);
 
 #endif //SSDYP_GAMEOFLIFE_MATRIX_MPI_H
