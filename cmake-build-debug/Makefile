@@ -123,33 +123,6 @@ SSDyP_GameOfLife/fast:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/build
 .PHONY : SSDyP_GameOfLife/fast
 
-main_hybrid.o: main_hybrid.c.o
-
-.PHONY : main_hybrid.o
-
-# target to build an object file
-main_hybrid.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_hybrid.c.o
-.PHONY : main_hybrid.c.o
-
-main_hybrid.i: main_hybrid.c.i
-
-.PHONY : main_hybrid.i
-
-# target to preprocess a source file
-main_hybrid.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_hybrid.c.i
-.PHONY : main_hybrid.c.i
-
-main_hybrid.s: main_hybrid.c.s
-
-.PHONY : main_hybrid.s
-
-# target to generate assembly for a file
-main_hybrid.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_hybrid.c.s
-.PHONY : main_hybrid.c.s
-
 main_seq_openmp.o: main_seq_openmp.c.o
 
 .PHONY : main_seq_openmp.o
@@ -203,60 +176,6 @@ src/cell.s: src/cell.c.s
 src/cell.c.s:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s
 .PHONY : src/cell.c.s
-
-src/matrix_operations/matrix_MPI.o: src/matrix_operations/matrix_MPI.c.o
-
-.PHONY : src/matrix_operations/matrix_MPI.o
-
-# target to build an object file
-src/matrix_operations/matrix_MPI.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.o
-.PHONY : src/matrix_operations/matrix_MPI.c.o
-
-src/matrix_operations/matrix_MPI.i: src/matrix_operations/matrix_MPI.c.i
-
-.PHONY : src/matrix_operations/matrix_MPI.i
-
-# target to preprocess a source file
-src/matrix_operations/matrix_MPI.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.i
-.PHONY : src/matrix_operations/matrix_MPI.c.i
-
-src/matrix_operations/matrix_MPI.s: src/matrix_operations/matrix_MPI.c.s
-
-.PHONY : src/matrix_operations/matrix_MPI.s
-
-# target to generate assembly for a file
-src/matrix_operations/matrix_MPI.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.s
-.PHONY : src/matrix_operations/matrix_MPI.c.s
-
-src/matrix_operations/matrix_MPI_OpenMP.o: src/matrix_operations/matrix_MPI_OpenMP.c.o
-
-.PHONY : src/matrix_operations/matrix_MPI_OpenMP.o
-
-# target to build an object file
-src/matrix_operations/matrix_MPI_OpenMP.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI_OpenMP.c.o
-.PHONY : src/matrix_operations/matrix_MPI_OpenMP.c.o
-
-src/matrix_operations/matrix_MPI_OpenMP.i: src/matrix_operations/matrix_MPI_OpenMP.c.i
-
-.PHONY : src/matrix_operations/matrix_MPI_OpenMP.i
-
-# target to preprocess a source file
-src/matrix_operations/matrix_MPI_OpenMP.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI_OpenMP.c.i
-.PHONY : src/matrix_operations/matrix_MPI_OpenMP.c.i
-
-src/matrix_operations/matrix_MPI_OpenMP.s: src/matrix_operations/matrix_MPI_OpenMP.c.s
-
-.PHONY : src/matrix_operations/matrix_MPI_OpenMP.s
-
-# target to generate assembly for a file
-src/matrix_operations/matrix_MPI_OpenMP.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI_OpenMP.c.s
-.PHONY : src/matrix_operations/matrix_MPI_OpenMP.c.s
 
 src/matrix_operations/matrix_openMP.o: src/matrix_operations/matrix_openMP.c.o
 
@@ -375,21 +294,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... SSDyP_GameOfLife"
-	@echo "... main_hybrid.o"
-	@echo "... main_hybrid.i"
-	@echo "... main_hybrid.s"
 	@echo "... main_seq_openmp.o"
 	@echo "... main_seq_openmp.i"
 	@echo "... main_seq_openmp.s"
 	@echo "... src/cell.o"
 	@echo "... src/cell.i"
 	@echo "... src/cell.s"
-	@echo "... src/matrix_operations/matrix_MPI.o"
-	@echo "... src/matrix_operations/matrix_MPI.i"
-	@echo "... src/matrix_operations/matrix_MPI.s"
-	@echo "... src/matrix_operations/matrix_MPI_OpenMP.o"
-	@echo "... src/matrix_operations/matrix_MPI_OpenMP.i"
-	@echo "... src/matrix_operations/matrix_MPI_OpenMP.s"
 	@echo "... src/matrix_operations/matrix_openMP.o"
 	@echo "... src/matrix_operations/matrix_openMP.i"
 	@echo "... src/matrix_operations/matrix_openMP.s"

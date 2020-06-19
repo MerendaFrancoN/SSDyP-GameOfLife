@@ -50,55 +50,37 @@ cell_type next_state(cell_type currentState, double cellsContagious) {
         currentState.timeSinceInfected++;
 
     /* Update States */
-
-    if( currentState.state == STATE_BLUE){
-        //If there are no cell contagious near
-        if(cellsContagious == 0.0)
-            return currentState;
-
-        if( randomDoubleGenerator() > probability_P(cellsContagious, 2.4, susceptibility( currentState.age, currentState.risk_disease), 1) ) {
-            //Set new state
-            currentState.state = STATE_ORANGE;
-            return currentState;
-        } else
-            //If not, state remains equal as before
-            return currentState;
-    }
-
-    if( currentState.state == STATE_ORANGE) {
-        //If t = 4
-        if (currentTime == 4) {
-            //Set new state
-            currentState.state = STATE_RED;
-            return currentState;
-        } else
-            //If not, state remains equal as before
-            return currentState;
-    }
-
-    //States of be ill
-    if( currentState.state == STATE_RED || currentState.state == STATE_YELLOW){
-
-        /*Case of red stage*/
-        if( currentTime < 7  )
-            return currentState;
-
-        /*Case of decide if Isolate - Decide to go to STATE_YELLOW*/
-        if( currentTime == 7 ){
-
-            //Probability given by problem ( 0.9 )
-            if( randomDoubleGenerator() <= 0.9){ //With 90% of probability will go to Yellow state
-
-                //Set the new state
-                currentState.state = STATE_YELLOW;
+    switch (currentState.state) {
+        case STATE_BLUE:{
+            //If there are no cell contagious near and the P probability
+            if( cellsContagious != 0.0 && randomDoubleGenerator() > probability_P(cellsContagious, 2.4, susceptibility( currentState.age, currentState.risk_disease), 1) ) {
+                //Set new state
+                currentState.state = STATE_ORANGE;
                 return currentState;
-
-            }else
-                return currentState;
-
+            }
+            return currentState;
         }
+        case STATE_ORANGE:{
+            //If t = 4
+            if (currentTime == 4) {
+                //Set new state
+                currentState.state = STATE_RED;
+                return currentState;
+            }
+            return currentState;
+        }
+        case STATE_RED:
+        case STATE_YELLOW:{
+            /*Case of decide if Isolate - Decide to go to STATE_YELLOW*/
+            if( currentTime == 7 ){
+                //Probability given by problem ( 0.9 )
+                if( randomDoubleGenerator() <= 0.9){ //With 90% of probability will go to Yellow state
+                    //Set the new state
+                    currentState.state = STATE_YELLOW;
+                    return currentState;
+                }
+            }
 
-        else {
             //Check if we are at the end of illness
             if( currentTime == 14){
 
@@ -113,13 +95,15 @@ cell_type next_state(cell_type currentState, double cellsContagious) {
                     currentState.state = STATE_GREEN;
                     return currentState;
                 }
-            } else //If we are still on the way, just keep adding time
-                return currentState;
-        }
+            }
+
+            return currentState;
+        } //End case
+
+        default: return currentState;
+
     }
 
-    //Add return statement
-    return currentState;
 }
 
 cell_type createNullCell(){

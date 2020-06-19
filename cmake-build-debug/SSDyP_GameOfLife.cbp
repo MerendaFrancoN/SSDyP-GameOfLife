@@ -78,9 +78,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_hybrid.c">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_seq_openmp.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
@@ -88,12 +85,6 @@
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_MPI.h">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_MPI_OpenMP.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_openMP.h">
@@ -106,12 +97,6 @@
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_MPI.c">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_MPI_OpenMP.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_openMP.c">

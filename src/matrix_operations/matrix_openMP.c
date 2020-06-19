@@ -87,7 +87,7 @@ void initializeMatrix_openMP(cell_type *matrixToFill, unsigned int rows, unsigne
 }
 
 //Process matrix of the current state and return the new state matrix. This is done sequentially.
-cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns){
+void MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, cell_type* nextStateMatrix, unsigned int rows, unsigned int columns){
 
     //Index Variables
     unsigned int rowIndex_1, columnIndex_1;
@@ -101,12 +101,12 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
     //Neighbors rows
     unsigned int rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index;
 
-    //Declare nextStateMatrix, nextStateCell
-    cell_type *nextStateMatrix = allocateMatrix_openMP(rows, columns);
+    //Declare nextStateCell
     cell_type nextStateCell, currentStateCell, neighbors[9];
 
     // The percentage of infected cells
     double contagiousCellsProportion = 0.0;
+
     //TODO: Check schedule and number of threads for a better perfomance
     #pragma omp parallel for collapse(2) schedule(static, 8) private(rowIndex_1, columnIndex_1, rowOffset, currentStateCell, contagiousCellsProportion, neighbors, rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index)
         //Process Matrix
@@ -138,11 +138,6 @@ cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsi
                 nextStateMatrix[rowOffset + columnIndex_1] = nextStateCell;
             }
         }
-
-    //Free current State
-    free((cell_type*) currentStateMatrix);
-
-    return nextStateMatrix;
 }
 
 //Examine neighbors, returns the percentage of infected cells
@@ -236,7 +231,7 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
     double tA, tB, totalTime=0.0;
     /*Declare current State matrix pointer that will go mutating through iterations
     * to it's next states. */
-    cell_type *currentState;
+    cell_type *currentState, *nextStateMatrix;
 
     for(int execNumber = 0; execNumber < numberOfExecutions; execNumber++) {
 
@@ -245,6 +240,7 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         tB = 0.0;
 
         currentState = allocateMatrix_openMP(rows, columns);
+        nextStateMatrix = allocateMatrix_openMP(rows, columns);
 
         //Initialize Matrix
         initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
@@ -265,8 +261,11 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         //Time it
         tA = omp_get_wtime();
 
-        for (int i = 0; i < simulationDaysTime; i++)
-            currentState = MatrixProcessing_nextState_openMP(currentState, rows, columns);
+        for (int i = 0; i < simulationDaysTime; i++){
+            MatrixProcessing_nextState_openMP(currentState, nextStateMatrix ,rows, columns);
+            memcpy(currentState, nextStateMatrix, sizeof(cell_type)*(rows+2)*(columns+2));
+        }
+
 
         //Time it
         tB = omp_get_wtime();

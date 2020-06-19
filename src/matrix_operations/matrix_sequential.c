@@ -97,7 +97,7 @@ double examineNeighbors(cell_type* neighbors ){
 }
 
 //Process sequentially the matrix to get the next state matrix
-cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns){
+void MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, cell_type *nextStateMatrix, unsigned int rows, unsigned int columns){
 
     //Offset because of the extra invalid spaces
     const unsigned short int columnsWithOffset = columns + 2;
@@ -105,9 +105,6 @@ cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, 
 
     //Neighbors rows
     unsigned int rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index;
-
-    //Declare nextStateMatrix
-    cell_type *nextStateMatrix = allocateMatrix_sequential(rows, columns);
 
     //Declaring nextStateCell, currentStateCell, neighbors of the current cell.
     cell_type nextStateCell, currentStateCell, neighbors[9];
@@ -144,11 +141,6 @@ cell_type* MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, 
             nextStateMatrix[rowOffset + columnIndex] = nextStateCell;
         }
     }
-
-    //Free current State
-    free((cell_type*) currentStateMatrix);
-
-    return nextStateMatrix;
 }
 
 //Get the numbers of the every age and the number of infected people
@@ -195,7 +187,7 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
     double tA, tB, totalTime= 0.0;
     /*Declare current State matrix pointer that will go mutating through iterations
     * to it's next states. */
-    cell_type *currentState;
+    cell_type *currentState, *nextStateMatrix;
 
     for(int execNumber = 0; execNumber < numberOfExecutions; execNumber++) {
 
@@ -204,7 +196,7 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
         tB = 0.0;
 
         currentState = allocateMatrix_sequential(rows, columns);
-
+        nextStateMatrix = allocateMatrix_sequential(rows, columns);
         //Initialize Matrix
         initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
 
@@ -224,8 +216,10 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
         //Time it
         tA = omp_get_wtime();
 
-        for (int i = 0; i < simulationDaysTime; i++)
-            currentState = MatrixProcessing_nextState_sequential(currentState, rows, columns);
+        for (int i = 0; i < simulationDaysTime; i++){
+            MatrixProcessing_nextState_sequential(currentState, nextStateMatrix ,rows, columns);
+            memcpy(currentState, nextStateMatrix, sizeof(cell_type)*(rows+2)*(columns+2));
+        }
 
         //Time it
         tB = omp_get_wtime();

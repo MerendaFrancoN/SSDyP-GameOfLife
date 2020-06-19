@@ -24,7 +24,7 @@ void initializeMatrix_openMP(cell_type *matrixToFill, unsigned int rows, unsigne
 double examineNeighbors_openMP( cell_type* neighbors );
 
 //Process matrix of the current state and return the new state matrix. This is done sequentially.
-cell_type* MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, unsigned int rows, unsigned int columns);
+void MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, cell_type* nextStateMatrix, unsigned int rows, unsigned int columns);
 
 //Get the counts of each type specified in parameters, and get the output through the parameters.
 void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int columns, unsigned int* childNumber,
