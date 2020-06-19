@@ -13,16 +13,6 @@ unsigned int STAT_TOTAL_ADULTS = 0;
 unsigned int STAT_TOTAL_OLDS = 0;
 unsigned int STAT_TOTAL_INFECTEDS = 0;
 
-
-/*Stat Timing Variables
- * STAT_SEQUENTIAL_TIME - Sequential time
- * STAT_PARALELL_DISTRIBUTED_TIME - Paralell MPI Time
- * STAT_PARALELL_SHARED_TIME - Paralell OpenMP Time
- * */
-double STAT_SEQUENTIAL_TIME = 0.0;
-double STAT_PARALELL_DISTRIBUTED_TIME = 0.0;
-double STAT_PARALELL_SHARED_TIME = 0.0;
-
 //Init seed for srand() in stdlib.h
 void initSeed(){
     srand((unsigned)time(NULL)); //Initializer for random int generator
@@ -36,12 +26,7 @@ int randomEnumIntGenerator(int min, int max){
 
 //Random Generator continue between [0, 1)
 double randomDoubleGenerator(){
-//#ifdef __unix__
-//    return drand48();
-//#elif defined(__WIN32) || defined(WIN32)
     return ( (double) rand() / ((double)RAND_MAX+1));
-
-//#endif
 }
 
 void STATS_printMatrixInfo(unsigned int rows, unsigned int columns){
@@ -60,7 +45,5 @@ void STATS_printMatrixInfo(unsigned int rows, unsigned int columns){
     printf("*Adult Rate = %.2lf%%\n", ( (double)STAT_TOTAL_ADULTS/STAT_TOTAL_CELLS ) * 100.0 );
     printf("*Old Rate = %.2lf%%\n", ( (double)STAT_TOTAL_OLDS/STAT_TOTAL_CELLS ) * 100.0 );
     printf("*Infected Rate = %.2lf%% \n", ( (double)STAT_TOTAL_INFECTEDS/STAT_TOTAL_CELLS ) * 100.0 );
-
-
 
 }
