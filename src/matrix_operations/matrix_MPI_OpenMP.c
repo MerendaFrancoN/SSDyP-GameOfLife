@@ -62,10 +62,7 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "openmp-use-default-none"
-cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState){
-
-    //Data processed with only processed information
-    cell_type* data_processed = (cell_type*)malloc( sizeof(cell_type) * numberOfRows_toProcess * columns );
+void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState, cell_type* data_processed){
 
     //Row index and column index
     unsigned int rowIndex = 0, colIndex = 0, columnsWithExtraRow = columns + 2;
@@ -81,8 +78,6 @@ cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int column
 
     #pragma omp parallel for collapse(2) schedule(static, 4) private(rowIndex, colIndex, rowOffset, currentStateCell, contagiousCellsProportion, neighbors, rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index)
     for(rowIndex = 1; rowIndex <= numberOfRows_toProcess; rowIndex++ ){
-
-
 
         for(colIndex = 1; colIndex <= columns; colIndex++){
 
@@ -110,7 +105,6 @@ cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int column
             data_processed[(rowIndex - 1) * columns + colIndex - 1] = nextStateCell;
         }
     }
-    return data_processed;
 }
 #pragma clang diagnostic pop
 

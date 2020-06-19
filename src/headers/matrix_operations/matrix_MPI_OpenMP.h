@@ -24,7 +24,7 @@ int mpi_getNumberOfRowsPerProc(int rows, int rank, int numberOfProcessors);
 double mpi_examineNeighbors(cell_type* neighbors);
 
 //Function that returns the processed data
-cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState);
+void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState, cell_type* data_processed);
 
 //Reshape the matrix adding invalid cells around state
 void complete_nextState(int rows, int columns, cell_type* stateFromProcesses, cell_type* nextState);

@@ -61,10 +61,7 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
     }
 }
 
-cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState){
-
-    //Data processed with only processed information
-    cell_type* data_processed = (cell_type*)malloc( sizeof(cell_type) * numberOfRows_toProcess * columns );
+void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState, cell_type* data_processed){
 
     //Row index and column index
     unsigned int rowIndex = 0, colIndex = 0, columnsWithExtraRow = columns + 2;
@@ -106,7 +103,6 @@ cell_type* mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int column
             data_processed[(rowIndex - 1) * columns + colIndex - 1] = nextStateCell;
         }
     }
-    return data_processed;
 }
 
 //Examine neighbors, returns the percentage of infected cells

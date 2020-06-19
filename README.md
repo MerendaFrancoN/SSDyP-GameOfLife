@@ -1,4 +1,23 @@
 # SSDyP-GameOfLife
+## Compilar SSDyP_
+    $ make all
+## Ejecutables /build
+   * Versión Secuencial y OpenMP
+   
+    $ ./build/SSDyP <rows> <columns> <SimulationDays> <NumberOfExecutions>
+   * Versión MPI     
+    
+    $ mpirun -np <numProc> ./build/SSDyP_Distributed <rows> <columns> <SimulationDays> <NumberOfExecutions>
+   * Versión MPI-OpenMP
+    
+    $ mpirun -np <numProc> ./build/SSDyP_Hybrid <rows> <columns> <SimulationDays> <NumberOfExecutions>
+    
+### Ejemplo de ejecución de una grilla de 200 x 200, 120 días de simulación y 1 sola ejecución.
+    $ ./build/SSDyP 200 200 120 1
+    
+    $ mpirun -np 8 ./build/SSDyP_Distributed 200 200 120 1
+    
+    $ mpirun -np 8 ./build/SSDyP_Hybrid 200 200 120 1
 
 ## Simulación de la difusión del COVID-19 en una población
 
