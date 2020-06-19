@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
     cell_type *data_from_root =  (cell_type*) malloc(sizeof(cell_type) * number_of_cells_toRecv);
     cell_type *data_processed =  (cell_type*) malloc(sizeof(cell_type) * numberOfRowsOfRank * columns );
 
+    omp_set_num_threads(__NUM_OF_THREADS__ / numberOfProcessors);
 
     /*MAIN PROGRAM */
     if (rank == ROOT_PROCESSOR){
@@ -104,7 +105,7 @@ int main(int argc, char** argv) {
             totalTime += tB - tA;
         }
 
-        printf("\nTotal time = %lf\n", totalTime / (double) numberOfExecutions);
+        printf("\n*Hybrid Time = %lf \n", totalTime / (double) numberOfExecutions);
 
 
         /* Free pointers */

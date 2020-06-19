@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     double STAT_SEQUENTIAL_TIME = sequential_run(rows, columns, simulationDaysTime, numberOfExecutions);
 
     //Run it Paralell-Concurrent 'Shared Memory
-    omp_set_num_threads(8);
+    omp_set_num_threads(__NUM_OF_THREADS__);
     double STAT_PARALELL_SHARED_TIME = openMP_run(rows, columns, simulationDaysTime, numberOfExecutions);
 
     //Show Times

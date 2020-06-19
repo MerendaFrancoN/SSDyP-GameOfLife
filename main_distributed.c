@@ -108,7 +108,7 @@ int main(int argc, char** argv) {
             totalTime += tB - tA;
         }
 
-        printf("\nTotal time = %lf\n", totalTime / (double) numberOfExecutions);
+        printf("\n*Distributed Time = %lf \n", totalTime / (double) numberOfExecutions);
 
 
         /* Free pointers */
