@@ -210,15 +210,15 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
         //Print Info about matrix
         STATS_printMatrixInfo(rows, columns);
 
-        printf("\n**First state of the matrix: \n");
-        printMatrixStates(currentState, rows, columns);
+        //printf("\n**First state of the matrix: \n");
+        //printMatrixStates(currentState, rows, columns);
 
         //Time it
         tA = omp_get_wtime();
 
         for (int i = 0; i < simulationDaysTime; i++){
             MatrixProcessing_nextState_sequential(currentState, nextStateMatrix ,rows, columns);
-            memcpy(currentState, nextStateMatrix, sizeof(cell_type)*(rows+2)*(columns+2));
+            memcpy(currentState, nextStateMatrix, sizeof(cell_type) * (rows+2) * (columns+2) );
         }
 
         //Time it
@@ -228,8 +228,8 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
         totalTime += tB-tA;
 
         //Print Matrix Last state
-        printf("\n**Last state of the matrix: \n");
-        printMatrixStates(currentState, rows, columns);
+        //printf("\n**Last state of the matrix: \n");
+        //printMatrixStates(currentState, rows, columns);
     }
 
     //Return the average time
