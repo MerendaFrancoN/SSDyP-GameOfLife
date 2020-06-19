@@ -243,7 +243,7 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         nextStateMatrix = allocateMatrix_openMP(rows, columns);
 
         //Initialize Matrix
-        initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+        initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
 
         //Print Matrix First state
         printf("---------------OpenMP RUN - Execution N° %d-------------------------\n\n", execNumber);
