@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/SSDyP_GameOfLife.dir/main.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/main_hybrid.c.o"
+  "CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI_OpenMP.c.o"

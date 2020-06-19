@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/stormtrooper/Documentos/SSDyP-GameOfLife/main.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/main.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_hybrid.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/main_hybrid.c.o"
+  "/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_seq_openmp.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_MPI.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_MPI_OpenMP.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_MPI_OpenMP.c.o"

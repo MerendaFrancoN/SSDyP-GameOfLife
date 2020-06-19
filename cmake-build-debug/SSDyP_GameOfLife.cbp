@@ -78,10 +78,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_hybrid.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_hybrid.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_seq_openmp.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c">

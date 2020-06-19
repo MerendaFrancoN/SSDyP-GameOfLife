@@ -123,33 +123,6 @@ SSDyP_GameOfLife/fast:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/build
 .PHONY : SSDyP_GameOfLife/fast
 
-main.o: main.c.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.o
-.PHONY : main.c.o
-
-main.i: main.c.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main.c.s
-.PHONY : main.c.s
-
 main_hybrid.o: main_hybrid.c.o
 
 .PHONY : main_hybrid.o
@@ -176,6 +149,33 @@ main_hybrid.s: main_hybrid.c.s
 main_hybrid.c.s:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_hybrid.c.s
 .PHONY : main_hybrid.c.s
+
+main_seq_openmp.o: main_seq_openmp.c.o
+
+.PHONY : main_seq_openmp.o
+
+# target to build an object file
+main_seq_openmp.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o
+.PHONY : main_seq_openmp.c.o
+
+main_seq_openmp.i: main_seq_openmp.c.i
+
+.PHONY : main_seq_openmp.i
+
+# target to preprocess a source file
+main_seq_openmp.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.i
+.PHONY : main_seq_openmp.c.i
+
+main_seq_openmp.s: main_seq_openmp.c.s
+
+.PHONY : main_seq_openmp.s
+
+# target to generate assembly for a file
+main_seq_openmp.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.s
+.PHONY : main_seq_openmp.c.s
 
 src/cell.o: src/cell.c.o
 
@@ -375,12 +375,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... SSDyP_GameOfLife"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... main_hybrid.o"
 	@echo "... main_hybrid.i"
 	@echo "... main_hybrid.s"
+	@echo "... main_seq_openmp.o"
+	@echo "... main_seq_openmp.i"
+	@echo "... main_seq_openmp.s"
 	@echo "... src/cell.o"
 	@echo "... src/cell.i"
 	@echo "... src/cell.s"
