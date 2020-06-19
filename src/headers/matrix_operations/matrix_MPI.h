@@ -4,7 +4,7 @@
 #include "print_matrix.h"
 #include "matrix_sequential.h"
 #include <stddef.h>
-#include "mpi/mpi.h"
+#include "mpi.h"
 
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_H
 #define SSDYP_GAMEOFLIFE_MATRIX_MPI_H

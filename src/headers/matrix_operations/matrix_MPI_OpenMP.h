@@ -6,7 +6,7 @@
 #include "matrix_sequential.h"
 #include <stddef.h>
 #include "omp.h"
-#include "mpi/mpi.h"
+#include "mpi.h"
 
 /*Function to calculate the sendCount and Displacement array for MPI_Gatherv and MPI_Scatterv function
  * @param
