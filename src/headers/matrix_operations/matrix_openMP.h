@@ -3,7 +3,7 @@
 
 #include "print_matrix.h"
 #include "../cell.h"
-#define __NUM_OF_THREADS__ 8
+#define __NUM_OF_THREADS__ 32
 
 //Operations of Matrix done with OpenMP
 
