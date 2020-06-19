@@ -112,9 +112,9 @@ void MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, cell_t
     // The percentage of infected cells
     double contagiousCellsProportion = 0.0;
 
-
     //Process Matrix
     for (int rowIndex = 1; rowIndex <= rows; rowIndex++){
+
         //Set row columnsWithOffset
         rowOffset = rowIndex * columnsWithOffset;
 
