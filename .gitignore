@@ -43,7 +43,13 @@
 *.pdb
 
 #cmake-build-debug
-/cmake-build-debug/
+/cmake-build-debug/*
+/cmake-build-debug/CMakeFiles/
+/cmake-build-debug/cmake_install.cmake
+/cmake-build-debug/CMakeCache.txt
+/cmake-build-debug/Makefile
+/cmake-build-debug/SSDyP_GameOfLife
+/cmake-build-debug/SSDyP_GameOfLife.cbp
 
 # Kernel Module Compile Results
 *.mod*
