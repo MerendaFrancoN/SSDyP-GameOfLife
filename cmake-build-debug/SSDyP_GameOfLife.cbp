@@ -78,37 +78,40 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/main_seq_openmp.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/cell.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/cell.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/cell.h">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/print_matrix_utils.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_openMP.h">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/print_matrix_utils.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/matrix_sequential.h">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/statistics.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/matrix_operations/print_matrix.h">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/statistics.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/headers/statistics.h">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/main_openmp.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_openMP.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_sequential.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/print_matrix.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/main_sequential.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/statistics.c">
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/matrix_sequential.c">
+			<Option target="SSDyP_GameOfLife"/>
+		</Unit>
+		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/matrix_sequential.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/CMakeLists.txt">

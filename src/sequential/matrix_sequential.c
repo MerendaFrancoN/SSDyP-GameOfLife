@@ -1,4 +1,4 @@
-#include "../headers/matrix_operations/matrix_sequential.h"
+#include "matrix_sequential.h"
 
 /* Allocate matrix of cells, aggregates one row and one column with null cells
  * to reduce comparisons when it's processed */
@@ -198,7 +198,7 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
         currentState = allocateMatrix_sequential(rows, columns);
         nextStateMatrix = allocateMatrix_sequential(rows, columns);
         //Initialize Matrix
-        initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+        initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
 
         //Print Matrix First state
         printf("---------------SEQUENTIAL RUN - Execution N° %d-------------------------\n\n", execNumber);

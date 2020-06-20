@@ -1,5 +1,4 @@
-#include "src/headers/matrix_operations/matrix_sequential.h"
-#include "src/headers/matrix_operations/matrix_openMP.h"
+#include "../openmp/matrix_openMP.h"
 
 int main(int argc, char** argv) {
 
@@ -17,20 +16,12 @@ int main(int argc, char** argv) {
         numberOfExecutions = atoi(argv[4]);
     }
 
-
-    //Run it Sequentially
-    double STAT_SEQUENTIAL_TIME = sequential_run(rows, columns, simulationDaysTime, numberOfExecutions);
-
     //Run it Paralell-Concurrent 'Shared Memory
     omp_set_num_threads(__NUM_OF_THREADS__);
     double STAT_PARALELL_SHARED_TIME = openMP_run(rows, columns, simulationDaysTime, numberOfExecutions);
 
     //Show Times
-    printf("*Sequential Time = %lf ", STAT_SEQUENTIAL_TIME);
     printf("*Paralell Shared Time = %lf ", STAT_PARALELL_SHARED_TIME);
 
     return 0;
 }
-
-
-

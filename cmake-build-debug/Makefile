@@ -123,167 +123,194 @@ SSDyP_GameOfLife/fast:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/build
 .PHONY : SSDyP_GameOfLife/fast
 
-main_seq_openmp.o: main_seq_openmp.c.o
+src/base_utils/cell.o: src/base_utils/cell.c.o
 
-.PHONY : main_seq_openmp.o
-
-# target to build an object file
-main_seq_openmp.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o
-.PHONY : main_seq_openmp.c.o
-
-main_seq_openmp.i: main_seq_openmp.c.i
-
-.PHONY : main_seq_openmp.i
-
-# target to preprocess a source file
-main_seq_openmp.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.i
-.PHONY : main_seq_openmp.c.i
-
-main_seq_openmp.s: main_seq_openmp.c.s
-
-.PHONY : main_seq_openmp.s
-
-# target to generate assembly for a file
-main_seq_openmp.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.s
-.PHONY : main_seq_openmp.c.s
-
-src/cell.o: src/cell.c.o
-
-.PHONY : src/cell.o
+.PHONY : src/base_utils/cell.o
 
 # target to build an object file
-src/cell.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o
-.PHONY : src/cell.c.o
+src/base_utils/cell.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o
+.PHONY : src/base_utils/cell.c.o
 
-src/cell.i: src/cell.c.i
+src/base_utils/cell.i: src/base_utils/cell.c.i
 
-.PHONY : src/cell.i
+.PHONY : src/base_utils/cell.i
 
 # target to preprocess a source file
-src/cell.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.i
-.PHONY : src/cell.c.i
+src/base_utils/cell.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.i
+.PHONY : src/base_utils/cell.c.i
 
-src/cell.s: src/cell.c.s
+src/base_utils/cell.s: src/base_utils/cell.c.s
 
-.PHONY : src/cell.s
+.PHONY : src/base_utils/cell.s
 
 # target to generate assembly for a file
-src/cell.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s
-.PHONY : src/cell.c.s
+src/base_utils/cell.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.s
+.PHONY : src/base_utils/cell.c.s
 
-src/matrix_operations/matrix_openMP.o: src/matrix_operations/matrix_openMP.c.o
+src/base_utils/print_matrix_utils.o: src/base_utils/print_matrix_utils.c.o
 
-.PHONY : src/matrix_operations/matrix_openMP.o
+.PHONY : src/base_utils/print_matrix_utils.o
 
 # target to build an object file
-src/matrix_operations/matrix_openMP.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o
-.PHONY : src/matrix_operations/matrix_openMP.c.o
+src/base_utils/print_matrix_utils.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o
+.PHONY : src/base_utils/print_matrix_utils.c.o
 
-src/matrix_operations/matrix_openMP.i: src/matrix_operations/matrix_openMP.c.i
+src/base_utils/print_matrix_utils.i: src/base_utils/print_matrix_utils.c.i
 
-.PHONY : src/matrix_operations/matrix_openMP.i
+.PHONY : src/base_utils/print_matrix_utils.i
 
 # target to preprocess a source file
-src/matrix_operations/matrix_openMP.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.i
-.PHONY : src/matrix_operations/matrix_openMP.c.i
+src/base_utils/print_matrix_utils.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.i
+.PHONY : src/base_utils/print_matrix_utils.c.i
 
-src/matrix_operations/matrix_openMP.s: src/matrix_operations/matrix_openMP.c.s
+src/base_utils/print_matrix_utils.s: src/base_utils/print_matrix_utils.c.s
 
-.PHONY : src/matrix_operations/matrix_openMP.s
+.PHONY : src/base_utils/print_matrix_utils.s
 
 # target to generate assembly for a file
-src/matrix_operations/matrix_openMP.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.s
-.PHONY : src/matrix_operations/matrix_openMP.c.s
+src/base_utils/print_matrix_utils.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.s
+.PHONY : src/base_utils/print_matrix_utils.c.s
 
-src/matrix_operations/matrix_sequential.o: src/matrix_operations/matrix_sequential.c.o
+src/base_utils/statistics.o: src/base_utils/statistics.c.o
 
-.PHONY : src/matrix_operations/matrix_sequential.o
+.PHONY : src/base_utils/statistics.o
 
 # target to build an object file
-src/matrix_operations/matrix_sequential.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o
-.PHONY : src/matrix_operations/matrix_sequential.c.o
+src/base_utils/statistics.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o
+.PHONY : src/base_utils/statistics.c.o
 
-src/matrix_operations/matrix_sequential.i: src/matrix_operations/matrix_sequential.c.i
+src/base_utils/statistics.i: src/base_utils/statistics.c.i
 
-.PHONY : src/matrix_operations/matrix_sequential.i
+.PHONY : src/base_utils/statistics.i
 
 # target to preprocess a source file
-src/matrix_operations/matrix_sequential.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.i
-.PHONY : src/matrix_operations/matrix_sequential.c.i
+src/base_utils/statistics.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.i
+.PHONY : src/base_utils/statistics.c.i
 
-src/matrix_operations/matrix_sequential.s: src/matrix_operations/matrix_sequential.c.s
+src/base_utils/statistics.s: src/base_utils/statistics.c.s
 
-.PHONY : src/matrix_operations/matrix_sequential.s
+.PHONY : src/base_utils/statistics.s
 
 # target to generate assembly for a file
-src/matrix_operations/matrix_sequential.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.s
-.PHONY : src/matrix_operations/matrix_sequential.c.s
+src/base_utils/statistics.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.s
+.PHONY : src/base_utils/statistics.c.s
 
-src/matrix_operations/print_matrix.o: src/matrix_operations/print_matrix.c.o
+src/openmp/main_openmp.o: src/openmp/main_openmp.c.o
 
-.PHONY : src/matrix_operations/print_matrix.o
+.PHONY : src/openmp/main_openmp.o
 
 # target to build an object file
-src/matrix_operations/print_matrix.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o
-.PHONY : src/matrix_operations/print_matrix.c.o
+src/openmp/main_openmp.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o
+.PHONY : src/openmp/main_openmp.c.o
 
-src/matrix_operations/print_matrix.i: src/matrix_operations/print_matrix.c.i
+src/openmp/main_openmp.i: src/openmp/main_openmp.c.i
 
-.PHONY : src/matrix_operations/print_matrix.i
+.PHONY : src/openmp/main_openmp.i
 
 # target to preprocess a source file
-src/matrix_operations/print_matrix.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.i
-.PHONY : src/matrix_operations/print_matrix.c.i
+src/openmp/main_openmp.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.i
+.PHONY : src/openmp/main_openmp.c.i
 
-src/matrix_operations/print_matrix.s: src/matrix_operations/print_matrix.c.s
+src/openmp/main_openmp.s: src/openmp/main_openmp.c.s
 
-.PHONY : src/matrix_operations/print_matrix.s
+.PHONY : src/openmp/main_openmp.s
 
 # target to generate assembly for a file
-src/matrix_operations/print_matrix.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.s
-.PHONY : src/matrix_operations/print_matrix.c.s
+src/openmp/main_openmp.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.s
+.PHONY : src/openmp/main_openmp.c.s
 
-src/statistics.o: src/statistics.c.o
+src/openmp/matrix_openMP.o: src/openmp/matrix_openMP.c.o
 
-.PHONY : src/statistics.o
+.PHONY : src/openmp/matrix_openMP.o
 
 # target to build an object file
-src/statistics.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o
-.PHONY : src/statistics.c.o
+src/openmp/matrix_openMP.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o
+.PHONY : src/openmp/matrix_openMP.c.o
 
-src/statistics.i: src/statistics.c.i
+src/openmp/matrix_openMP.i: src/openmp/matrix_openMP.c.i
 
-.PHONY : src/statistics.i
+.PHONY : src/openmp/matrix_openMP.i
 
 # target to preprocess a source file
-src/statistics.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.i
-.PHONY : src/statistics.c.i
+src/openmp/matrix_openMP.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.i
+.PHONY : src/openmp/matrix_openMP.c.i
 
-src/statistics.s: src/statistics.c.s
+src/openmp/matrix_openMP.s: src/openmp/matrix_openMP.c.s
 
-.PHONY : src/statistics.s
+.PHONY : src/openmp/matrix_openMP.s
 
 # target to generate assembly for a file
-src/statistics.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.s
-.PHONY : src/statistics.c.s
+src/openmp/matrix_openMP.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.s
+.PHONY : src/openmp/matrix_openMP.c.s
+
+src/sequential/main_sequential.o: src/sequential/main_sequential.c.o
+
+.PHONY : src/sequential/main_sequential.o
+
+# target to build an object file
+src/sequential/main_sequential.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o
+.PHONY : src/sequential/main_sequential.c.o
+
+src/sequential/main_sequential.i: src/sequential/main_sequential.c.i
+
+.PHONY : src/sequential/main_sequential.i
+
+# target to preprocess a source file
+src/sequential/main_sequential.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.i
+.PHONY : src/sequential/main_sequential.c.i
+
+src/sequential/main_sequential.s: src/sequential/main_sequential.c.s
+
+.PHONY : src/sequential/main_sequential.s
+
+# target to generate assembly for a file
+src/sequential/main_sequential.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.s
+.PHONY : src/sequential/main_sequential.c.s
+
+src/sequential/matrix_sequential.o: src/sequential/matrix_sequential.c.o
+
+.PHONY : src/sequential/matrix_sequential.o
+
+# target to build an object file
+src/sequential/matrix_sequential.c.o:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o
+.PHONY : src/sequential/matrix_sequential.c.o
+
+src/sequential/matrix_sequential.i: src/sequential/matrix_sequential.c.i
+
+.PHONY : src/sequential/matrix_sequential.i
+
+# target to preprocess a source file
+src/sequential/matrix_sequential.c.i:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.i
+.PHONY : src/sequential/matrix_sequential.c.i
+
+src/sequential/matrix_sequential.s: src/sequential/matrix_sequential.c.s
+
+.PHONY : src/sequential/matrix_sequential.s
+
+# target to generate assembly for a file
+src/sequential/matrix_sequential.c.s:
+	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.s
+.PHONY : src/sequential/matrix_sequential.c.s
 
 # Help Target
 help:
@@ -294,24 +321,27 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... SSDyP_GameOfLife"
-	@echo "... main_seq_openmp.o"
-	@echo "... main_seq_openmp.i"
-	@echo "... main_seq_openmp.s"
-	@echo "... src/cell.o"
-	@echo "... src/cell.i"
-	@echo "... src/cell.s"
-	@echo "... src/matrix_operations/matrix_openMP.o"
-	@echo "... src/matrix_operations/matrix_openMP.i"
-	@echo "... src/matrix_operations/matrix_openMP.s"
-	@echo "... src/matrix_operations/matrix_sequential.o"
-	@echo "... src/matrix_operations/matrix_sequential.i"
-	@echo "... src/matrix_operations/matrix_sequential.s"
-	@echo "... src/matrix_operations/print_matrix.o"
-	@echo "... src/matrix_operations/print_matrix.i"
-	@echo "... src/matrix_operations/print_matrix.s"
-	@echo "... src/statistics.o"
-	@echo "... src/statistics.i"
-	@echo "... src/statistics.s"
+	@echo "... src/base_utils/cell.o"
+	@echo "... src/base_utils/cell.i"
+	@echo "... src/base_utils/cell.s"
+	@echo "... src/base_utils/print_matrix_utils.o"
+	@echo "... src/base_utils/print_matrix_utils.i"
+	@echo "... src/base_utils/print_matrix_utils.s"
+	@echo "... src/base_utils/statistics.o"
+	@echo "... src/base_utils/statistics.i"
+	@echo "... src/base_utils/statistics.s"
+	@echo "... src/openmp/main_openmp.o"
+	@echo "... src/openmp/main_openmp.i"
+	@echo "... src/openmp/main_openmp.s"
+	@echo "... src/openmp/matrix_openMP.o"
+	@echo "... src/openmp/matrix_openMP.i"
+	@echo "... src/openmp/matrix_openMP.s"
+	@echo "... src/sequential/main_sequential.o"
+	@echo "... src/sequential/main_sequential.i"
+	@echo "... src/sequential/main_sequential.s"
+	@echo "... src/sequential/matrix_sequential.o"
+	@echo "... src/sequential/matrix_sequential.i"
+	@echo "... src/sequential/matrix_sequential.s"
 .PHONY : help
 
 

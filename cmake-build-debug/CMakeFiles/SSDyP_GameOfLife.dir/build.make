@@ -57,105 +57,120 @@ include CMakeFiles/SSDyP_GameOfLife.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/SSDyP_GameOfLife.dir/flags.make
 
-CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
-CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o: ../main_seq_openmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/main_seq_openmp.c
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o: ../src/sequential/main_sequential.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/main_sequential.c
 
-CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/main_seq_openmp.c > CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.i
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/main_sequential.c > CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.i
 
-CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/main_seq_openmp.c -o CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.s
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/main_sequential.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.s
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
-CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o: ../src/cell.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o: ../src/base_utils/cell.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/cell.c
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c > CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.i
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/cell.c > CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.i
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/cell.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.s
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/cell.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.s
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o: ../src/matrix_operations/matrix_sequential.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_sequential.c
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o: ../src/sequential/matrix_sequential.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/matrix_sequential.c
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_sequential.c > CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.i
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/matrix_sequential.c > CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.i
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_sequential.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.s
+CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/matrix_sequential.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.s
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
-CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o: ../src/statistics.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/statistics.c
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o: ../src/base_utils/statistics.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/statistics.c
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/statistics.c > CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.i
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/statistics.c > CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.i
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/statistics.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.s
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/statistics.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.s
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o: ../src/matrix_operations/matrix_openMP.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_openMP.c
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o: ../src/openmp/matrix_openMP.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.c
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_openMP.c > CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.i
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.c > CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.i
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/matrix_openMP.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.s
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.s
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o: ../src/matrix_operations/print_matrix.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/print_matrix.c
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o: ../src/base_utils/print_matrix_utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/print_matrix_utils.c
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/print_matrix.c > CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.i
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/print_matrix_utils.c > CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.i
 
-CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/matrix_operations/print_matrix.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.s
+CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/print_matrix_utils.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.s
+
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o: CMakeFiles/SSDyP_GameOfLife.dir/flags.make
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o: ../src/openmp/main_openmp.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o   -c /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/main_openmp.c
+
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/main_openmp.c > CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.i
+
+CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/main_openmp.c -o CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.s
 
 # Object files for target SSDyP_GameOfLife
 SSDyP_GameOfLife_OBJECTS = \
-"CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o" \
-"CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o" \
-"CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o" \
-"CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o" \
-"CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o" \
-"CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o"
+"CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o" \
+"CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o" \
+"CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o" \
+"CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o" \
+"CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o" \
+"CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o" \
+"CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o"
 
 # External object files for target SSDyP_GameOfLife
 SSDyP_GameOfLife_EXTERNAL_OBJECTS =
 
-SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/main_seq_openmp.c.o
-SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/cell.c.o
-SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_sequential.c.o
-SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/statistics.c.o
-SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/matrix_openMP.c.o
-SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/matrix_operations/print_matrix.c.o
+SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o
+SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o
+SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o
+SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o
+SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o
+SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o
+SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o
 SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/build.make
 SSDyP_GameOfLife: CMakeFiles/SSDyP_GameOfLife.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable SSDyP_GameOfLife"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable SSDyP_GameOfLife"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SSDyP_GameOfLife.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

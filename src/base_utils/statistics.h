@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
-
-#include "omp.h"
+#include <omp.h> //For timing functions
 
 #ifndef SSDYP_GAMEOFLIFE_STATISTICS_H
 #define SSDYP_GAMEOFLIFE_STATISTICS_H

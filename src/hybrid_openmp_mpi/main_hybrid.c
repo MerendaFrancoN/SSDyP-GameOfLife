@@ -1,5 +1,5 @@
-#include "src/headers/matrix_operations/matrix_openMP.h"
-#include "src/headers/matrix_operations/matrix_MPI_OpenMP.h"
+#include "../openmp/matrix_openMP.h"
+#include "matrix_MPI_OpenMP.h"
 
 #define ROOT_PROCESSOR 0
 
@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
     cell_type *data_from_root =  (cell_type*) malloc(sizeof(cell_type) * number_of_cells_toRecv);
     cell_type *data_processed =  (cell_type*) malloc(sizeof(cell_type) * numberOfRowsOfRank * columns );
 
-    omp_set_num_threads(__NUM_OF_THREADS__ / numberOfProcessors);
+    omp_set_num_threads(__NUM_OF_THREADS__/numberOfProcessors);
 
     /*MAIN PROGRAM */
     if (rank == ROOT_PROCESSOR){
@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
         /* Initialize Matrix */
         cell_type *currentState = allocateMatrix_openMP(rows, columns);
         cell_type *nextState_fromMaster = (cell_type*)malloc(sizeof(cell_type) * rows * columns);
-        initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+        initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
          * sendCounts_SEND - numberOfProcessors sized, in each position, the count of data that will send to each processor

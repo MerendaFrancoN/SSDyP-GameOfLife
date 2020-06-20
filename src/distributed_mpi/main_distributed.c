@@ -1,5 +1,5 @@
-#include "src/headers/matrix_operations/matrix_sequential.h"
-#include "src/headers/matrix_operations/matrix_MPI.h"
+#include "../sequential/matrix_sequential.h"
+#include "matrix_MPI.h"
 
 
 #define ROOT_PROCESSOR 0
@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
         /* Initialize Matrix */
         cell_type *currentState = allocateMatrix_sequential(rows, columns);
         cell_type *nextState_fromMaster = (cell_type*)malloc(sizeof(cell_type) * rows * columns);
-        initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.02, 0.3, 0.54, 0.16);
+        initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
          * sendCounts_SEND - numberOfProcessors sized, in each position, the count of data that will send to each processor
@@ -101,11 +101,14 @@ int main(int argc, char** argv) {
                 /* 9° Reshape gathered matrix and update current State*/
                 complete_nextState(rows, columns, nextState_fromMaster, currentState);
             }
-
-            printMatrixStates(currentState, rows, columns);
             //Time it
             tB = omp_get_wtime();
             totalTime += tB - tA;
+
+
+
+            printMatrixStates(currentState, rows, columns);
+
         }
 
         printf("\n*Distributed Time = %lf \n", totalTime / (double) numberOfExecutions);

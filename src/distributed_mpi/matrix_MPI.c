@@ -1,4 +1,4 @@
-#include "../headers/matrix_operations/matrix_MPI.h"
+#include "matrix_MPI.h"
 
 
 /* DistributeMatrix_getInfo returns the minimum number of rows to send per processor.

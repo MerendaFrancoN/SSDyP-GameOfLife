@@ -1,4 +1,4 @@
-#include "../cell.h"
+#include "cell.h"
 
 /* File with functions to print the matrixs.*/
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_PRINTS_H

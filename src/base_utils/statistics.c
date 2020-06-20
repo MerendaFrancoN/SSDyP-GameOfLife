@@ -1,4 +1,4 @@
-#include "headers/statistics.h"
+#include "statistics.h"
 
 /* Stat Info Variables
  * STAT_TOTAL_CELLS - Total cells with valid state.

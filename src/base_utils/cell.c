@@ -1,4 +1,4 @@
-#include "headers/cell.h"
+#include "cell.h"
 /* --UTILS Functions-- */
 
 // Function to determine susceptibility
