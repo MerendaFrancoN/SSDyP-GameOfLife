@@ -128,6 +128,6 @@ double probability_P(double cellsContagious, double covidPower, double susceptib
 double illness_death_rate(char age, char preventiveVaccines);
 
 // Function that from a cell, generates the state for the next cell
-cell_type next_state(cell_type currentState, double cellsContagious);
+cell_type next_state(cell_type currentState, double cellsContagious, double covidPower);
 
 #endif //SSDYP_GAMEOFLIFE_CELL_H

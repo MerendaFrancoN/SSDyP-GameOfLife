@@ -61,7 +61,7 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
     }
 }
 
-void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState, cell_type* data_processed){
+void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState, cell_type* data_processed, double covid_power){
 
     //Row index and column index
     unsigned int rowIndex = 0, colIndex = 0, columnsWithExtraRow = columns + 2;

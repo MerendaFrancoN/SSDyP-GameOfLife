@@ -29,7 +29,7 @@ double examineNeighbors(cell_type* neighbors ){
 }
 
 //Process sequentially the matrix to get the next state matrix
-void MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, cell_type *nextStateMatrix, unsigned int rows, unsigned int columns){
+void MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, cell_type *nextStateMatrix, unsigned int rows, unsigned int columns, double covid_power){
 
     //Offset because of the extra invalid spaces
     const unsigned short int columnsWithOffset = columns + 2;
@@ -69,7 +69,7 @@ void MatrixProcessing_nextState_sequential(cell_type *currentStateMatrix, cell_t
             contagiousCellsProportion = examineNeighbors(neighbors);
 
             //Setting new State
-            nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
+            nextStateCell = next_state(currentStateCell, contagiousCellsProportion, covid_power);
             nextStateMatrix[rowOffset + columnIndex] = nextStateCell;
         }
     }
@@ -113,7 +113,8 @@ void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int co
 }
 
 //Sequential Run of the problem
-double sequential_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions){
+double sequential_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions,
+                        double densityPopulation, double infectionRate, double childRate, double adultRate, double oldRate, double covid_power){
 
     //Timing Variables
     double tA, tB, totalTime= 0.0;
@@ -130,7 +131,7 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
         currentState = allocateMatrix_sequential(rows, columns);
         nextStateMatrix = allocateMatrix_sequential(rows, columns);
         //Initialize Matrix
-        initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
+        initializeMatrix_sequential(currentState, rows, columns, densityPopulation, infectionRate, childRate, adultRate, oldRate);
 
         //Print Matrix First state
         printf("---------------SEQUENTIAL RUN - Execution N° %d-------------------------\n\n", execNumber);
@@ -149,7 +150,7 @@ double sequential_run(unsigned int rows, unsigned int columns, unsigned int simu
         tA = omp_get_wtime();
 
         for (int i = 0; i < simulationDaysTime; i++){
-            MatrixProcessing_nextState_sequential(currentState, nextStateMatrix ,rows, columns);
+            MatrixProcessing_nextState_sequential(currentState, nextStateMatrix ,rows, columns, covid_power);
             memcpy(currentState, nextStateMatrix, sizeof(cell_type) * (rows+2) * (columns+2) );
         }
 

@@ -62,7 +62,7 @@ void mpi_set_sendCounts_and_Displacements(unsigned rows, unsigned columns, unsig
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "openmp-use-default-none"
-void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState, cell_type* data_processed){
+void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cell_type* currentState, cell_type* data_processed, double covid_power){
 
     //Row index and column index
     unsigned int rowIndex = 0, colIndex = 0, columnsWithExtraRow = columns + 2;
@@ -101,7 +101,7 @@ void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cel
             contagiousCellsProportion = mpi_examineNeighbors(neighbors);
 
             //Setting new State
-            nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
+            nextStateCell = next_state(currentStateCell, contagiousCellsProportion, covid_power);
             data_processed[(rowIndex - 1) * columns + colIndex - 1] = nextStateCell;
         }
     }

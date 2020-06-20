@@ -36,7 +36,7 @@ double illness_death_rate(char age, char preventiveVaccines){
 }
 
 // Function that from a cell, generates the state for the next cell
-cell_type next_state(cell_type currentState, double cellsContagious) {
+cell_type next_state(cell_type currentState, double cellsContagious, double covidPower) {
 
     //Check if a null state, return as it was.
     if (currentState.state == STATE_WHITE )
@@ -53,7 +53,7 @@ cell_type next_state(cell_type currentState, double cellsContagious) {
     switch (currentState.state) {
         case STATE_BLUE:{
             //If there are no cell contagious near and the P probability
-            if( cellsContagious != 0.0 && randomDoubleGenerator() > probability_P(cellsContagious, 2.4, susceptibility( currentState.age, currentState.risk_disease), 1) ) {
+            if( cellsContagious != 0.0 && randomDoubleGenerator() > probability_P(cellsContagious, covidPower, susceptibility( currentState.age, currentState.risk_disease), 1) ) {
                 //Set new state
                 currentState.state = STATE_ORANGE;
                 return currentState;

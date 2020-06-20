@@ -4,7 +4,7 @@
 #pragma ide diagnostic ignored "openmp-use-default-none"
 
 //Process matrix of the current state and return the new state matrix. This is done sequentially.
-void MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, cell_type* nextStateMatrix, unsigned int rows, unsigned int columns){
+void MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, cell_type* nextStateMatrix, unsigned int rows, unsigned int columns, double covid_power){
 
     //Index Variables
     unsigned int rowIndex_1, columnIndex_1;
@@ -51,7 +51,7 @@ void MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, cell_type*
                 contagiousCellsProportion = examineNeighbors_openMP(neighbors);
 
                 //Setting new State
-                nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
+                nextStateCell = next_state(currentStateCell, contagiousCellsProportion, covid_power);
                 nextStateMatrix[rowOffset + columnIndex_1] = nextStateCell;
             }
         }
@@ -143,7 +143,8 @@ void matrixCounters_openMP(cell_type *matrixToPrint, unsigned int rows, unsigned
 }
 
 //Sequential Run of the problem
-double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions){
+double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions,
+                    double densityPopulation, double infectionRate, double childRate, double adultRate, double oldRate, double covid_power){
     //Timing Variables
     double tA, tB, totalTime=0.0;
     /*Declare current State matrix pointer that will go mutating through iterations
@@ -160,7 +161,7 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         nextStateMatrix = allocateMatrix_openMP(rows, columns);
 
         //Initialize Matrix
-        initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
+        initializeMatrix_openMP(currentState, rows, columns, densityPopulation, infectionRate, childRate, adultRate, oldRate);
 
         //Print Matrix First state
         printf("---------------OpenMP RUN - Execution N° %d-------------------------\n\n", execNumber);
@@ -179,7 +180,7 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         tA = omp_get_wtime();
 
         for (int i = 0; i < simulationDaysTime; i++){
-            MatrixProcessing_nextState_openMP(currentState, nextStateMatrix ,rows, columns);
+            MatrixProcessing_nextState_openMP(currentState, nextStateMatrix ,rows, columns, covid_power);
             memcpy(currentState, nextStateMatrix, sizeof(cell_type)*(rows+2)*(columns+2));
         }
 

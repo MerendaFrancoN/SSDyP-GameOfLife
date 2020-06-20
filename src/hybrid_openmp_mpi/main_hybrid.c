@@ -16,6 +16,13 @@ int main(int argc, char** argv) {
     unsigned int columns = 0;
     unsigned int simulationDaysTime = 0;
     unsigned int numberOfExecutions = 0;
+    double covid_power = 2.4;
+
+    //Parameters Variables
+    double dense_pop = 0.5;
+    double infected_rate = 0.002;
+    double child_rate = 0.3, adult_rate = 0.54, old_rate = 0.16;
+    double covid_power = 2.4;
 
     //MPI Variables
     int rank, numberOfProcessors;
@@ -61,7 +68,7 @@ int main(int argc, char** argv) {
         /* Initialize Matrix */
         cell_type *currentState = allocateMatrix_openMP(rows, columns);
         cell_type *nextState_fromMaster = (cell_type*)malloc(sizeof(cell_type) * rows * columns);
-        initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
+        initializeMatrix_openMP(currentState, rows, columns, dense_pop, infected_rate, child_rate, adult_rate, old_rate);
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
          * sendCounts_SEND - numberOfProcessors sized, in each position, the count of data that will send to each processor
@@ -90,7 +97,7 @@ int main(int argc, char** argv) {
                 MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
                 /* 7° Process state */
-                mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root, data_processed);
+                mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root, data_processed, covid_power);
 
                 /* 8° Gather data from all the processors in the communicator -- Use the same pointer to get the next state */
                 MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, nextState_fromMaster, sendCounts_RECV, displacements_RECV, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
