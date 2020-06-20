@@ -50,7 +50,8 @@
 /cmake-build-debug/Makefile
 /cmake-build-debug/SSDyP_GameOfLife
 /cmake-build-debug/SSDyP_GameOfLife.cbp
-
+CMakeLists.txt
+.idea/
 # Kernel Module Compile Results
 *.mod*
 *.cmd
