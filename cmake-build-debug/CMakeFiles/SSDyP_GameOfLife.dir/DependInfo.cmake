@@ -7,8 +7,6 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/cell.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/print_matrix_utils.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/statistics.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o"
-  "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/main_openmp.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o"
-  "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/main_sequential.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o"
   "/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/matrix_sequential.c" "/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o"
   )

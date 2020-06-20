@@ -204,60 +204,6 @@ src/base_utils/statistics.c.s:
 	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.s
 .PHONY : src/base_utils/statistics.c.s
 
-src/openmp/main_openmp.o: src/openmp/main_openmp.c.o
-
-.PHONY : src/openmp/main_openmp.o
-
-# target to build an object file
-src/openmp/main_openmp.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o
-.PHONY : src/openmp/main_openmp.c.o
-
-src/openmp/main_openmp.i: src/openmp/main_openmp.c.i
-
-.PHONY : src/openmp/main_openmp.i
-
-# target to preprocess a source file
-src/openmp/main_openmp.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.i
-.PHONY : src/openmp/main_openmp.c.i
-
-src/openmp/main_openmp.s: src/openmp/main_openmp.c.s
-
-.PHONY : src/openmp/main_openmp.s
-
-# target to generate assembly for a file
-src/openmp/main_openmp.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.s
-.PHONY : src/openmp/main_openmp.c.s
-
-src/openmp/matrix_openMP.o: src/openmp/matrix_openMP.c.o
-
-.PHONY : src/openmp/matrix_openMP.o
-
-# target to build an object file
-src/openmp/matrix_openMP.c.o:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o
-.PHONY : src/openmp/matrix_openMP.c.o
-
-src/openmp/matrix_openMP.i: src/openmp/matrix_openMP.c.i
-
-.PHONY : src/openmp/matrix_openMP.i
-
-# target to preprocess a source file
-src/openmp/matrix_openMP.c.i:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.i
-.PHONY : src/openmp/matrix_openMP.c.i
-
-src/openmp/matrix_openMP.s: src/openmp/matrix_openMP.c.s
-
-.PHONY : src/openmp/matrix_openMP.s
-
-# target to generate assembly for a file
-src/openmp/matrix_openMP.c.s:
-	$(MAKE) -f CMakeFiles/SSDyP_GameOfLife.dir/build.make CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.s
-.PHONY : src/openmp/matrix_openMP.c.s
-
 src/sequential/main_sequential.o: src/sequential/main_sequential.c.o
 
 .PHONY : src/sequential/main_sequential.o
@@ -330,12 +276,6 @@ help:
 	@echo "... src/base_utils/statistics.o"
 	@echo "... src/base_utils/statistics.i"
 	@echo "... src/base_utils/statistics.s"
-	@echo "... src/openmp/main_openmp.o"
-	@echo "... src/openmp/main_openmp.i"
-	@echo "... src/openmp/main_openmp.s"
-	@echo "... src/openmp/matrix_openMP.o"
-	@echo "... src/openmp/matrix_openMP.i"
-	@echo "... src/openmp/matrix_openMP.s"
 	@echo "... src/sequential/main_sequential.o"
 	@echo "... src/sequential/main_sequential.i"
 	@echo "... src/sequential/main_sequential.s"

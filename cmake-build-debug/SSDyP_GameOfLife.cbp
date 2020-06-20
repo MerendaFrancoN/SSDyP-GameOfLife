@@ -96,15 +96,6 @@
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/base_utils/statistics.h">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/main_openmp.c">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.c">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
-		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/openmp/matrix_openMP.h">
-			<Option target="SSDyP_GameOfLife"/>
-		</Unit>
 		<Unit filename="/home/stormtrooper/Documentos/SSDyP-GameOfLife/src/sequential/main_sequential.c">
 			<Option target="SSDyP_GameOfLife"/>
 		</Unit>

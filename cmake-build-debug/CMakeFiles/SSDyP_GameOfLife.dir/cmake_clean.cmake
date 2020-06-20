@@ -2,8 +2,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o"
-  "CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/main_openmp.c.o"
-  "CMakeFiles/SSDyP_GameOfLife.dir/src/openmp/matrix_openMP.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o"
   "CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o"
   "SSDyP_GameOfLife"

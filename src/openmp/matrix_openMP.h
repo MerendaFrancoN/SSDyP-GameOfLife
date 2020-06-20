@@ -4,7 +4,7 @@
 #include "../base_utils/print_matrix_utils.h"
 #include "../base_utils/cell.h"
 
-#define __NUM_OF_THREADS__ 8
+#define __NUM_OF_THREADS__ 128
 
 //Operations of Matrix done with OpenMP
 
