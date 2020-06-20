@@ -2,9 +2,14 @@
 ## Compilar SSDyP_
     $ make all
 ## Ejecutables /build
-   * Versión Secuencial y OpenMP
+   * Versión Secuencial
    
-    $ ./build/SSDyP <rows> <columns> <SimulationDays> <NumberOfExecutions>
+    $ ./build/SSDyP_Sequential <rows> <columns> <SimulationDays> <NumberOfExecutions>
+    
+   * Versión OpenMP
+   
+    $ ./build/SSDyP_OMP <rows> <columns> <SimulationDays> <NumberOfExecutions>
+    
    * Versión MPI     
     
     $ mpirun -np <numProc> ./build/SSDyP_Distributed <rows> <columns> <SimulationDays> <NumberOfExecutions>
@@ -13,7 +18,9 @@
     $ mpirun -np <numProc> ./build/SSDyP_Hybrid <rows> <columns> <SimulationDays> <NumberOfExecutions>
     
 ### Ejemplo de ejecución de una grilla de 200 x 200, 120 días de simulación y 1 sola ejecución.
-    $ ./build/SSDyP 200 200 120 1
+    $ ./build/SSDyP_Sequential 200 200 120 1
+    
+    $ ./build/SSDyP_OMP 200 200 120 1
     
     $ mpirun -np 8 ./build/SSDyP_Distributed 200 200 120 1
     
