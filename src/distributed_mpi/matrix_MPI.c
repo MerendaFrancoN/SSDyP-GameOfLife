@@ -99,7 +99,7 @@ void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cel
             contagiousCellsProportion = mpi_examineNeighbors(neighbors);
 
             //Setting new State
-            nextStateCell = next_state(currentStateCell, contagiousCellsProportion);
+            nextStateCell = next_state(currentStateCell, contagiousCellsProportion, covid_power);
             data_processed[(rowIndex - 1) * columns + colIndex - 1] = nextStateCell;
         }
     }

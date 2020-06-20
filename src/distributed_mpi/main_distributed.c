@@ -136,7 +136,7 @@ int main(int argc, char** argv) {
                 MPI_Scatterv(NULL, NULL, NULL, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
 
                 //2° Process data
-                mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root, data_processed);
+                mpi_matrixProcessing_nextState(numberOfRowsOfRank, columns, data_from_root, data_processed, covid_power);
 
                 //3°Send data processed back to Master
                 MPI_Gatherv(data_processed, numberOfRowsOfRank * columns, mpi_cell_datatype, NULL, NULL, NULL, MPI_INT, ROOT_PROCESSOR, MPI_COMM_WORLD);
