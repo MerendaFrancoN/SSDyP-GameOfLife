@@ -255,8 +255,8 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         //Print Info about matrix
         STATS_printMatrixInfo(rows, columns);
 
-        //printf("\n**First state of the matrix: \n");
-        //printMatrixStates(currentState, rows, columns);
+        printf("\n**First state of the matrix: \n");
+        printMatrixStates(currentState, rows, columns);
 
         //Time it
         tA = omp_get_wtime();
@@ -274,8 +274,8 @@ double openMP_run(unsigned int rows, unsigned int columns, unsigned int simulati
         totalTime += tB-tA;
 
         //Print Matrix Last state
-        //printf("\n**Last state of the matrix: \n");
-        //printMatrixStates(currentState, rows, columns);
+        printf("\n**Last state of the matrix: \n");
+        printMatrixStates(currentState, rows, columns);
     }
 
     //Return the average time
