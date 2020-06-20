@@ -5,6 +5,9 @@
 //User defined libraries
 #include "../base_utils/matrix_utils.h"
 
+//Define Maximum number of threads
+#define __NUM_OF_THREADS__ 8
+
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
 #define SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
 
