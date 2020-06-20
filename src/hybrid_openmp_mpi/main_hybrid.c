@@ -1,5 +1,7 @@
 #include "matrix_MPI_OpenMP.h"
 
+#define __NUM_OF_THREADS__ 8
+
 #define ROOT_PROCESSOR 0
 
 /*MPI UTILS FUNCTIONS*/

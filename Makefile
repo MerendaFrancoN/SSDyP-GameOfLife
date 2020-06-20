@@ -7,8 +7,8 @@ LDFLAGS =  -fopenmp  -std=c99
 SRC_1 =  src/sequential/main_sequential.c src/base_utils/cell.h src/base_utils/cell.c src/base_utils/statistics.h src/base_utils/statistics.c src/base_utils/matrix_utils.h src/base_utils/matrix_utils.c src/sequential/matrix_sequential.h src/sequential/matrix_sequential.c
 SRC_2 =  src/openmp/main_openmp.c src/base_utils/cell.h src/base_utils/cell.c src/base_utils/statistics.h src/base_utils/statistics.c src/base_utils/matrix_utils.h src/base_utils/matrix_utils.c src/openmp/matrix_openMP.h src/openmp/matrix_openMP.c
 SRC_3 =  src/hybrid_openmp_mpi/main_hybrid.c src/base_utils/cell.h src/base_utils/cell.c src/base_utils/statistics.h src/base_utils/statistics.c src/base_utils/matrix_utils.h src/base_utils/matrix_utils.c src/hybrid_openmp_mpi/matrix_MPI_OpenMP.h src/hybrid_openmp_mpi/matrix_MPI_OpenMP.c
-SRC_4 =  src/distributed_mpi/main_distributed.csrc/base_utils/cell.h src/base_utils/cell.c src/base_utils/statistics.h src/base_utils/statistics.c src/base_utils/matrix_utils.h src/base_utils/matrix_utils.c src/distributed_mpi/matrix_MPI.h src/distributed_mpi/matrix_MPI.c
-
+SRC_4 =  src/distributed_mpi/main_distributed.c src/base_utils/cell.h src/base_utils/cell.c src/base_utils/statistics.h src/base_utils/statistics.c src/base_utils/matrix_utils.h src/base_utils/matrix_utils.c src/distributed_mpi/matrix_MPI.h src/distributed_mpi/matrix_MPI.c
+ 
 OBJ_1 = $(SRC_1:.cc=.o)
 OBJ_2 = $(SRC_2:.cc=.o)
 OBJ_3 = $(SRC_3:.cc=.o)

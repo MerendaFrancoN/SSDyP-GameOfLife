@@ -1,10 +1,11 @@
 /*User defined Include*/
 #include "../base_utils/matrix_utils.h"
 
+//Define Maximum number of threads
+#define __NUM_OF_THREADS__ 8
+
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_OPENMP_H
 #define SSDYP_GAMEOFLIFE_MATRIX_OPENMP_H
-
-#define __NUM_OF_THREADS__ 128
 
 //Operations of Matrix done with OpenMP
 

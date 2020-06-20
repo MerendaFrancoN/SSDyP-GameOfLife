@@ -16,18 +16,4 @@ double examineNeighbors(cell_type* neighbors );
 double sequential_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions);
 
 
-/* Utils Matrix Functions */
-
-//Print matrix of cells
-void printMatrix(cell_type *matrixToPrint, unsigned int rows, unsigned int columns);
-
-//Print matrix of cells
-void printMatrixStates(cell_type *matrixToPrint, unsigned int rows, unsigned int columns);
-
-//Get the counts of each type specified in parameters, and get the output through the parameters.
-void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int columns, unsigned int* childNumber,
-                    unsigned int *adultNumber, unsigned int *oldNumber,
-                    unsigned int *infectedNumber, unsigned int *cellsWithState);
-
-
 #endif //SSDYP_GAMEOFLIFE_MATRIX_SEQUENTIAL_H
