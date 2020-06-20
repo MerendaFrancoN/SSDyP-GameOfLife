@@ -1,4 +1,4 @@
-#include "../headers/matrix_operations/matrix_MPI_OpenMP.h"
+#include "matrix_MPI_OpenMP.h"
 
 /* DistributeMatrix_getInfo returns the minimum number of rows to send per processor.
 * @param in rows, columns, numberOfProcessors
@@ -76,7 +76,7 @@ void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cel
     //Contagious portion
     double contagiousCellsProportion = 0.0;
 
-    #pragma omp parallel for collapse(2) schedule(static, 4) private(rowIndex, colIndex, rowOffset, currentStateCell, contagiousCellsProportion, neighbors, rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index)
+    #pragma omp parallel for collapse(2) private(rowIndex, colIndex, rowOffset, currentStateCell, contagiousCellsProportion, neighbors, rowNeighbor_1_index, rowNeighbor_2_index, rowNeighbor_3_index)
     for(rowIndex = 1; rowIndex <= numberOfRows_toProcess; rowIndex++ ){
 
         for(colIndex = 1; colIndex <= columns; colIndex++){

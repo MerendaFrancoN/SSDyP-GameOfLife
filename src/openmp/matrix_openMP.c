@@ -2,7 +2,7 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "openmp-use-default-none"
 
-#include "../headers/matrix_operations/matrix_openMP.h"
+#include "matrix_openMP.h"
 
 // Allocate matrix of cells
 cell_type *allocateMatrix_openMP(unsigned int rows, unsigned int columns){

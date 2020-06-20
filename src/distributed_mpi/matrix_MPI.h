@@ -1,12 +1,13 @@
-#ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
-#define SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
+
 
 //User defined libraries
-#include "print_matrix.h"
-#include "matrix_sequential.h"
+#include "../base_utils/print_matrix_utils.h"
+#include "../sequential/matrix_sequential.h"
 #include <stddef.h>
-#include "omp.h"
 #include "mpi.h"
+
+#ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_H
+#define SSDYP_GAMEOFLIFE_MATRIX_MPI_H
 
 /*Function to calculate the sendCount and Displacement array for MPI_Gatherv and MPI_Scatterv function
  * @param
@@ -29,4 +30,4 @@ void mpi_matrixProcessing_nextState(int numberOfRows_toProcess, int columns, cel
 //Reshape the matrix adding invalid cells around state
 void complete_nextState(int rows, int columns, cell_type* stateFromProcesses, cell_type* nextState);
 
-#endif //SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
+#endif //SSDYP_GAMEOFLIFE_MATRIX_MPI_H

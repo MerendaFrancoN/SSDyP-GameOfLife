@@ -1,6 +1,5 @@
-#include "src/headers/matrix_operations/matrix_sequential.h"
-#include "src/headers/matrix_operations/matrix_MPI.h"
-
+#include "../openmp/matrix_openMP.h"
+#include "matrix_MPI_OpenMP.h"
 
 #define ROOT_PROCESSOR 0
 
@@ -8,9 +7,6 @@
 /*Function that set the cell_type for MPI collective functions
  * @returns the cell_type in MPI_Datatype so MPI can understand it */
 void mpi_set_cell_datatype(MPI_Datatype* datatype);
-
-//Auxiliary Function
-void print_array(int size, int* array);
 
 /* MAIN PROGRAM */
 int main(int argc, char** argv) {
@@ -56,15 +52,16 @@ int main(int argc, char** argv) {
     cell_type *data_from_root =  (cell_type*) malloc(sizeof(cell_type) * number_of_cells_toRecv);
     cell_type *data_processed =  (cell_type*) malloc(sizeof(cell_type) * numberOfRowsOfRank * columns );
 
+    omp_set_num_threads(__NUM_OF_THREADS__/numberOfProcessors);
 
     /*MAIN PROGRAM */
     if (rank == ROOT_PROCESSOR){
         //Timing variables
         double tA = 0.0, tB = 0.0, totalTime = 0.0;
         /* Initialize Matrix */
-        cell_type *currentState = allocateMatrix_sequential(rows, columns);
+        cell_type *currentState = allocateMatrix_openMP(rows, columns);
         cell_type *nextState_fromMaster = (cell_type*)malloc(sizeof(cell_type) * rows * columns);
-        initializeMatrix_sequential(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
+        initializeMatrix_openMP(currentState, rows, columns, 0.5, 0.002, 0.3, 0.54, 0.16);
 
         /* 3°Vectors with information for Scatterv() and Gatherv()
          * sendCounts_SEND - numberOfProcessors sized, in each position, the count of data that will send to each processor
@@ -101,17 +98,14 @@ int main(int argc, char** argv) {
                 /* 9° Reshape gathered matrix and update current State*/
                 complete_nextState(rows, columns, nextState_fromMaster, currentState);
             }
+
+            printMatrixStates(currentState, rows, columns);
             //Time it
             tB = omp_get_wtime();
             totalTime += tB - tA;
-
-
-
-            printMatrixStates(currentState, rows, columns);
-
         }
 
-        printf("\n*Distributed Time = %lf \n", totalTime / (double) numberOfExecutions);
+        printf("\n*Hybrid Time = %lf \n", totalTime / (double) numberOfExecutions);
 
 
         /* Free pointers */
@@ -179,12 +173,4 @@ void mpi_set_cell_datatype(MPI_Datatype* datatype){
     MPI_Type_create_struct(count, blocks, displacements, types, datatype);
     MPI_Type_commit(datatype);
     /* Datatype for Cell in MPI */
-}
-
-//Auxiliary function to help see the data
-void print_array(int size, int* array){
-    printf("\n[");
-    for(int i = 0; i < size; i++)
-        printf("%d ", array[i]);
-    printf("]\n");
 }

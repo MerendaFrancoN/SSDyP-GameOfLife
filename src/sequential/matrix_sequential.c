@@ -1,4 +1,4 @@
-#include "../headers/matrix_operations/matrix_sequential.h"
+#include "matrix_sequential.h"
 
 /* Allocate matrix of cells, aggregates one row and one column with null cells
  * to reduce comparisons when it's processed */

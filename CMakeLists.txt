@@ -5,4 +5,4 @@ project(SSDyP_GameOfLife C)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fopenmp -O0")
 
 set(CMAKE_C_STANDARD 99)
-add_executable(SSDyP_GameOfLife main_seq_openmp.c src/headers/cell.h src/cell.c src/headers/matrix_operations/matrix_sequential.h src/matrix_operations/matrix_sequential.c src/headers/statistics.h src/statistics.c src/headers/matrix_operations/matrix_openMP.h src/matrix_operations/matrix_openMP.c src/matrix_operations/print_matrix.c src/headers/matrix_operations/print_matrix.h)
+add_executable(SSDyP_GameOfLife src/sequential/main_sequential.c src/base_utils/cell.h src/base_utils/cell.c src/sequential/matrix_sequential.h src/sequential/matrix_sequential.c src/base_utils/statistics.h src/base_utils/statistics.c src/openmp/matrix_openMP.h src/openmp/matrix_openMP.c src/base_utils/print_matrix_utils.c src/base_utils/print_matrix_utils.h src/openmp/main_openmp.c)

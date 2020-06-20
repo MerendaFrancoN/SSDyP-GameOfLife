@@ -1,8 +1,9 @@
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_OPENMP_H
 #define SSDYP_GAMEOFLIFE_MATRIX_OPENMP_H
 
-#include "print_matrix.h"
-#include "../cell.h"
+#include "../base_utils/print_matrix_utils.h"
+#include "../base_utils/cell.h"
+
 #define __NUM_OF_THREADS__ 8
 
 //Operations of Matrix done with OpenMP

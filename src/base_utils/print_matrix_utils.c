@@ -1,4 +1,4 @@
-#include "../headers/matrix_operations/print_matrix.h"
+#include "print_matrix_utils.h"
 
 //Print matrix of only valid cells
 void printMatrix(cell_type *matrixToPrint, unsigned int rows, unsigned int columns){
