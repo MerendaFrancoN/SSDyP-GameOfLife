@@ -1,10 +1,12 @@
-#ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
-#define SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
+//Libraries extra needed
+#include <stddef.h>
+#include <mpi.h>
 
 //User defined libraries
-#include "../base_utils/print_matrix_utils.h"
-#include <stddef.h>
-#include "mpi.h"
+#include "../base_utils/matrix_utils.h"
+
+#ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
+#define SSDYP_GAMEOFLIFE_MATRIX_MPI_OPENMP_H
 
 /*Function to calculate the sendCount and Displacement array for MPI_Gatherv and MPI_Scatterv function
  * @param

@@ -1,3 +1,0 @@
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/stormtrooper/Documentos/SSDyP-GameOfLife/cmake-build-debug/CMakeFiles/SSDyP_GameOfLife.dir

@@ -1,1 +1,0 @@
-/usr/bin/cc  -fopenmp -O0 -g   CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/main_sequential.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/cell.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/sequential/matrix_sequential.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/statistics.c.o CMakeFiles/SSDyP_GameOfLife.dir/src/base_utils/print_matrix_utils.c.o  -o SSDyP_GameOfLife 

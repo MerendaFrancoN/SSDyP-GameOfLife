@@ -1,10 +1,9 @@
-
+//Libraries extra needed
+#include <stddef.h>
+#include <mpi.h>
 
 //User defined libraries
-#include "../base_utils/print_matrix_utils.h"
-#include "../sequential/matrix_sequential.h"
-#include <stddef.h>
-#include "mpi.h"
+#include "../base_utils/matrix_utils.h"
 
 #ifndef SSDYP_GAMEOFLIFE_MATRIX_MPI_H
 #define SSDYP_GAMEOFLIFE_MATRIX_MPI_H

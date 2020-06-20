@@ -1,4 +1,3 @@
-#include "../openmp/matrix_openMP.h"
 #include "matrix_MPI_OpenMP.h"
 
 #define ROOT_PROCESSOR 0
