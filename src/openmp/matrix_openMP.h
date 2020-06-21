@@ -16,7 +16,7 @@ double examineNeighbors_openMP( cell_type* neighbors );
 void MatrixProcessing_nextState_openMP(cell_type *currentStateMatrix, cell_type* nextStateMatrix, unsigned int rows, unsigned int columns, double covid_power);
 
 //Get the counts of each type specified in parameters, and get the output through the parameters.
-void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int columns, unsigned int* childNumber,
+void matrixCounters_openMP(cell_type *matrixToPrint, unsigned int rows, unsigned int columns, unsigned int* childNumber,
                     unsigned int *adultNumber, unsigned int *oldNumber,
                     unsigned int *infectedNumber, unsigned int *cellsWithState);
 

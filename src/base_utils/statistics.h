@@ -28,6 +28,6 @@ int randomEnumIntGenerator(int min, int max);
 double randomDoubleGenerator();
 
 //Print Matrix Counters
-void STATS_printMatrixInfo();
+void STATS_printMatrixInfo(unsigned int rows, unsigned int columns);
 
 #endif //SSDYP_GAMEOFLIFE_STATISTICS_H
