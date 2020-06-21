@@ -1,4 +1,16 @@
 # SSDyP-GameOfLife
+
+GUI - Sequential - OMP
+
+## Instalar SDL 2.0
+   * Windows [I'm an inline-style link](https://www.libsdl.org/download-2.0.php)
+   
+   * Debian
+    
+    $ sudo apt-get install libsdl2-2.0
+    
+    $ sudo apt-get install libsdl2-dev
+
 ## Compilar SSDyP_
     $ make all
 ## Ejecutables /build
