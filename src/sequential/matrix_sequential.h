@@ -16,5 +16,8 @@ double examineNeighbors(cell_type* neighbors );
 double sequential_run(unsigned int rows, unsigned int columns, unsigned int simulationDaysTime, unsigned int numberOfExecutions,
                         double densityPopulation, double infectionRate, double childRate, double adultRate, double oldRate, double covid_power);
 
-
+void matrixCounters(cell_type *matrixToPrint, unsigned int rows, unsigned int columns, unsigned int* childNumber,
+                    unsigned int *adultNumber, unsigned int *oldNumber,
+                    unsigned int *infectedNumber, unsigned int *cellsWithState);
+                    
 #endif //SSDYP_GAMEOFLIFE_MATRIX_SEQUENTIAL_H
