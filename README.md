@@ -3,7 +3,7 @@
 GUI - Sequential - OMP
 
 ## Instalar SDL 2.0
-   * Windows [I'm an inline-style link](https://www.libsdl.org/download-2.0.php)
+   * Windows [SDL 2.0 - Link](https://www.libsdl.org/download-2.0.php)
    
    * Debian
     
