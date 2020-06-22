@@ -36,6 +36,6 @@ $(EXEC_4): $(OBJ_4)
 	$(CC_2) $(LDFLAGS) $(LDFLAGS_SDL) -o $@ $(OBJ_4) 
 
 .PHONY clean:
-	rm -rf $(EXEC_1) $(EXEC_2) $(EXEC_3) $(EXEC_4)
+		rm -rf $(EXEC_1) $(EXEC_2) $(EXEC_3) $(EXEC_4)
        create_build_dir:
-	mkdir build
+		mkdir -p build
