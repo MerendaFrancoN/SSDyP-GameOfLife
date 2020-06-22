@@ -1,5 +1,5 @@
 #include "matrix_MPI_OpenMP.h"
-
+#include "../base_utils/gui.h"
 
 #define ROOT_PROCESSOR 0
 
@@ -62,6 +62,18 @@ int main(int argc, char** argv) {
 
     /*MAIN PROGRAM */
     if (rank == ROOT_PROCESSOR){
+        
+        //GUI Variables
+        int cell_width = 0, cell_height = 0;
+        int speedTime_ms = 500;
+        int simulation_running = 0;
+        SDL_Renderer *renderer;
+        SDL_Window *window;
+        SDL_Event event;
+
+        //Init SDL and a Window to display data -- +2 because of the rows and columns added.
+        renderer = startSDL_Window(rows + 2, columns + 2, &cell_width, &cell_height, window);
+
         //Timing variables
         double tA = 0.0, tB = 0.0, totalTime = 0.0;
         /* Initialize Matrix */
@@ -86,11 +98,23 @@ int main(int argc, char** argv) {
         mpi_set_sendCounts_and_Displacements(rows, columns, numberOfProcessors, sendCounts_RECV, displacements_RECV, 1);
 
         for(int execution = 0; execution < numberOfExecutions; execution++ ){
-            printMatrixStates(currentState, rows, columns);
-            //Time it
-            tA = omp_get_wtime();
             /* PROCESS MATRIX */
-            for(int time = 0; time < simulationDaysTime; time++){
+            for(int time = 0; !simulation_running && time < simulationDaysTime; time++){
+                
+                /*SDL */
+                while (SDL_PollEvent(&event)){
+                    if (event.type == SDL_QUIT){
+                        simulation_running = 1;
+                        break;
+                    }
+                }
+
+                render_currentState(renderer, cell_width,cell_height, currentState, rows + 2, columns + 2, speedTime_ms);
+                /* END SDL */
+            
+                //Time it
+                tA = omp_get_wtime();
+
                 /* 5 ° Share data with all the process in communicator: Calculate de Sendcount and displacement for share
                  * the data among the processors */
                 MPI_Scatterv(currentState, sendCounts_SEND, displacements_SEND, mpi_cell_datatype, data_from_root, number_of_cells_toRecv, mpi_cell_datatype, ROOT_PROCESSOR, MPI_COMM_WORLD);
@@ -103,12 +127,12 @@ int main(int argc, char** argv) {
 
                 /* 9° Reshape gathered matrix and update current State*/
                 complete_nextState(rows, columns, nextState_fromMaster, currentState);
+
+                //Time it
+                tB = omp_get_wtime();       
+                totalTime += tB - tA;
             }
 
-            printMatrixStates(currentState, rows, columns);
-            //Time it
-            tB = omp_get_wtime();
-            totalTime += tB - tA;
         }
 
         printf("\n*Hybrid Time = %lf \n", totalTime / (double) numberOfExecutions);
