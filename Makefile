@@ -20,7 +20,7 @@ EXEC_2 = build/SSDyP_OMP
 EXEC_3 = build/SSDyP_Hybrid
 EXEC_4 = build/SSDyP_Distributed
 
-all: $(EXEC_1) $(EXEC_2) $(EXEC_3) $(EXEC_4)
+all: create_build_dir $(EXEC_1) $(EXEC_2) $(EXEC_3) $(EXEC_4)
 
 $(EXEC_1): $(OBJ_1)
 	$(CC_1) $(LDFLAGS) -o $@ $(OBJ_1) $(LBLIBS)
@@ -33,3 +33,5 @@ $(EXEC_4): $(OBJ_4)
 
 .PHONY clean:
 		rm -rf $(EXEC_1) $(EXEC_2) $(EXEC_3) $(EXEC_4)
+       create_build_dir:
+	mkdir build
