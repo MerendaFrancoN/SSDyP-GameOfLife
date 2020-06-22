@@ -1,6 +1,8 @@
 # SSDyP-GameOfLife
-
-GUI - Sequential - OMP
+<p align="center">
+  <img src="images/100x100.png?raw=true" width="400" height="400"/>
+  <img src="images/300x300.png?raw=true" width="400" height="400"/>
+</p>
 
 ## Instalar SDL 2.0
    * Windows [SDL 2.0 - Link](https://www.libsdl.org/download-2.0.php)
@@ -13,6 +15,7 @@ GUI - Sequential - OMP
 
 ## Compilar SSDyP_
     $ make all
+    
 ## Ejecutables /build
    * Versión Secuencial
    
@@ -37,6 +40,8 @@ GUI - Sequential - OMP
     $ mpirun -np 8 ./build/SSDyP_Distributed 200 200 120 1
     
     $ mpirun -np 8 ./build/SSDyP_Hybrid 200 200 120 1
+
+
 
 ## Simulación de la difusión del COVID-19 en una población
 
