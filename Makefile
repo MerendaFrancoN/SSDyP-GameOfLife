@@ -2,7 +2,7 @@ CC_1 = gcc
 CC_2 = mpicc
 
 CCFLAGS = -Wall -Werror -Wextra -pedantic 
-LDFLAGS =  -fopenmp  -std=c99
+LDFLAGS =  -fopenmp  -std=c99 -O3
 
 
 
